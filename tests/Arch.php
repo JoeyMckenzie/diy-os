@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Tests;
+
+test('All source files are strictly typed')
+    ->expect('App\\')
+    ->toUseStrictTypes();
+
+test('All tests files are strictly typed')
+    ->expect('Tests\\')
+    ->toUseStrictTypes();
+
+test('All enums are string backed')
+    ->expect('App\\Enums')
+    ->toBeStringBackedEnums();
+
+test('All value objects are immutable')
+    ->expect('App\\ValueObjects')
+    ->toBeReadonly()
+    ->and('App\\ValueObjects')
+    ->toBeFinal();

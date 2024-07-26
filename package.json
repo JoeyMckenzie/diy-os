@@ -1,0 +1,61 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build && vite build --ssr",
+        "fmt": "pnpm biome format --write ./resources/js",
+        "lint": "pnpm biome lint --apply ./resources/js",
+        "fix": "pnpm biome lint --apply-unsafe ./resources/js",
+        "check": "pnpm biome check --apply ./resources/js",
+        "ci": "pnpm run lint && pnpm run build"
+    },
+    "lint-staged": {
+        "**/*.{js,ts,tsx}": [
+            "pnpm run fmt",
+            "pnpm run lint"
+        ],
+        "**/*.php": [
+            "composer run fmt",
+            "composer run rector"
+        ]
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.7.3",
+        "@inertiajs/react": "^1.1.0",
+        "@tailwindcss/forms": "^0.5.7",
+        "@types/node": "^18.19.33",
+        "@types/react": "^18.3.3",
+        "@types/react-dom": "^18.3.0",
+        "@vitejs/plugin-react": "^4.3.0",
+        "autoprefixer": "^10.4.19",
+        "axios": "^1.7.2",
+        "laravel-vite-plugin": "^1.0.4",
+        "lint-staged": "^15.2.5",
+        "postcss": "^8.4.38",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "tailwindcss": "^3.4.3",
+        "typescript": "^5.4.5",
+        "vite": "^5.2.11"
+    },
+    "dependencies": {
+        "@headlessui/react": "^2.0.4",
+        "@radix-ui/react-checkbox": "^1.0.4",
+        "@radix-ui/react-dialog": "^1.0.5",
+        "@radix-ui/react-dropdown-menu": "^2.0.6",
+        "@radix-ui/react-icons": "^1.3.0",
+        "@radix-ui/react-label": "^2.0.2",
+        "@radix-ui/react-popover": "^1.0.7",
+        "@radix-ui/react-select": "^2.0.0",
+        "@radix-ui/react-slot": "^1.0.2",
+        "@radix-ui/react-toast": "^1.1.5",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.1",
+        "date-fns": "^3.6.0",
+        "lucide-react": "^0.379.0",
+        "react-day-picker": "^8.10.1",
+        "tailwind-merge": "^2.3.0",
+        "tailwindcss-animate": "^1.0.7"
+    }
+}
