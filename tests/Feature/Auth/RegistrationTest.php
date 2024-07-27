@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Tests;
+
 test('registration screen can be rendered', function (): void {
     $response = $this->get('/register');
 

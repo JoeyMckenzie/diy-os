@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "joeymckenzie/diy-os",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "The OS for solo builders and DIY'ers.",
+    "keywords": ["construction", "diy"],
     "license": "MIT",
     "require": {
         "php": "^8.3",
@@ -10,21 +10,24 @@
         "laravel/framework": "^v11.10.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "tightenco/ziggy": "^2.0"
+        "tightenco/ziggy": "^2.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^2.9",
         "laravel/breeze": "^2.0",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
+        "laravel/pint": "^1.16",
+        "laravel/sail": "^1.29",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "pestphp/pest": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.0",
+        "nunomaduro/collision": "^8.1",
+        "pestphp/pest": "^2.3",
+        "pestphp/pest-plugin-laravel": "^2.4",
         "pestphp/pest-plugin-type-coverage": "^2.8",
+        "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^1.11",
+        "phpstan/phpstan-deprecation-rules": "^1.2",
+        "phpstan/phpstan-phpunit": "^1.4",
         "phpstan/phpstan-strict-rules": "^1.6",
         "rector/rector": "^1.1"
     },
@@ -78,7 +81,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
         }
     },
     "minimum-stability": "stable",

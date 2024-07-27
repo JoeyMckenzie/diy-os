@@ -15,7 +15,7 @@ Route::get('/', fn () => Inertia::render('Welcome', [
     'canRegister' => Route::has('register'),
     'laravelVersion' => Application::VERSION,
     'phpVersion' => PHP_VERSION,
-]));
+]))->name('welcome');
 
 Route::resource('todos', TodoController::class)->middleware(['auth', 'verified']);
 
