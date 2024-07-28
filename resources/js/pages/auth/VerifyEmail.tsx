@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/catalyst/button";
 import GuestLayout from "@/layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import type { FormEventHandler } from "react";
@@ -32,10 +32,9 @@ export default function VerifyEmail({ status }: { status?: string }) {
 
             <form onSubmit={submit}>
                 <div className="mt-4 flex items-center justify-between">
-                    <Button disabled={processing}>
+                    <Button type="submit" disabled={processing}>
                         Resend Verification Email
                     </Button>
-
                     <Link
                         href={route("logout")}
                         method="post"

@@ -1,14 +1,6 @@
 import { Logo } from "@/components/Logo";
 import { useTheme } from "@/components/ThemeProvider";
-import { Avatar } from "@/components/catalyst/avatar";
-import {
-    Dropdown,
-    DropdownButton,
-    DropdownDivider,
-    DropdownItem,
-    DropdownLabel,
-    DropdownMenu,
-} from "@/components/catalyst/dropdown";
+import { UserProfileDropdown } from "@/components/UserProfileDropdown";
 import {
     Sidebar,
     SidebarBody,
@@ -21,26 +13,17 @@ import {
     SidebarSpacer,
 } from "@/components/catalyst/sidebar";
 import type { User } from "@/types";
+import { MoonIcon } from "@heroicons/react/16/solid";
 import {
-    ArrowRightStartOnRectangleIcon,
-    ChevronUpIcon,
-    Cog8ToothIcon,
-    LightBulbIcon,
-    MoonIcon,
-    ShieldCheckIcon,
-    UserIcon,
-} from "@heroicons/react/16/solid";
-import {
-    InboxIcon,
-    MagnifyingGlassIcon,
-    MegaphoneIcon,
+    Cog6ToothIcon,
+    FolderIcon,
+    HomeIcon,
     QuestionMarkCircleIcon,
     SparklesIcon,
-    Square2StackIcon,
     SunIcon,
     TicketIcon,
+    WrenchIcon,
 } from "@heroicons/react/20/solid";
-import { Cog6ToothIcon, HomeIcon } from "@heroicons/react/24/outline";
 
 export function SidebarMenu({ user }: { user: User }) {
     const { setTheme, theme } = useTheme();
@@ -58,38 +41,28 @@ export function SidebarMenu({ user }: { user: User }) {
         <Sidebar>
             <SidebarHeader>
                 <Logo className={"w-36"} />
-                <SidebarSection className="max-lg:hidden">
-                    <SidebarItem href="/search">
-                        <MagnifyingGlassIcon />
-                        <SidebarLabel>Search</SidebarLabel>
-                    </SidebarItem>
-                    <SidebarItem href="/inbox">
-                        <InboxIcon />
-                        <SidebarLabel>Inbox</SidebarLabel>
-                    </SidebarItem>
-                </SidebarSection>
             </SidebarHeader>
             <SidebarBody>
                 <SidebarSection>
-                    <SidebarItem href="/">
+                    <SidebarItem href={route("dashboard")}>
                         <HomeIcon />
                         <SidebarLabel>Home</SidebarLabel>
                     </SidebarItem>
-                    <SidebarItem href="/events">
-                        <Square2StackIcon />
-                        <SidebarLabel>Events</SidebarLabel>
+                    <SidebarItem href={route("projects.index")}>
+                        <FolderIcon />
+                        <SidebarLabel>Projects</SidebarLabel>
                     </SidebarItem>
                     <SidebarItem href="/orders">
                         <TicketIcon />
                         <SidebarLabel>Orders</SidebarLabel>
                     </SidebarItem>
+                    <SidebarItem href="/materials">
+                        <WrenchIcon />
+                        <SidebarLabel>Materials</SidebarLabel>
+                    </SidebarItem>
                     <SidebarItem href="/settings">
                         <Cog6ToothIcon />
                         <SidebarLabel>Settings</SidebarLabel>
-                    </SidebarItem>
-                    <SidebarItem href="/broadcasts">
-                        <MegaphoneIcon />
-                        <SidebarLabel>Broadcasts</SidebarLabel>
                     </SidebarItem>
                 </SidebarSection>
                 <SidebarSection className="max-lg:hidden">
@@ -123,55 +96,7 @@ export function SidebarMenu({ user }: { user: User }) {
                 </SidebarSection>
             </SidebarBody>
             <SidebarFooter className="max-lg:hidden">
-                <Dropdown>
-                    <DropdownButton as={SidebarItem}>
-                        <span className="flex min-w-0 items-center gap-3">
-                            <Avatar
-                                initials={user.initials}
-                                className="size-10"
-                                square
-                                alt=""
-                            />
-                            <span className="min-w-0">
-                                <span className="block truncate font-medium text-sm/5 text-zinc-950 dark:text-white">
-                                    {user.name}
-                                </span>
-                                <span className="block truncate font-normal text-xs/5 text-zinc-500 dark:text-zinc-400">
-                                    {user.email}
-                                </span>
-                            </span>
-                        </span>
-                        <ChevronUpIcon />
-                    </DropdownButton>
-                    <DropdownMenu className="min-w-64" anchor="top start">
-                        <DropdownItem href={route("profile.edit")}>
-                            <UserIcon />
-                            <DropdownLabel>My profile</DropdownLabel>
-                        </DropdownItem>
-                        <DropdownItem href="/settings">
-                            <Cog8ToothIcon />
-                            <DropdownLabel>Settings</DropdownLabel>
-                        </DropdownItem>
-                        <DropdownDivider />
-                        <DropdownItem href="/privacy-policy">
-                            <ShieldCheckIcon />
-                            <DropdownLabel>Privacy policy</DropdownLabel>
-                        </DropdownItem>
-                        <DropdownItem href="/share-feedback">
-                            <LightBulbIcon />
-                            <DropdownLabel>Share feedback</DropdownLabel>
-                        </DropdownItem>
-                        <DropdownDivider />
-                        <DropdownItem
-                            href={route("logout")}
-                            as="button"
-                            method="post"
-                        >
-                            <ArrowRightStartOnRectangleIcon />
-                            <DropdownLabel>Sign out</DropdownLabel>
-                        </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
+                <UserProfileDropdown user={user} />
             </SidebarFooter>
         </Sidebar>
     );

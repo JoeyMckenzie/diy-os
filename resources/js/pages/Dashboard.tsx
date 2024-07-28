@@ -1,4 +1,4 @@
-import { Stats } from "@/components/Stats";
+import { Heading } from "@/components/catalyst/heading";
 import { DashboardLayout } from "@/layouts/DashboardLayout";
 import type { PaginatedModel, Todo } from "@/lib/models";
 import type { PageProps } from "@/types";
@@ -16,7 +16,7 @@ export default function Dashboard({
     return (
         <DashboardLayout user={auth.user}>
             <Head title="Dashboard" />
-            <Stats />
+            <Heading>Welcome {auth.user.name}!</Heading>
         </DashboardLayout>
     );
 }

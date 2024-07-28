@@ -1,24 +1,28 @@
-import InputError from "@/components/InputError";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/catalyst/button";
 import {
     Dialog,
-    DialogClose,
-    DialogContent,
+    DialogBody,
     DialogDescription,
-    DialogFooter,
-    DialogHeader,
     DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
+} from "@/components/catalyst/dialog";
+import {
+    ErrorMessage,
+    Field,
+    FieldGroup,
+    Fieldset,
+    Label,
+} from "@/components/catalyst/fieldset";
+import { Heading } from "@/components/catalyst/heading";
+import { Input } from "@/components/catalyst/input";
+import { Text } from "@/components/catalyst/text";
 import { useForm } from "@inertiajs/react";
-import { type FormEventHandler, useRef } from "react";
+import { clsx } from "clsx";
+import { type FormEventHandler, useRef, useState } from "react";
 
 export default function DeleteUserForm({
     className = "",
 }: { className?: string }) {
+    const [isOpen, setIsOpen] = useState(false);
     const passwordInput = useRef<HTMLInputElement>(null);
     const {
         data,
@@ -41,74 +45,77 @@ export default function DeleteUserForm({
         });
     };
 
-    return (
-        <section className={cn("space-y-6", className)}>
-            <header className="mb-6">
-                <h2 className="font-medium text-lg">Delete Account</h2>
+    const closeDialog = (open: boolean) => {
+        reset();
+        setIsOpen(open);
+    };
 
-                <p className="mt-1 text-gray-600 text-sm dark:text-neutral-400">
+    return (
+        <section className={clsx("space-y-6", className)}>
+            <header className="mb-6">
+                <Heading>Delete Accounts</Heading>
+                <Text>
                     Once your account is deleted, all of its resources and data
                     will be permanently deleted. Before deleting your account,
                     please download any data or information that you wish to
                     retain.
-                </p>
+                </Text>
             </header>
-            <Dialog>
-                <DialogTrigger asChild>
-                    <Button variant="destructive">Delete Account</Button>
-                </DialogTrigger>
-                <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle className="dark:text-neutral-200">
-                            Are you sure you want to delete your account?
-                        </DialogTitle>
-                        <DialogDescription>
-                            Once your account is deleted, all of its resources
-                            and data will be permanently deleted. Please enter
-                            your password to confirm you would like to
-                            permanently delete your account.
-                        </DialogDescription>
-                    </DialogHeader>
-
+            <Button color="red" onClick={() => setIsOpen(true)}>
+                Delete Account
+            </Button>
+            <Dialog open={isOpen} onClose={closeDialog}>
+                <DialogTitle>
+                    Are you sure you want to delete your account?
+                </DialogTitle>
+                <DialogDescription>
+                    Once your account is deleted, all of its resources and data
+                    will be permanently deleted. Please enter your password to
+                    confirm you would like to permanently delete your account.
+                </DialogDescription>
+                <DialogBody>
                     <form onSubmit={deleteUser}>
-                        <Label htmlFor="password" className="sr-only">
-                            Password
-                        </Label>
-
-                        <Input
-                            id="password"
-                            type="password"
-                            name="password"
-                            ref={passwordInput}
-                            value={data.password}
-                            onChange={(e) =>
-                                setData("password", e.target.value)
-                            }
-                            className="mt-1 block w-full"
-                            placeholder="Password"
-                        />
-
-                        <InputError
-                            message={errors.password}
-                            className="mt-2"
-                        />
-
-                        <DialogFooter className="mt-6">
-                            <DialogClose asChild>
-                                <Button variant="secondary">Cancel</Button>
-                            </DialogClose>
-
-                            <Button
-                                type="submit"
-                                variant="destructive"
-                                className="ms-3"
-                                disabled={processing}
-                            >
-                                Delete Account
-                            </Button>
-                        </DialogFooter>
+                        <Fieldset>
+                            <FieldGroup>
+                                <Field>
+                                    <Label
+                                        htmlFor="password"
+                                        className="sr-only"
+                                    >
+                                        Password
+                                    </Label>
+                                    <Input
+                                        id="password"
+                                        type="password"
+                                        name="password"
+                                        ref={passwordInput}
+                                        value={data.password}
+                                        onChange={(e) =>
+                                            setData("password", e.target.value)
+                                        }
+                                        placeholder="Password"
+                                    />
+                                    {errors.password && (
+                                        <ErrorMessage>
+                                            {errors.password}
+                                        </ErrorMessage>
+                                    )}
+                                </Field>
+                                <Button onClick={() => closeDialog(false)}>
+                                    Cancel
+                                </Button>
+                                <Button
+                                    type="submit"
+                                    color="red"
+                                    className="ms-3"
+                                    disabled={processing}
+                                >
+                                    Delete Account
+                                </Button>
+                            </FieldGroup>
+                        </Fieldset>
                     </form>
-                </DialogContent>
+                </DialogBody>
             </Dialog>
         </section>
     );

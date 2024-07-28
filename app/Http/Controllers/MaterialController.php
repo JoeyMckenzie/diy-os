@@ -7,10 +7,10 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Inertia\Response;
 
-final class ProjectController extends Controller
+final class MaterialController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('projects/Index');
+        return Inertia::render('materials/Index');
     }
 }

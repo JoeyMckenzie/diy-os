@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +20,11 @@ Route::get('/', fn () => Inertia::render('Welcome', [
     'phpVersion' => PHP_VERSION,
 ]))->name('welcome');
 
-Route::resource('todos', TodoController::class)->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(fn () => Route::resources([
+    'projects' => ProjectController::class,
+    'orders' => OrderController::class,
+    'materials' => MaterialController::class,
+]));
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

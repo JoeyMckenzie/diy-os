@@ -6,7 +6,9 @@ import {
     Fieldset,
     Label,
 } from "@/components/catalyst/fieldset";
+import { Heading } from "@/components/catalyst/heading";
 import { Input } from "@/components/catalyst/input";
+import { Text } from "@/components/catalyst/text";
 import type { PageProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { Link, useForm, usePage } from "@inertiajs/react";
@@ -34,11 +36,10 @@ export default function UpdateProfileInformation({
     return (
         <section className={className}>
             <header>
-                <h2 className="font-medium text-lg">Profile Information</h2>
-
-                <p className="mt-1 text-gray-600 text-sm dark:text-neutral-400">
+                <Heading>Profile Information</Heading>
+                <Text>
                     Update your account's profile information and email address.
-                </p>
+                </Text>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">

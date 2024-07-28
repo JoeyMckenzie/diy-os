@@ -6,8 +6,8 @@ import { Head } from "@inertiajs/react";
 export default function Index({ auth }: PageProps) {
     return (
         <DashboardLayout user={auth.user}>
-            <Head title="Projects" />
-            <Heading>Projects</Heading>
+            <Head title="Orders" />
+            <Heading>Orders</Heading>
         </DashboardLayout>
     );
 }
