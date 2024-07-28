@@ -1,37 +1,41 @@
-import { Moon, Sun } from "lucide-react";
-
 import { useTheme } from "@/components/ThemeProvider";
-import { Button } from "@/components/ui/button";
 import {
+    Dropdown,
+    DropdownButton,
+    DropdownItem,
+    DropdownLabel,
     DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/catalyst/dropdown";
+import {
+    ComputerDesktopIcon,
+    MoonIcon,
+    SunIcon,
+} from "@heroicons/react/16/solid";
 
 export function ThemeToggle() {
-    const { setTheme } = useTheme();
+    const { setTheme, theme } = useTheme();
 
     return (
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon">
-                    <Sun className="dark:-rotate-90 h-[1.2rem] w-[1.2rem] rotate-0 scale-100 text-black transition-all dark:scale-0" />
-                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 text-white transition-all dark:rotate-0 dark:scale-100" />
-                    <span className="sr-only">Toggle theme</span>
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")}>
-                    Light
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    Dark
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                    System
-                </DropdownMenuItem>
-            </DropdownMenuContent>
-        </DropdownMenu>
+        <Dropdown>
+            <DropdownButton plain>
+                {theme === "light" && <SunIcon />}
+                {theme === "dark" && <MoonIcon />}
+                {theme === "system" && <ComputerDesktopIcon />}
+            </DropdownButton>
+            <DropdownMenu anchor="bottom">
+                <DropdownItem onClick={() => setTheme("light")}>
+                    <SunIcon />
+                    <DropdownLabel>Light</DropdownLabel>
+                </DropdownItem>
+                <DropdownItem onClick={() => setTheme("dark")}>
+                    <MoonIcon />
+                    <DropdownLabel>Dark</DropdownLabel>
+                </DropdownItem>
+                <DropdownItem onClick={() => setTheme("system")}>
+                    <ComputerDesktopIcon />
+                    <DropdownLabel>System</DropdownLabel>
+                </DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
     );
 }

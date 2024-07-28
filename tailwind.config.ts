@@ -1,7 +1,7 @@
-import defaultTheme from "tailwindcss/defaultTheme";
 import forms from "@tailwindcss/forms";
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
     darkMode: ["class"],
@@ -11,7 +11,6 @@ export default {
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.tsx",
     ],
-    prefix: "",
     theme: {
         container: {
             center: true,

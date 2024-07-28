@@ -11,6 +11,9 @@ install:
 ssr:
     find resources/ *.ts *.js | entr -s 'rm -rf bootstrap/ssr/ && pnpm run build && php artisan inertia:start-ssr'
 
+lint:
+    just lint-php & just lint-js
+
 lint-php:
     find app/ resources/ routes/ database/ tests/ phpstan.neon | entr -s 'composer run lint'
 

@@ -1,3 +1,4 @@
+import { Stats } from "@/components/Stats";
 import { DashboardLayout } from "@/layouts/DashboardLayout";
 import type { PaginatedModel, Todo } from "@/lib/models";
 import type { PageProps } from "@/types";
@@ -15,7 +16,7 @@ export default function Dashboard({
     return (
         <DashboardLayout user={auth.user}>
             <Head title="Dashboard" />
-            <h1>Dashboard</h1>
+            <Stats />
         </DashboardLayout>
     );
 }

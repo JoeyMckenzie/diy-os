@@ -36,7 +36,7 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit} className="min-w-[20rem] px-4">
+            <form onSubmit={submit} className="w-full">
                 <Fieldset>
                     <FieldGroup>
                         <Field>

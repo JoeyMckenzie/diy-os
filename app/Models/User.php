@@ -6,10 +6,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Override;
 
 final class User extends Authenticatable
 {
@@ -32,6 +34,13 @@ final class User extends Authenticatable
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = ['initials'];
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -50,11 +59,25 @@ final class User extends Authenticatable
     }
 
     /**
+     * Determine if the user is an administrator.
+     *
+     * @return Attribute<string, string>
+     */
+    private function initials(): Attribute
+    {
+        return new Attribute(
+            get: fn (): string => collect(explode(' ', $this->name))
+                ->map(fn (string $part): string => strtoupper(substr($part, 0, 1)))
+                ->join('')
+        );
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
      */
-    #[\Override]
+    #[Override]
     protected function casts(): array
     {
         return [
