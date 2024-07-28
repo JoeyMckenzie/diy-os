@@ -7,14 +7,13 @@
         "enabled": true,
         "indentWidth": 4,
         "indentStyle": "space",
-        "ignore": [
-            "./resources/js/ssr.tsx"
-        ]
+        "ignore": ["./resources/js/ssr.tsx"]
     },
     "linter": {
         "enabled": true,
         "ignore": [
             "./resources/js/ssr.tsx",
+            "./resources/js/components/catalyst/*.tsx",
             "./resources/js/components/ui/*.tsx",
             "./resources/js/components/ui/*.ts"
         ],
@@ -24,10 +23,7 @@
                 "useSortedClasses": {
                     "level": "error",
                     "options": {
-                        "functions": [
-                            "clsx",
-                            "cn"
-                        ]
+                        "functions": ["clsx", "cn"]
                     }
                 }
             }

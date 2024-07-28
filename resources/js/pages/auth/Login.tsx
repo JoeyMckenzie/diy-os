@@ -1,16 +1,13 @@
-import InputError from "@/components/InputError";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/catalyst/button";
+import { Checkbox } from "@/components/catalyst/checkbox";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+    ErrorMessage,
+    Field,
+    FieldGroup,
+    Fieldset,
+    Label,
+} from "@/components/catalyst/fieldset";
+import { Input } from "@/components/catalyst/input";
 import GuestLayout from "@/layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { type FormEventHandler, useEffect } from "react";
@@ -49,15 +46,9 @@ export default function Login({
             )}
 
             <form onSubmit={submit}>
-                <Card className="w-full max-w-sm">
-                    <CardHeader>
-                        <CardTitle className="text-2xl">Login</CardTitle>
-                        <CardDescription>
-                            Enter your email below to login to your account.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="grid gap-4">
-                        <div className="grid gap-2">
+                <Fieldset>
+                    <FieldGroup>
+                        <Field>
                             <Label htmlFor="email">Email</Label>
                             <Input
                                 id="email"
@@ -66,16 +57,17 @@ export default function Login({
                                 required
                                 name="email"
                                 value={data.email}
-                                className="mt-1 block w-full"
                                 autoComplete="username"
                                 autoFocus
                                 onChange={(e) =>
                                     setData("email", e.target.value)
                                 }
                             />
-                            <InputError message={errors.email} />
-                        </div>
-                        <div className="grid gap-2">
+                            {errors.email && (
+                                <ErrorMessage>{errors.email}</ErrorMessage>
+                            )}
+                        </Field>
+                        <Field>
                             <Label htmlFor="password">Password</Label>
                             <Input
                                 id="password"
@@ -83,30 +75,28 @@ export default function Login({
                                 required
                                 name="password"
                                 value={data.password}
-                                className="mt-1 block w-full"
                                 autoComplete="current-password"
                                 onChange={(e) =>
                                     setData("password", e.target.value)
                                 }
                             />
-                            <InputError
-                                message={errors.password}
-                                className="mt-2"
-                            />
-                        </div>
-                        <div className="flex flex-row items-center justify-between">
-                            <label className="flex items-center">
+                            {errors.password && (
+                                <ErrorMessage>{errors.password}</ErrorMessage>
+                            )}
+                        </Field>
+                        <div className="flex flex-row items-center gap-x-8">
+                            <Label className="flex items-center">
                                 <Checkbox
                                     name="remember"
                                     checked={data.remember}
-                                    onCheckedChange={(checked) =>
-                                        setData("remember", !!checked)
+                                    onChange={(checked) =>
+                                        setData("remember", checked)
                                     }
                                 />
                                 <span className="ms-2 text-sm">
                                     Remember me
                                 </span>
-                            </label>
+                            </Label>
                             {canResetPassword && (
                                 <Link
                                     href={route("password.request")}
@@ -116,13 +106,15 @@ export default function Login({
                                 </Link>
                             )}
                         </div>
-                    </CardContent>
-                    <CardFooter>
-                        <Button className="w-full" disabled={processing}>
+                        <Button
+                            type="submit"
+                            className="w-full"
+                            disabled={processing}
+                        >
                             Sign in
                         </Button>
-                    </CardFooter>
-                </Card>
+                    </FieldGroup>
+                </Fieldset>
             </form>
         </GuestLayout>
     );

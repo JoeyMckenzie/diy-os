@@ -1,14 +1,12 @@
-import InputError from "@/components/InputError";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/catalyst/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+    ErrorMessage,
+    Field,
+    FieldGroup,
+    Fieldset,
+    Label,
+} from "@/components/catalyst/fieldset";
+import { Input } from "@/components/catalyst/input";
 import GuestLayout from "@/layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { type FormEventHandler, useEffect } from "react";
@@ -38,102 +36,98 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
-                <Card className="mx-auto max-w-sm">
-                    <CardHeader>
-                        <CardTitle className="text-2xl">Register</CardTitle>
-                        <CardDescription>
-                            Enter your email below to sign up for an account
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="grid gap-4">
-                            <div className="grid gap-2">
-                                <Label htmlFor="name">Name</Label>
-                                <Input
-                                    id="name"
-                                    name="name"
-                                    value={data.name}
-                                    className="mt-1 block w-full"
-                                    autoComplete="name"
-                                    onChange={(e) =>
-                                        setData("name", e.target.value)
-                                    }
-                                    required
-                                />
-                                <InputError message={errors.name} />
-                            </div>
-                            <div className="grid gap-2">
-                                <Label htmlFor="email">Email</Label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    value={data.email}
-                                    className="mt-1 block w-full"
-                                    placeholder="john.smith@example.com"
-                                    autoComplete="username"
-                                    onChange={(e) =>
-                                        setData("email", e.target.value)
-                                    }
-                                    required
-                                />
-                                <InputError message={errors.email} />
-                            </div>
-                            <div className="grid gap-2">
-                                <Label htmlFor="password">Password</Label>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    value={data.password}
-                                    className="mt-1 block w-full"
-                                    autoComplete="new-password"
-                                    onChange={(e) =>
-                                        setData("password", e.target.value)
-                                    }
-                                    required
-                                />
-                                <InputError message={errors.password} />
-                            </div>
-                            <div className="grid gap-2">
-                                <Label htmlFor="password_confirmation">
-                                    Confirm Password
-                                </Label>
-                                <Input
-                                    id="password_confirmation"
-                                    type="password"
-                                    name="password_confirmation"
-                                    value={data.password_confirmation}
-                                    className="mt-1 block w-full"
-                                    autoComplete="new-password"
-                                    onChange={(e) =>
-                                        setData(
-                                            "password_confirmation",
-                                            e.target.value,
-                                        )
-                                    }
-                                    required
-                                />
-                                <InputError
-                                    message={errors.password_confirmation}
-                                />
-                            </div>
-                            <Button
-                                type="submit"
-                                className="w-full"
-                                disabled={processing}
-                            >
-                                Sign up
-                            </Button>
-                        </div>
+            <form onSubmit={submit} className="min-w-[20rem] px-4">
+                <Fieldset>
+                    <FieldGroup>
+                        <Field>
+                            <Label htmlFor="name">Name</Label>
+                            <Input
+                                id="name"
+                                name="name"
+                                value={data.name}
+                                autoComplete="name"
+                                onChange={(e) =>
+                                    setData("name", e.target.value)
+                                }
+                                required
+                            />
+                            {errors.name && (
+                                <ErrorMessage>{errors.name}</ErrorMessage>
+                            )}
+                        </Field>
+                        <Field>
+                            <Label htmlFor="email">Email</Label>
+                            <Input
+                                id="email"
+                                type="email"
+                                name="email"
+                                value={data.email}
+                                placeholder="john.smith@example.com"
+                                autoComplete="username"
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
+                                required
+                            />
+                            {errors.email && (
+                                <ErrorMessage>{errors.email}</ErrorMessage>
+                            )}
+                        </Field>
+                        <Field>
+                            <Label htmlFor="password">Password</Label>
+                            <Input
+                                id="password"
+                                type="password"
+                                name="password"
+                                value={data.password}
+                                autoComplete="new-password"
+                                onChange={(e) =>
+                                    setData("password", e.target.value)
+                                }
+                                required
+                            />
+                            {errors.password && (
+                                <ErrorMessage>{errors.password}</ErrorMessage>
+                            )}
+                        </Field>
+                        <Field>
+                            <Label htmlFor="password_confirmation">
+                                Confirm Password
+                            </Label>
+                            <Input
+                                id="password_confirmation"
+                                type="password"
+                                name="password_confirmation"
+                                value={data.password_confirmation}
+                                autoComplete="new-password"
+                                onChange={(e) =>
+                                    setData(
+                                        "password_confirmation",
+                                        e.target.value,
+                                    )
+                                }
+                                required
+                            />
+                            {errors.password_confirmation && (
+                                <ErrorMessage>
+                                    {errors.password_confirmation}
+                                </ErrorMessage>
+                            )}
+                        </Field>
+                        <Button
+                            type="submit"
+                            className="w-full"
+                            disabled={processing}
+                        >
+                            Sign up
+                        </Button>
                         <div className="mt-4 text-center text-sm">
                             <Link href={route("login")} className="underline">
                                 Have an account?
                             </Link>
                         </div>
-                    </CardContent>
-                </Card>
+                    </FieldGroup>
+                </Fieldset>
             </form>
         </GuestLayout>
     );

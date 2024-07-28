@@ -1,15 +1,14 @@
-import InputError from "@/components/InputError";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/catalyst/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+    ErrorMessage,
+    Field,
+    FieldGroup,
+    Fieldset,
+    Label,
+    Legend,
+} from "@/components/catalyst/fieldset";
+import { Input } from "@/components/catalyst/input";
+import { Text } from "@/components/catalyst/text";
 import GuestLayout from "@/layouts/GuestLayout";
 import { Head, useForm } from "@inertiajs/react";
 import type { FormEventHandler } from "react";
@@ -35,41 +34,35 @@ export default function ForgotPassword({ status }: { status?: string }) {
                 </div>
             )}
 
-            <form onSubmit={submit}>
-                <Card className="w-full max-w-sm">
-                    <CardHeader>
-                        <CardTitle className="text-2xl">
-                            Forgot password
-                        </CardTitle>
-                        <CardDescription>
-                            Forgot your password? No problem. Just let us know
-                            your email address and we will email you a password
-                            reset link that will allow you to choose a new one.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="grid gap-4">
+            <form onSubmit={submit} className="max-w-sm">
+                <Fieldset>
+                    <Legend>Forgot password</Legend>
+                    <Text>
+                        Forgot your password? No problem. Just let us know your
+                        email address and we will email you a password reset
+                        link that will allow you to choose a new one.
+                    </Text>
+                    <FieldGroup>
                         {status && (
                             <div className="mb-4 font-medium text-sm">
                                 {status}
                             </div>
                         )}
-
-                        <div className="grid gap-2">
+                        <Field>
                             <Label htmlFor="email">Email</Label>
                             <Input
                                 id="email"
                                 type="email"
                                 name="email"
                                 value={data.email}
-                                className="mt-1 block w-full"
                                 onChange={(e) =>
                                     setData("email", e.target.value)
                                 }
                             />
-                            <InputError message={errors.email} />
-                        </div>
-                    </CardContent>
-                    <CardFooter>
+                            {errors.email && (
+                                <ErrorMessage>{errors.email}</ErrorMessage>
+                            )}
+                        </Field>
                         <Button
                             type="submit"
                             className="w-full"
@@ -77,8 +70,8 @@ export default function ForgotPassword({ status }: { status?: string }) {
                         >
                             Email Password Reset Link
                         </Button>
-                    </CardFooter>
-                </Card>
+                    </FieldGroup>
+                </Fieldset>
             </form>
         </GuestLayout>
     );

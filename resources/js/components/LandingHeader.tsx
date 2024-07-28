@@ -149,19 +149,19 @@ export function LandingHeader() {
                     </Popover>
 
                     <a
-                        href="#"
+                        href={route("welcome")}
                         className="font-semibold text-gray-900 text-sm leading-6"
                     >
                         Features
                     </a>
                     <a
-                        href="#"
+                        href={route("welcome")}
                         className="font-semibold text-gray-900 text-sm leading-6"
                     >
                         Marketplace
                     </a>
                     <a
-                        href="#"
+                        href={route("welcome")}
                         className="font-semibold text-gray-900 text-sm leading-6"
                     >
                         Company
@@ -169,7 +169,7 @@ export function LandingHeader() {
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                     <a
-                        href="#"
+                        href={route("welcome")}
                         className="font-semibold text-gray-900 text-sm leading-6"
                     >
                         Log in <span aria-hidden="true">&rarr;</span>
@@ -184,7 +184,7 @@ export function LandingHeader() {
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
+                        <a href={route("welcome")} className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <img
                                 alt=""
@@ -228,19 +228,19 @@ export function LandingHeader() {
                                     </DisclosurePanel>
                                 </Disclosure>
                                 <a
-                                    href="#"
+                                    href={route("welcome")}
                                     className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50"
                                 >
                                     Features
                                 </a>
                                 <a
-                                    href="#"
+                                    href={route("welcome")}
                                     className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50"
                                 >
                                     Marketplace
                                 </a>
                                 <a
-                                    href="#"
+                                    href={route("welcome")}
                                     className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50"
                                 >
                                     Company
@@ -248,7 +248,7 @@ export function LandingHeader() {
                             </div>
                             <div className="py-6">
                                 <a
-                                    href="#"
+                                    href={route("welcome")}
                                     className="-mx-3 block rounded-lg px-3 py-2.5 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50"
                                 >
                                     Log in

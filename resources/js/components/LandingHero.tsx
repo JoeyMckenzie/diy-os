@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/catalyst/button";
 import { Link } from "@inertiajs/react";
 
 export function LandingHero() {

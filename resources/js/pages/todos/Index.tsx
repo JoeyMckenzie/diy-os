@@ -15,6 +15,7 @@ export default function Dashboard({
     return (
         <DashboardLayout user={auth.user}>
             <Head title="Dashboard" />
+            <h1>home</h1>
         </DashboardLayout>
     );
 }
