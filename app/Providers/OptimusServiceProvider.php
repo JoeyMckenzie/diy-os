@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Jenssegers\Optimus\Optimus;
+use Override;
 
 final class OptimusServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,7 @@ final class OptimusServiceProvider extends ServiceProvider
 
     private const int LARGE_RANDOM_INTEGER = 1954856279;
 
-    #[\Override]
+    #[Override]
     public function register(): void
     {
         $this->app->singleton(Optimus::class, fn (): \Jenssegers\Optimus\Optimus => new Optimus(self::LARGE_PRIME_NUMBER, self::INVERSE_PRIME, self::LARGE_RANDOM_INTEGER));

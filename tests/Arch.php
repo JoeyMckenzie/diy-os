@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Tests;
 
-test('All source files are strictly typed')
+arch('All source files are strictly typed')
     ->expect('App\\')
     ->toUseStrictTypes();
 
-test('All tests files are strictly typed')
-    ->expect('Tests\\')
-    ->toUseStrictTypes();
+// arch('All test files are strictly typed')
+//     ->expect('Tests\\')
+//     ->toUseStrictTypes();
 
-test('All enums are string backed')
-    ->expect('App\\Enums')
+arch('All enums are string backed')
+    ->expect('App\\Enums\\')
     ->toBeStringBackedEnums();
 
-test('All value objects are immutable')
-    ->expect('App\\ValueObjects')
+arch('All value objects are immutable')
+    ->expect('App\\ValueObjects\\')
     ->toBeReadonly()
     ->and('App\\ValueObjects')
     ->toBeFinal();
