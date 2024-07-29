@@ -11,6 +11,10 @@ final class OrdersController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('orders/Index');
+        $orders = request()->user()->orders()->paginate();
+
+        return Inertia::render('orders/Index', [
+            'orders' => $orders,
+        ]);
     }
 }

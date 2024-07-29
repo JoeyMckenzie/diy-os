@@ -28,6 +28,15 @@ export interface Todo {
     due_by: string;
 }
 
+export interface Order {
+    id: number;
+    title: string;
+    description: string;
+    status: OrderStatus;
+}
+
 export type TodoStatus = "Done" | "In Progress" | "Overdue" | "Not Started";
+
+export type OrderStatus = "Draft" | "Ordered" | "Completed" | "Cancelled";
 
 export type PaginatedTodos = PaginatedModel<Todo>;

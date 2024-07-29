@@ -1,4 +1,3 @@
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Avatar } from "@/components/catalyst/avatar";
 import {
     Dropdown,
@@ -34,7 +33,6 @@ export function MobileNavbar({ initials }: { initials: string }) {
                 <NavbarItem href="/inbox" aria-label="Inbox">
                     <InboxIcon />
                 </NavbarItem>
-                <ThemeToggle />
                 <Dropdown>
                     <DropdownButton as={NavbarItem}>
                         <Avatar initials={initials} square />

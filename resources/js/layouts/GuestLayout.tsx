@@ -8,7 +8,7 @@ export default function Guest({ children }: PropsWithChildren) {
         <div className="flex min-h-screen w-full flex-col items-center pt-6 sm:justify-center sm:pt-0">
             <div>
                 <Link href="/">
-                    <Logo className="h-24" />
+                    <Logo className="s-16" />
                 </Link>
             </div>
             <Card>{children}</Card>

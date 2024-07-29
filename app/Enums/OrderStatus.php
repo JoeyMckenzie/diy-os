@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-enum ProjectStatus: string
+enum OrderStatus: string
 {
-    case NOT_STARTED = 'Not Started';
+    case DRAFT = 'Draft';
 
-    case IN_PROGRESS = 'In Progress';
+    case ORDERED = 'Ordered';
 
     case COMPLETED = 'Completed';
 
@@ -21,7 +21,7 @@ enum ProjectStatus: string
     {
         /** @var string[] $statuses */
         $statuses = collect(self::cases())
-            ->map(fn (ProjectStatus $status) => $status->value)
+            ->map(fn (OrderStatus $status) => $status->value)
             ->toArray();
 
         return $statuses;

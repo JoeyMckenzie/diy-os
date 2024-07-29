@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\Order;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -37,6 +38,14 @@ final class DatabaseSeeder extends Seeder
         ]);
 
         Project::factory(5)->create([
+            'user_id' => $testUser2->id,
+        ]);
+
+        Order::factory(10)->create([
+            'user_id' => $testUser1->id,
+        ]);
+
+        Order::factory(10)->create([
             'user_id' => $testUser2->id,
         ]);
     }

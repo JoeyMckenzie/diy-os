@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->enum('status', ProjectStatus::toArray());
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });
     }
 
