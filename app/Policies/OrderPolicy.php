@@ -28,9 +28,9 @@ final class OrderPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(): bool
     {
-        return $user->exists();
+        return true;
     }
 
     /**
