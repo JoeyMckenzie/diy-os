@@ -29,10 +29,16 @@ export interface Todo {
 }
 
 export interface Order {
-    id: number;
+    id: string;
     title: string;
     description: string;
     status: OrderStatus;
+}
+
+export interface Project {
+    id: string;
+    title: string;
+    description: string;
 }
 
 export type TodoStatus = "Done" | "In Progress" | "Overdue" | "Not Started";

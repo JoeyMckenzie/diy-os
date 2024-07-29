@@ -1,6 +1,7 @@
 import { Button } from "@/components/catalyst/button";
 import {
     Dialog,
+    DialogActions,
     DialogBody,
     DialogDescription,
     DialogTitle,
@@ -101,21 +102,21 @@ export default function DeleteUserForm({
                                         </ErrorMessage>
                                     )}
                                 </Field>
-                                <Button onClick={() => closeDialog(false)}>
-                                    Cancel
-                                </Button>
-                                <Button
-                                    type="submit"
-                                    color="red"
-                                    className="ms-3"
-                                    disabled={processing}
-                                >
-                                    Delete Account
-                                </Button>
                             </FieldGroup>
                         </Fieldset>
                     </form>
                 </DialogBody>
+                <DialogActions>
+                    <Button onClick={() => closeDialog(false)}>Cancel</Button>
+                    <Button
+                        type="submit"
+                        color="red"
+                        className="ms-3"
+                        disabled={processing}
+                    >
+                        Delete Account
+                    </Button>
+                </DialogActions>
             </Dialog>
         </section>
     );

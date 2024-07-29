@@ -17,7 +17,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table): void {
             $table->id();
+            // $table->ulid('id')->primary();
             $table->timestamps();
+            $table->string('order_number')->unique();
             $table->string('title');
             $table->string('description')->nullable();
             $table->enum('status', OrderStatus::toArray());

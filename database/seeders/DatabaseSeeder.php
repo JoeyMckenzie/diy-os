@@ -41,11 +41,11 @@ final class DatabaseSeeder extends Seeder
             'user_id' => $testUser2->id,
         ]);
 
-        Order::factory(10)->create([
+        Order::factory(100)->create([
             'user_id' => $testUser1->id,
         ]);
 
-        Order::factory(10)->create([
+        Order::factory(100)->create([
             'user_id' => $testUser2->id,
         ]);
     }

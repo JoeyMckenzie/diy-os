@@ -20,11 +20,17 @@ export function PaginationPrevious({
     href = null,
     className,
     children = "Previous",
-}: React.PropsWithChildren<{ href?: string | null; className?: string }>) {
+    ...props
+}: React.PropsWithChildren<{
+    href?: string | null;
+    className?: string;
+    preserveScroll?: boolean;
+}>) {
     return (
         <span className={clsx(className, "grow basis-0")}>
             <Button
                 {...(href === null ? { disabled: true } : { href })}
+                {...props}
                 plain
                 aria-label="Previous page"
             >
@@ -52,11 +58,17 @@ export function PaginationNext({
     href = null,
     className,
     children = "Next",
-}: React.PropsWithChildren<{ href?: string | null; className?: string }>) {
+    ...props
+}: React.PropsWithChildren<{
+    href?: string | null;
+    className?: string;
+    preserveScroll?: boolean;
+}>) {
     return (
         <span className={clsx(className, "flex grow basis-0 justify-end")}>
             <Button
                 {...(href === null ? { disabled: true } : { href })}
+                {...props}
                 plain
                 aria-label="Next page"
             >

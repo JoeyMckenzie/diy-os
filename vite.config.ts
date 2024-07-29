@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import path from "node:path";
 import react from "@vitejs/plugin-react";
 import laravel from "laravel-vite-plugin";
@@ -12,6 +14,9 @@ export default defineConfig({
         }),
         react(),
     ],
+    test: {
+        dir: "resources/js",
+    },
     resolve: {
         alias: {
             "ziggy-js": path.resolve("vendor/tightenco/ziggy"),

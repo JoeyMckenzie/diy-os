@@ -14,7 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('materials', function (Blueprint $table): void {
-            $table->id();
+            // $table->id();
+            $table->ulid('id')->primary();
             $table->timestamps();
         });
     }

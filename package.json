@@ -8,17 +8,12 @@
         "lint": "pnpm biome lint --apply ./resources/js",
         "fix": "pnpm biome lint --apply-unsafe ./resources/js",
         "check": "pnpm biome check --apply ./resources/js",
-        "ci": "pnpm run lint && pnpm run build"
+        "ci": "pnpm run lint && pnpm run build",
+        "test": "vitest"
     },
     "lint-staged": {
-        "**/*.{js,ts,tsx}": [
-            "pnpm run fmt",
-            "pnpm run lint"
-        ],
-        "**/*.php": [
-            "composer run fmt",
-            "composer run rector"
-        ]
+        "**/*.{js,ts,tsx}": ["pnpm run fmt", "pnpm run lint"],
+        "**/*.php": ["composer run fmt", "composer run rector"]
     },
     "devDependencies": {
         "@biomejs/biome": "1.7.3",
@@ -37,7 +32,8 @@
         "react-dom": "^18.3.1",
         "tailwindcss": "^3.4.7",
         "typescript": "^5.5.4",
-        "vite": "^5.3.5"
+        "vite": "^5.3.5",
+        "vitest": "^2.0.4"
     },
     "dependencies": {
         "@headlessui/react": "^2.1.2",
