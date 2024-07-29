@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Database\Factories\ProjectFactory;
+use Database\Factories\OrderItemFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-final class Project extends Model
+final class OrderItem extends Model
 {
     /**
-     * @use HasFactory<ProjectFactory>
+     * @use HasFactory<OrderItemFactory>
      */
     use HasFactory;
 
     /**
-     * @return BelongsTo<User, Project>
+     * @return BelongsTo<Order, OrderItem>
      */
-    public function user(): BelongsTo
+    public function order(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Order::class);
     }
 }

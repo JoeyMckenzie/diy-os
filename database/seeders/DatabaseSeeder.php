@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Todo;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -20,18 +20,24 @@ final class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        $testUser1 = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => Hash::make('password'),
         ]);
 
-        User::factory()->create([
+        $testUser2 = User::factory()->create([
             'name' => 'test user 1',
             'email' => 'testuser1@gmail.com',
             'password' => Hash::make('password'),
         ]);
 
-        Todo::factory(100)->create();
+        Project::factory(5)->create([
+            'user_id' => $testUser1->id,
+        ]);
+
+        Project::factory(5)->create([
+            'user_id' => $testUser2->id,
+        ]);
     }
 }

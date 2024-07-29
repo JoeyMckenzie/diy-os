@@ -36,7 +36,7 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit} className="w-full">
+            <form onSubmit={submit}>
                 <Fieldset>
                     <FieldGroup>
                         <Field>

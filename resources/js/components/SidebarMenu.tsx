@@ -18,10 +18,10 @@ import {
     Cog6ToothIcon,
     FolderIcon,
     HomeIcon,
+    NewspaperIcon,
     QuestionMarkCircleIcon,
     SparklesIcon,
     SunIcon,
-    TicketIcon,
     WrenchIcon,
 } from "@heroicons/react/20/solid";
 
@@ -53,7 +53,7 @@ export function SidebarMenu({ user }: { user: User }) {
                         <SidebarLabel>Projects</SidebarLabel>
                     </SidebarItem>
                     <SidebarItem href="/orders">
-                        <TicketIcon />
+                        <NewspaperIcon />
                         <SidebarLabel>Orders</SidebarLabel>
                     </SidebarItem>
                     <SidebarItem href="/materials">

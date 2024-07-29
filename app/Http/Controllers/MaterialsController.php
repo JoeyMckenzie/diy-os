@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Inertia\Response;
 
-final class MaterialController extends Controller
+final class MaterialsController extends Controller
 {
     public function index(): Response
     {

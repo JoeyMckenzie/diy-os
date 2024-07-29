@@ -84,7 +84,7 @@ export default function Login({
                                 <ErrorMessage>{errors.password}</ErrorMessage>
                             )}
                         </Field>
-                        <div className="flex flex-row items-center gap-x-8">
+                        <div className="flex flex-row items-center justify-between">
                             <Label className="flex items-center">
                                 <Checkbox
                                     name="remember"
@@ -113,6 +113,14 @@ export default function Login({
                         >
                             Sign in
                         </Button>
+                        <div className="mt-4 text-center text-sm">
+                            <Link
+                                href={route("register")}
+                                className="underline"
+                            >
+                                Don't have an account?
+                            </Link>
+                        </div>
                     </FieldGroup>
                 </Fieldset>
             </form>

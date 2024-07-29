@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MaterialController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\MaterialsController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +21,9 @@ Route::get('/', fn () => Inertia::render('Welcome', [
 ]))->name('welcome');
 
 Route::middleware(['auth', 'verified'])->group(fn () => Route::resources([
-    'projects' => ProjectController::class,
-    'orders' => OrderController::class,
-    'materials' => MaterialController::class,
+    'projects' => ProjectsController::class,
+    'orders' => OrdersController::class,
+    'materials' => MaterialsController::class,
 ]));
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

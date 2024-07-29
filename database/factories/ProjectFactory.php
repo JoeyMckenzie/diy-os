@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Enums\ProjectStatus;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Override;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
+ * @extends Factory<Project>
  */
 final class ProjectFactory extends Factory
 {
@@ -16,11 +19,13 @@ final class ProjectFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    #[\Override]
+    #[Override]
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'description' => $this->faker->text(),
+            'status' => $this->faker->randomElement(ProjectStatus::toArray()),
         ];
     }
 }

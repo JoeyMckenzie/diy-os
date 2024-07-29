@@ -6,6 +6,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Override;
 
 final class Project extends ResourceCollection
 {
@@ -14,7 +15,7 @@ final class Project extends ResourceCollection
      *
      * @return Project[]
      */
-    #[\Override]
+    #[Override]
     public function toArray(Request $request): array
     {
         /** @var Project[] $projects */

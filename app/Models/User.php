@@ -51,25 +51,27 @@ final class User extends Authenticatable
     ];
 
     /**
-     * @return HasMany<Todo>
+     * @return HasMany<Project>
      */
-    public function todos(): HasMany
+    public function projects(): HasMany
     {
-        return $this->hasMany(Todo::class);
+        return $this->hasMany(Project::class);
     }
 
     /**
-     * Determine if the user is an administrator.
-     *
-     * @return Attribute<string, string>
+     * @return HasMany<Order>
      */
-    private function initials(): Attribute
+    public function orders(): HasMany
     {
-        return new Attribute(
-            get: fn (): string => collect(explode(' ', $this->name))
-                ->map(fn (string $part): string => strtoupper(substr($part, 0, 1)))
-                ->join('')
-        );
+        return $this->hasMany(Order::class);
+    }
+
+    /**
+     * @return HasMany<Material>
+     */
+    public function materials(): HasMany
+    {
+        return $this->hasMany(Material::class);
     }
 
     /**
@@ -84,5 +86,19 @@ final class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Determine if the user is an administrator.
+     *
+     * @return Attribute<string, string>
+     */
+    protected function initials(): Attribute
+    {
+        return new Attribute(
+            get: fn (): string => collect(explode(' ', $this->name))
+                ->map(fn (string $part): string => strtoupper(substr($part, 0, 1)))
+                ->join('')
+        );
     }
 }

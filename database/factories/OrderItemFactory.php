@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Override;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderItem>
  */
-final class OrderFactory extends Factory
+final class OrderItemFactory extends Factory
 {
     /**
      * Define the model's default state.
