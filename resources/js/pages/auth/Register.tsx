@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/catalyst/button";
 import {
     ErrorMessage,
@@ -13,7 +14,8 @@ import { type FormEventHandler, useEffect } from "react";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: "",
+        first_name: "",
+        last_name: "",
         email: "",
         password: "",
         password_confirmation: "",
@@ -39,22 +41,44 @@ export default function Register() {
             <form onSubmit={submit}>
                 <Fieldset>
                     <FieldGroup>
-                        <Field>
-                            <Label htmlFor="name">Name</Label>
-                            <Input
-                                id="name"
-                                name="name"
-                                value={data.name}
-                                autoComplete="name"
-                                onChange={(e) =>
-                                    setData("name", e.target.value)
-                                }
-                                required
-                            />
-                            {errors.name && (
-                                <ErrorMessage>{errors.name}</ErrorMessage>
-                            )}
-                        </Field>
+                        <div className="grid grid-cols-1 gap-x-6 sm:max-w-xl sm:grid-cols-6">
+                            <Field className="sm:col-span-3">
+                                <Label htmlFor="first_name">First Name</Label>
+                                <Input
+                                    id="first_name"
+                                    name="first_name"
+                                    value={data.first_name}
+                                    autoComplete="first_name"
+                                    onChange={(e) =>
+                                        setData("first_name", e.target.value)
+                                    }
+                                    required
+                                />
+                                {errors.first_name && (
+                                    <ErrorMessage>
+                                        {errors.first_name}
+                                    </ErrorMessage>
+                                )}
+                            </Field>
+                            <Field className="sm:col-span-3">
+                                <Label htmlFor="last_name">Last Name</Label>
+                                <Input
+                                    id="last_name"
+                                    name="last_name"
+                                    value={data.last_name}
+                                    autoComplete="last_name"
+                                    onChange={(e) =>
+                                        setData("last_name", e.target.value)
+                                    }
+                                    required
+                                />
+                                {errors.last_name && (
+                                    <ErrorMessage>
+                                        {errors.last_name}
+                                    </ErrorMessage>
+                                )}
+                            </Field>
+                        </div>
                         <Field>
                             <Label htmlFor="email">Email</Label>
                             <Input
@@ -121,12 +145,16 @@ export default function Register() {
                         >
                             Sign up
                         </Button>
-                        <div className="mt-4 text-center text-sm">
-                            <Link href={route("login")} className="underline">
-                                Have an account?
-                            </Link>
-                        </div>
                     </FieldGroup>
+                    <div className="mt-4 flex items-center justify-between">
+                        <Link
+                            href={route("login")}
+                            className="text-sm underline dark:text-white"
+                        >
+                            Have an account?
+                        </Link>
+                        <ThemeToggle />
+                    </div>
                 </Fieldset>
             </form>
         </GuestLayout>

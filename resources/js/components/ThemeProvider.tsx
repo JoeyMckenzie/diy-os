@@ -24,7 +24,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 export function ThemeProvider({
     children,
     defaultTheme = "system",
-    storageKey = "vite-ui-theme",
+    storageKey = "diy-os-ui-theme",
     ...props
 }: ThemeProviderProps) {
     if (typeof window === "undefined") {

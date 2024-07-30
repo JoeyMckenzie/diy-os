@@ -15,7 +15,7 @@ import {
 import type { User } from "@/types";
 import { MoonIcon } from "@heroicons/react/16/solid";
 import {
-    Cog6ToothIcon,
+    CalendarDaysIcon,
     FolderIcon,
     HomeIcon,
     NewspaperIcon,
@@ -46,8 +46,11 @@ export function SidebarMenu({ user }: { user: User }) {
                 <SidebarSection>
                     <SidebarItem href={route("dashboard")}>
                         <HomeIcon />
-                        <SidebarLabel>Home</SidebarLabel>
+                        <SidebarLabel>Dashboard</SidebarLabel>
                     </SidebarItem>
+                </SidebarSection>
+                <SidebarSection>
+                    <SidebarHeading>Manage</SidebarHeading>
                     <SidebarItem href={route("projects.index")}>
                         <FolderIcon />
                         <SidebarLabel>Projects</SidebarLabel>
@@ -60,9 +63,9 @@ export function SidebarMenu({ user }: { user: User }) {
                         <WrenchIcon />
                         <SidebarLabel>Materials</SidebarLabel>
                     </SidebarItem>
-                    <SidebarItem href="/settings">
-                        <Cog6ToothIcon />
-                        <SidebarLabel>Settings</SidebarLabel>
+                    <SidebarItem href="/scheduling">
+                        <CalendarDaysIcon />
+                        <SidebarLabel>Scheduling</SidebarLabel>
                     </SidebarItem>
                 </SidebarSection>
                 <SidebarSection className="max-lg:hidden">

@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/catalyst/button";
 import { Checkbox } from "@/components/catalyst/checkbox";
 import {
@@ -100,7 +101,7 @@ export default function Login({
                             {canResetPassword && (
                                 <Link
                                     href={route("password.request")}
-                                    className="rounded-md text-sm underline focus:outline-none focus:ring-2 focus:ring-offset-2"
+                                    className="rounded-md text-sm underline dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
                                 >
                                     Forgot your password?
                                 </Link>
@@ -113,13 +114,14 @@ export default function Login({
                         >
                             Sign in
                         </Button>
-                        <div className="mt-4 text-center text-sm">
+                        <div className="mt-4 flex items-center justify-between">
                             <Link
                                 href={route("register")}
-                                className="underline"
+                                className="text-sm underline dark:text-white"
                             >
                                 Don't have an account?
                             </Link>
+                            <ThemeToggle />
                         </div>
                     </FieldGroup>
                 </Fieldset>
