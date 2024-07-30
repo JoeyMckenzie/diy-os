@@ -16,7 +16,7 @@ import {
     ServerIcon,
     SignalIcon,
 } from "@heroicons/react/24/outline";
-import React, { useState } from "react";
+import React from "react";
 
 const navigation = [
     { name: "Projects", href: "#", icon: FolderIcon, current: false },
@@ -40,8 +40,6 @@ const secondaryNavigation = [
 ];
 
 export function EditUserForm() {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-
     return (
         <main className="xl:pl-72">
             {/* Settings forms */}
