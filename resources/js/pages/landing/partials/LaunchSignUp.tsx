@@ -1,0 +1,67 @@
+export function LaunchSignUp() {
+    return (
+        <div className="py-16 sm:py-24">
+            <div className="mx-auto max-w-7xl lg:px-8 sm:px-6">
+                <div className="relative isolate overflow-hidden bg-neutral-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
+                    <h2 className="mx-auto max-w-2xl text-center font-bold text-3xl text-white tracking-tight sm:text-4xl">
+                        Get notified when we’re launching.
+                    </h2>
+                    <p className="mx-auto mt-2 max-w-xl text-center text-lg text-neutral-300 leading-8">
+                        Reprehenderit ad esse et non officia in nulla. Id
+                        proident tempor incididunt nostrud nulla et culpa.
+                    </p>
+                    <form className="mx-auto mt-10 flex max-w-md gap-x-4">
+                        <label htmlFor="email-address" className="sr-only">
+                            Email address
+                        </label>
+                        <input
+                            id="email-address"
+                            name="email"
+                            type="email"
+                            required
+                            placeholder="Enter your email"
+                            autoComplete="email"
+                            className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-white/10 ring-inset sm:text-sm sm:leading-6 focus:ring-2 focus:ring-white focus:ring-inset"
+                        />
+                        <button
+                            type="submit"
+                            className="flex-none rounded-md bg-white px-3.5 py-2.5 font-semibold text-neutral-900 text-sm shadow-sm hover:bg-neutral-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                        >
+                            Notify me
+                        </button>
+                    </form>
+                    <svg
+                        viewBox="0 0 1024 1024"
+                        aria-hidden="true"
+                        className="-z-10 -translate-x-1/2 absolute top-1/2 left-1/2 h-[64rem] w-[64rem]"
+                    >
+                        <circle
+                            r={512}
+                            cx={512}
+                            cy={512}
+                            fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
+                            fillOpacity="0.7"
+                        />
+                        <defs>
+                            <radialGradient
+                                r={1}
+                                cx={0}
+                                cy={0}
+                                id="759c1415-0410-454c-8f7c-9a820de03641"
+                                gradientUnits="userSpaceOnUse"
+                                gradientTransform="translate(512 512) rotate(90) scale(512)"
+                            >
+                                <stop stopColor="#7775D6" />
+                                <stop
+                                    offset={1}
+                                    stopColor="#E935C1"
+                                    stopOpacity={0}
+                                />
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    );
+}

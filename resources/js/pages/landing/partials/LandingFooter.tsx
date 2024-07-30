@@ -1,4 +1,7 @@
 import { Logo } from "@/components/Logo";
+import { Heading, Subheading } from "@/components/catalyst/heading";
+import { Link } from "@/components/catalyst/link";
+import { Text } from "@/components/catalyst/text";
 import type { SVGProps } from "react";
 
 const navigation = {
@@ -96,68 +99,64 @@ const navigation = {
     ],
 };
 
-export function Footer() {
+export function LandingFooter() {
     return (
-        <footer aria-labelledby="footer-heading" className="bg-white">
-            <h2 id="footer-heading" className="sr-only">
+        <footer aria-labelledby="footer-heading">
+            <Heading id="footer-heading" className="sr-only">
                 Footer
-            </h2>
+            </Heading>
             <div className="mx-auto max-w-7xl px-6 pt-16 pb-8 lg:px-8 lg:pt-32 sm:pt-24">
                 <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                     <div className="space-y-8">
-                        <Logo className="-ml-8 h-7" />
-                        <p className="text-gray-600 text-sm leading-6">
+                        <Logo className="w-48" />
+                        <Text>
                             Making project management easy for solo builders and
                             DIY'ers.
-                        </p>
+                        </Text>
                         <div className="flex space-x-6">
                             {navigation.social.map((item) => (
-                                <a
+                                <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="text-gray-400 hover:text-gray-500"
+                                    className="text-neutral-400 hover:text-neutral-500"
                                 >
-                                    <span className="sr-only">{item.name}</span>
+                                    <Text className="sr-only">{item.name}</Text>
                                     <item.icon
                                         aria-hidden="true"
                                         className="h-6 w-6"
                                     />
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </div>
                     <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
                         <div className="md:grid md:grid-cols-2 md:gap-8">
                             <div>
-                                <h3 className="font-semibold text-gray-900 text-sm leading-6">
-                                    Solutions
-                                </h3>
+                                <Subheading>Solutions</Subheading>
                                 <ul className="mt-6 space-y-4">
                                     {navigation.solutions.map((item) => (
                                         <li key={item.name}>
-                                            <a
+                                            <Link
                                                 href={item.href}
-                                                className="text-gray-600 text-sm leading-6 hover:text-gray-900"
+                                                className="text-neutral-600 text-sm leading-6 hover:text-neutral-900"
                                             >
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                             <div className="mt-10 md:mt-0">
-                                <h3 className="font-semibold text-gray-900 text-sm leading-6">
-                                    Support
-                                </h3>
+                                <Subheading>Support</Subheading>
                                 <ul className="mt-6 space-y-4">
                                     {navigation.support.map((item) => (
                                         <li key={item.name}>
-                                            <a
+                                            <Link
                                                 href={item.href}
-                                                className="text-gray-600 text-sm leading-6 hover:text-gray-900"
+                                                className="text-neutral-600 text-sm leading-6 hover:text-neutral-900"
                                             >
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -165,32 +164,28 @@ export function Footer() {
                         </div>
                         <div className="md:grid md:grid-cols-2 md:gap-8">
                             <div>
-                                <h3 className="font-semibold text-gray-900 text-sm leading-6">
-                                    Company
-                                </h3>
+                                <Subheading>Company</Subheading>
                                 <ul className="mt-6 space-y-4">
                                     {navigation.company.map((item) => (
                                         <li key={item.name}>
-                                            <a
+                                            <Link
                                                 href={item.href}
-                                                className="text-gray-600 text-sm leading-6 hover:text-gray-900"
+                                                className="text-neutral-600 text-sm leading-6 hover:text-neutral-900"
                                             >
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                             <div className="mt-10 md:mt-0">
-                                <h3 className="font-semibold text-gray-900 text-sm leading-6">
-                                    Legal
-                                </h3>
+                                <Subheading>Legal</Subheading>
                                 <ul className="mt-6 space-y-4">
                                     {navigation.legal.map((item) => (
                                         <li key={item.name}>
                                             <a
                                                 href={item.href}
-                                                className="text-gray-600 text-sm leading-6 hover:text-gray-900"
+                                                className="text-neutral-600 text-sm leading-6 hover:text-neutral-900"
                                             >
                                                 {item.name}
                                             </a>
@@ -201,10 +196,10 @@ export function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="mt-16 border-gray-900/10 border-t pt-8 lg:mt-24 sm:mt-20">
-                    <p className="text-gray-500 text-xs leading-5">
-                        &copy; 2020 Your Company, Inc. All rights reserved.
-                    </p>
+                <div className="mt-16 border-neutral-900/10 border-t pt-8 lg:mt-24 sm:mt-20">
+                    <Text className="text-xs leading-5">
+                        &copy; 2024 diyOS, Inc. All rights reserved.
+                    </Text>
                 </div>
             </div>
         </footer>

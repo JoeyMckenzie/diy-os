@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
@@ -13,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 
-Route::get('/', fn () => Inertia::render('Welcome', [
+Route::get('/', fn () => Inertia::render('landing/Index', [
     'canLogin' => Route::has('login'),
     'canRegister' => Route::has('register'),
     'laravelVersion' => Application::VERSION,
@@ -26,7 +25,7 @@ Route::middleware(['auth', 'verified'])->group(fn () => Route::resources([
     'materials' => MaterialController::class,
 ]));
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', fn () => Inertia::render('dashboard/Index'))->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function (): void {
     Route::get('/profile', fn (Illuminate\Http\Request $request): Response => (new ProfileController)->edit($request))->name('profile.edit');

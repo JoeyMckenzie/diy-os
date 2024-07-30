@@ -37,14 +37,6 @@ export function ThemeProvider({
         () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
     );
 
-    const toggleTheme = () => {
-        if (theme === "light" || theme === "system") {
-            setTheme("dark");
-        } else {
-            setTheme("light");
-        }
-    };
-
     useEffect(() => {
         const root = window.document.documentElement;
 
@@ -66,7 +58,7 @@ export function ThemeProvider({
 
     const value = {
         theme,
-        toggleTheme,
+        toggleTheme: () => {},
         setTheme: (theme: Theme) => {
             localStorage.setItem(storageKey, theme);
             setTheme(theme);

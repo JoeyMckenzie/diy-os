@@ -1,7 +1,10 @@
-import { Footer } from "@/components/Footer";
-import { LandingHeader } from "@/components/LandingHeader";
-import { LandingHero } from "@/components/LandingHero";
 import { AppLayout } from "@/layouts/AppLayout";
+import { LandingFeatures } from "@/pages/landing/partials/LandingFeatures";
+import { LandingFooter } from "@/pages/landing/partials/LandingFooter";
+import { LandingHeader } from "@/pages/landing/partials/LandingHeader";
+import { LandingHero } from "@/pages/landing/partials/LandingHero";
+import { LaunchSignUp } from "@/pages/landing/partials/LaunchSignUp";
+import { Pricing } from "@/pages/landing/partials/Pricing";
 import type { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
@@ -27,7 +30,10 @@ export default function Welcome({
             <main className="dark:bg-neutral-950">
                 <LandingHeader />
                 <LandingHero />
-                <Footer />
+                <LandingFeatures />
+                <Pricing />
+                <LaunchSignUp />
+                <LandingFooter />
             </main>
         </AppLayout>
     );
