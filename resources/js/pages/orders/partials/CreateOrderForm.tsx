@@ -48,25 +48,27 @@ export function CreateOrderForm() {
 
                     <FieldGroup className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 md:col-span-2 sm:grid-cols-6">
                         <Field className="sm:col-span-4">
-                            <Label htmlFor="website">Website</Label>
+                            <Label htmlFor="website">Title</Label>
                             <Input
                                 id="website"
                                 name="website"
                                 type="text"
-                                placeholder="www.example.com"
+                                placeholder="Lumber order for fence rebuild"
                             />
                         </Field>
 
                         <Field className="col-span-full">
-                            <Label htmlFor="about">About</Label>
+                            <Label htmlFor="about">Note</Label>
                             <Textarea
                                 id="about"
                                 name="about"
                                 rows={3}
+                                placeholder="Placing an order for the lumber because..."
                                 defaultValue=""
                             />
                             <Description>
-                                Write a few sentences about yourself.
+                                Optionally, give this order a short description
+                                to be used as a note.
                             </Description>
                         </Field>
 
