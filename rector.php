@@ -41,5 +41,6 @@ return RectorConfig::configure()
     ->withSkip([
         PrivatizeFinalClassMethodRector::class => [
             __DIR__.'/app/Models/User.php',
+            __DIR__.'/app/Models/Order.php',
         ],
     ]);

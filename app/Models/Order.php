@@ -35,7 +35,7 @@ final class Order extends Model
     /**
      * @return Attribute<string, string>
      */
-    private function orderNumber(): Attribute
+    protected function orderNumber(): Attribute
     {
         return new Attribute(
             get: fn (): string => 'OR-'.$this->id
