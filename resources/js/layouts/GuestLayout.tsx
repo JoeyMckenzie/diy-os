@@ -6,8 +6,8 @@ import type { PropsWithChildren } from "react";
 
 export default function Guest({
     children,
-    title,
-}: PropsWithChildren<{ title: string }>) {
+    title = null,
+}: PropsWithChildren<{ title?: string }>) {
     return (
         <div className="flex min-h-screen w-full flex-col items-center pt-6 sm:justify-center sm:pt-0">
             <div>
@@ -16,7 +16,7 @@ export default function Guest({
                 </Link>
             </div>
 
-            <Heading className="py-6">{title}</Heading>
+            {title && <Heading className="py-6">{title}</Heading>}
 
             <Card>{children}</Card>
         </div>
