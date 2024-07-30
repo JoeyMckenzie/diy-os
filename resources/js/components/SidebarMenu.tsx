@@ -26,16 +26,9 @@ import {
 } from "@heroicons/react/20/solid";
 
 export function SidebarMenu({ user }: { user: User }) {
-    const { setTheme, theme } = useTheme();
+    const { setTheme, theme, toggleTheme } = useTheme();
     const displayTheme =
         theme.charAt(0).toUpperCase() + theme.slice(1).toLowerCase();
-    const toggleTheme = () => {
-        if (theme === "light" || theme === "system") {
-            setTheme("dark");
-        } else {
-            setTheme("light");
-        }
-    };
 
     return (
         <Sidebar>

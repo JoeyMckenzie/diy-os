@@ -12,11 +12,13 @@ type ThemeProviderProps = {
 type ThemeProviderState = {
     theme: Theme;
     setTheme: (theme: Theme) => void;
+    toggleTheme: () => void;
 };
 
 const initialState: ThemeProviderState = {
     theme: "system",
     setTheme: () => null,
+    toggleTheme: () => null,
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
@@ -34,6 +36,14 @@ export function ThemeProvider({
     const [theme, setTheme] = useState<Theme>(
         () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
     );
+
+    const toggleTheme = () => {
+        if (theme === "light" || theme === "system") {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    };
 
     useEffect(() => {
         const root = window.document.documentElement;
@@ -56,6 +66,7 @@ export function ThemeProvider({
 
     const value = {
         theme,
+        toggleTheme,
         setTheme: (theme: Theme) => {
             localStorage.setItem(storageKey, theme);
             setTheme(theme);

@@ -1,19 +1,28 @@
 import { Logo } from "@/components/Logo";
+import { useTheme } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Button } from "@/components/catalyst/button";
 import {
     Dialog,
-    DialogPanel,
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
+    DialogActions,
+    DialogBody,
+    DialogDescription,
+    DialogTitle,
+} from "@/components/catalyst/dialog";
+import { SidebarLabel } from "@/components/catalyst/sidebar";
+import { Text, TextLink } from "@/components/catalyst/text";
+import {
     Popover,
     PopoverButton,
     PopoverGroup,
     PopoverPanel,
 } from "@headlessui/react";
+import { MoonIcon } from "@heroicons/react/16/solid";
 import {
     ChevronDownIcon,
     PhoneIcon,
     PlayCircleIcon,
+    SunIcon,
 } from "@heroicons/react/20/solid";
 import {
     ArrowPathIcon,
@@ -22,10 +31,16 @@ import {
     CursorArrowRaysIcon,
     FingerPrintIcon,
     SquaresPlusIcon,
-    XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "@inertiajs/react";
 import { useState } from "react";
+
+const navigation = [
+    { name: "Product", href: "#" },
+    { name: "Features", href: "#" },
+    { name: "Marketplace", href: "#" },
+    { name: "Company", href: "#" },
+];
 
 const products = [
     {
@@ -65,29 +80,31 @@ const callsToAction = [
 ];
 
 export function LandingHeader() {
+    const { theme, toggleTheme } = useTheme();
+    const displayTheme =
+        theme.charAt(0).toUpperCase() + theme.slice(1).toLowerCase();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <header className="bg-white">
+        <header>
             <nav
                 aria-label="Global"
                 className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
             >
                 <div className="flex lg:flex-1">
                     <Link href={route("welcome")} className="-m-1.5 p-1.5">
-                        <span className="sr-only">diyOS</span>
+                        <Text className="sr-only">diyOS</Text>
                         <Logo className="h-8 w-auto" />
                     </Link>
                 </div>
                 <div className="flex lg:hidden">
-                    <button
+                    <Button
                         type="button"
                         onClick={() => setMobileMenuOpen(true)}
-                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
                     >
-                        <span className="sr-only">Open main menu</span>
+                        <Text className="sr-only">Open main menu</Text>
                         <Bars3Icon aria-hidden="true" className="h-6 w-6" />
-                    </button>
+                    </Button>
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
                     <Popover className="relative">
@@ -168,6 +185,7 @@ export function LandingHeader() {
                     </a>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <ThemeToggle />
                     <a
                         href={route("welcome")}
                         className="font-semibold text-gray-900 text-sm leading-6"
@@ -180,83 +198,39 @@ export function LandingHeader() {
                 open={mobileMenuOpen}
                 onClose={setMobileMenuOpen}
                 className="lg:hidden"
+                size="sm"
             >
-                <div className="fixed inset-0 z-10" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div className="flex items-center justify-between">
-                        <a href={route("welcome")} className="-m-1.5 p-1.5">
-                            <span className="sr-only">Your Company</span>
-                            <img
-                                alt=""
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                className="h-8 w-auto"
-                            />
-                        </a>
-                        <button
-                            type="button"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                        >
-                            <span className="sr-only">Close menu</span>
-                            <XMarkIcon aria-hidden="true" className="h-6 w-6" />
-                        </button>
-                    </div>
+                <DialogTitle className="space-y-2">
+                    <Logo className="w-36" />
+                </DialogTitle>
+                <DialogDescription>
+                    Building futures one at a time
+                </DialogDescription>
+                <DialogBody>
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                <Disclosure as="div" className="-mx-3">
-                                    <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50">
-                                        Product
-                                        <ChevronDownIcon
-                                            aria-hidden="true"
-                                            className="h-5 w-5 flex-none group-data-[open]:rotate-180"
-                                        />
-                                    </DisclosureButton>
-                                    <DisclosurePanel className="mt-2 space-y-2">
-                                        {[...products, ...callsToAction].map(
-                                            (item) => (
-                                                <DisclosureButton
-                                                    key={item.name}
-                                                    as="a"
-                                                    href={item.href}
-                                                    className="block rounded-lg py-2 pr-3 pl-6 font-semibold text-gray-900 text-sm leading-7 hover:bg-gray-50"
-                                                >
-                                                    {item.name}
-                                                </DisclosureButton>
-                                            ),
-                                        )}
-                                    </DisclosurePanel>
-                                </Disclosure>
-                                <a
-                                    href={route("welcome")}
-                                    className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50"
-                                >
-                                    Features
-                                </a>
-                                <a
-                                    href={route("welcome")}
-                                    className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50"
-                                >
-                                    Marketplace
-                                </a>
-                                <a
-                                    href={route("welcome")}
-                                    className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50"
-                                >
-                                    Company
-                                </a>
-                            </div>
-                            <div className="py-6">
-                                <a
-                                    href={route("welcome")}
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 font-semibold text-base text-gray-900 leading-7 hover:bg-gray-50"
-                                >
-                                    Log in
-                                </a>
+                                {navigation.map((item) => (
+                                    <TextLink
+                                        key={item.name}
+                                        href={item.href}
+                                        className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base leading-7 no-underline dark:hover:bg-neutral-800 hover:bg-gray-50"
+                                    >
+                                        {item.name}
+                                    </TextLink>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </DialogPanel>
+                </DialogBody>
+                <DialogActions>
+                    <Button plain onClick={toggleTheme}>
+                        {theme === "light" && <SunIcon />}
+                        {theme === "dark" && <MoonIcon />}
+                        <SidebarLabel>{displayTheme}</SidebarLabel>
+                    </Button>
+                    <Button href={route("login")}>Sign in</Button>
+                </DialogActions>
             </Dialog>
         </header>
     );

@@ -1,6 +1,7 @@
 import { Footer } from "@/components/Footer";
 import { LandingHeader } from "@/components/LandingHeader";
 import { LandingHero } from "@/components/LandingHero";
+import { AppLayout } from "@/layouts/AppLayout";
 import type { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
@@ -21,11 +22,13 @@ export default function Welcome({
     };
 
     return (
-        <>
-            <Head title="Welcome" />
-            <LandingHeader />
-            <LandingHero />
-            <Footer />
-        </>
+        <AppLayout>
+            <Head title="diyOS | Project management for solo builders and DIY'ers." />
+            <main className="dark:bg-neutral-950">
+                <LandingHeader />
+                <LandingHero />
+                <Footer />
+            </main>
+        </AppLayout>
     );
 }
