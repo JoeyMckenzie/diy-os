@@ -252,17 +252,6 @@ export function EditUserForm() {
                 </div>
 
                 <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 md:grid-cols-3 lg:px-8 sm:px-6">
-                    <div>
-                        <h2 className="font-semibold text-base text-white leading-7">
-                            Log out other sessions
-                        </h2>
-                        <p className="mt-1 text-gray-400 text-sm leading-6">
-                            Please enter your password to confirm you would like
-                            to log out of your other sessions across all of your
-                            devices.
-                        </p>
-                    </div>
-
                     <form className="md:col-span-2">
                         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
                             <div className="col-span-full">
