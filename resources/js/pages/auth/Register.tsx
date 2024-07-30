@@ -33,7 +33,7 @@ export default function Register() {
     };
 
     return (
-        <GuestLayout>
+        <GuestLayout title="Sign up for diyOS">
             <Head title="Register" />
 
             <form onSubmit={submit}>

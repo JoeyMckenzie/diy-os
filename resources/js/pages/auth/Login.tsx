@@ -36,7 +36,7 @@ export default function Login({
     };
 
     return (
-        <GuestLayout>
+        <GuestLayout title="Sign in to diyOS">
             <Head title="Log in" />
 
             {status && (

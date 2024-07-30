@@ -1,9 +1,8 @@
+import { Heading } from "@/components/catalyst/heading";
 import { DashboardLayout } from "@/layouts/DashboardLayout";
+import { EditUserForm } from "@/pages/profile/partials/EditUserForm";
 import type { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import DeleteUserForm from "./partials/DeleteUserForm";
-import UpdatePasswordForm from "./partials/UpdatePasswordForm";
-import UpdateProfileInformationForm from "./partials/UpdateProfileInformationForm";
 
 export default function Edit({
     auth,
@@ -14,25 +13,31 @@ export default function Edit({
         <DashboardLayout user={auth.user}>
             <Head title="Profile" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl space-y-6 lg:px-8 sm:px-6">
-                    <div className="p-4 shadow sm:rounded-lg sm:p-8">
-                        <UpdateProfileInformationForm
-                            mustVerifyEmail={mustVerifyEmail}
-                            status={status}
-                            className="max-w-xl"
-                        />
-                    </div>
+            <Heading className="sr-only">Account Settings</Heading>
 
-                    <div className="p-4 shadow sm:rounded-lg sm:p-8">
-                        <UpdatePasswordForm className="max-w-xl" />
-                    </div>
+            <EditUserForm />
 
-                    <div className="p-4 shadow sm:rounded-lg sm:p-8">
-                        <DeleteUserForm className="max-w-xl" />
+            {/*
+                <div className="py-12">
+                    <div className="mx-auto max-w-7xl space-y-6 lg:px-8 sm:px-6">
+                        <div className="p-4 shadow sm:rounded-lg sm:p-8">
+                            <UpdateProfileInformationForm
+                                mustVerifyEmail={mustVerifyEmail}
+                                status={status}
+                                className="max-w-xl"
+                            />
+                        </div>
+
+                        <div className="p-4 shadow sm:rounded-lg sm:p-8">
+                            <UpdatePasswordForm className="max-w-xl" />
+                        </div>
+
+                        <div className="p-4 shadow sm:rounded-lg sm:p-8">
+                            <DeleteUserForm className="max-w-xl" />
+                        </div>
                     </div>
                 </div>
-            </div>
+            */}
         </DashboardLayout>
     );
 }
