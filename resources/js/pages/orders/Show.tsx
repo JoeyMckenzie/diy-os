@@ -42,7 +42,7 @@ export default function Show({
 
     return (
         <DashboardLayout user={auth.user}>
-            <Head title={`Order #${orderId}`} />
+            <Head title={`Order ${order.order_number}`} />
             <TextLink
                 className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 no-underline dark:text-zinc-400"
                 href={route("orders.index")}
@@ -51,7 +51,7 @@ export default function Show({
                 Orders
             </TextLink>
             <div className="mt-8 flex items-center justify-between align-middle">
-                <Heading>Order #{order.id}</Heading>
+                <Heading>Order {order.order_number}</Heading>
                 <div className="space-x-2">
                     <Button>Edit</Button>
                     <Button color="red" onClick={() => setIsOpen(true)}>

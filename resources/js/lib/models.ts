@@ -30,6 +30,7 @@ export interface Todo {
 
 export interface Order {
     id: string;
+    order_number: string;
     title: string;
     description: string;
     status: OrderStatus;
