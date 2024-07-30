@@ -7,7 +7,7 @@ import type { PropsWithChildren } from "react";
 export default function Guest({
     children,
     title = null,
-}: PropsWithChildren<{ title?: string }>) {
+}: PropsWithChildren<{ title?: string | null }>) {
     return (
         <div className="flex min-h-screen w-full flex-col items-center pt-6 sm:justify-center sm:pt-0">
             <div>
