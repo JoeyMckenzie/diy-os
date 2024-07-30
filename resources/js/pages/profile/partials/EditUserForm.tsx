@@ -1,5 +1,12 @@
 import { Button } from "@/components/catalyst/button";
+import {
+    Field,
+    FieldGroup,
+    Fieldset,
+    Label,
+} from "@/components/catalyst/fieldset";
 import { Heading } from "@/components/catalyst/heading";
+import { Input } from "@/components/catalyst/input";
 import { Text } from "@/components/catalyst/text";
 import {
     ChartBarSquareIcon,
@@ -48,8 +55,8 @@ export function EditUserForm() {
                     </div>
 
                     <form className="md:col-span-2">
-                        <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
-                            <div className="col-span-full flex items-center gap-x-8">
+                        <Fieldset className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
+                            <FieldGroup className="col-span-full flex items-center gap-x-8">
                                 <img
                                     alt=""
                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -61,25 +68,24 @@ export function EditUserForm() {
                                         JPG, GIF or PNG. 1MB max.
                                     </p>
                                 </div>
-                            </div>
+                            </FieldGroup>
 
-                            <div className="sm:col-span-3">
-                                <label
-                                    htmlFor="first-name"
-                                    className="block font-medium text-sm text-white leading-6"
-                                >
-                                    First name
-                                </label>
-                                <div className="mt-2">
-                                    <input
+                            <FieldGroup className="sm:col-span-3">
+                                <Field>
+                                    <Label
+                                        htmlFor="first-name"
+                                        className="block font-medium text-sm text-white leading-6"
+                                    >
+                                        First name
+                                    </Label>
+                                    <Input
                                         id="first-name"
                                         name="first-name"
                                         type="text"
                                         autoComplete="given-name"
-                                        className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-white/10 ring-inset sm:text-sm sm:leading-6 focus:ring-2 focus:ring-indigo-500 focus:ring-inset"
                                     />
-                                </div>
-                            </div>
+                                </Field>
+                            </FieldGroup>
 
                             <div className="sm:col-span-3">
                                 <label
@@ -160,7 +166,7 @@ export function EditUserForm() {
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </Fieldset>
 
                         <div className="mt-8 flex">
                             <button
@@ -252,6 +258,17 @@ export function EditUserForm() {
                 </div>
 
                 <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 md:grid-cols-3 lg:px-8 sm:px-6">
+                    <div>
+                        <h2 className="font-semibold text-base text-white leading-7">
+                            Log out other sessions
+                        </h2>
+                        <p className="mt-1 text-gray-400 text-sm leading-6">
+                            Please enter your password to confirm you would like
+                            to log out of your other sessions across all of your
+                            devices.
+                        </p>
+                    </div>
+
                     <form className="md:col-span-2">
                         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
                             <div className="col-span-full">
