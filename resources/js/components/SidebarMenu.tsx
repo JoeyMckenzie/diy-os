@@ -15,9 +15,12 @@ import {
 import type { User } from "@/types";
 import { MoonIcon } from "@heroicons/react/16/solid";
 import {
+    ArchiveBoxIcon,
     CalendarDaysIcon,
+    CurrencyDollarIcon,
     FolderIcon,
     HomeIcon,
+    HomeModernIcon,
     NewspaperIcon,
     QuestionMarkCircleIcon,
     SparklesIcon,
@@ -50,10 +53,14 @@ export function SidebarMenu({ user }: { user: User }) {
                     </SidebarItem>
                 </SidebarSection>
                 <SidebarSection>
-                    <SidebarHeading>Manage</SidebarHeading>
+                    <SidebarHeading>Tools</SidebarHeading>
                     <SidebarItem href={route("projects.index")}>
-                        <FolderIcon />
+                        <HomeModernIcon />
                         <SidebarLabel>Projects</SidebarLabel>
+                    </SidebarItem>
+                    <SidebarItem href={route("projects.index")}>
+                        <ArchiveBoxIcon />
+                        <SidebarLabel>Quotes</SidebarLabel>
                     </SidebarItem>
                     <SidebarItem href="/orders">
                         <NewspaperIcon />
@@ -67,18 +74,13 @@ export function SidebarMenu({ user }: { user: User }) {
                         <CalendarDaysIcon />
                         <SidebarLabel>Scheduling</SidebarLabel>
                     </SidebarItem>
-                </SidebarSection>
-                <SidebarSection className="max-lg:hidden">
-                    <SidebarHeading>Upcoming Events</SidebarHeading>
-                    <SidebarItem href="/events/1">
-                        Bear Hug: Live in Concert
+                    <SidebarItem href={route("projects.index")}>
+                        <CurrencyDollarIcon />
+                        <SidebarLabel>Cost Estimates</SidebarLabel>
                     </SidebarItem>
-                    <SidebarItem href="/events/2">Viking People</SidebarItem>
-                    <SidebarItem href="/events/3">
-                        Six Fingers — DJ Set
-                    </SidebarItem>
-                    <SidebarItem href="/events/4">
-                        We All Look The Same
+                    <SidebarItem href={route("projects.index")}>
+                        <FolderIcon />
+                        <SidebarLabel>Documents</SidebarLabel>
                     </SidebarItem>
                 </SidebarSection>
                 <SidebarSpacer />

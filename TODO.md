@@ -1,4 +1,5 @@
 # TODOs
 
 - [x] Add orders table
-- [ ] Add projects view
+- [x] Add projects view
+- [ ] Add profile avatars

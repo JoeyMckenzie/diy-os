@@ -21,6 +21,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('description');
+            $table->decimal('budget')->nullable();
+            $table->date('target_completion_date')->nullable();
             $table->enum('status', ProjectStatus::toArray());
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });

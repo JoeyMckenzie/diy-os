@@ -42,7 +42,7 @@ export function UpdateUserProfileInformationForm() {
                     <FieldGroup className="col-span-full flex items-center gap-x-8">
                         <Avatar
                             square
-                            className="size-24 bg-neutral-900 text-white dark:bg-white dark:text-black"
+                            className="size-24 bg-zinc-900 text-white dark:bg-white dark:text-black"
                             initials={user.initials}
                             alt=""
                             // src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"

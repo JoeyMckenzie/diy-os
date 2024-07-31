@@ -16,6 +16,10 @@ final class Project extends Model
      */
     use HasFactory;
 
+    protected $casts = [
+        'budget' => 'decimal:2',
+    ];
+
     /**
      * @return BelongsTo<User, Project>
      */

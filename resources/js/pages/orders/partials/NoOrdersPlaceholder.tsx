@@ -10,7 +10,7 @@ export function NoProjectsPlaceholder() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="mx-auto size-12 text-neutral-400 dark:text-neutral-700"
+                className="mx-auto size-12 text-zinc-400 dark:text-zinc-700"
             >
                 <title>Add an order</title>
                 <path

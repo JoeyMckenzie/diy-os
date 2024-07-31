@@ -58,10 +58,7 @@ export function OrderTable({ orders }: { orders: Order[] }) {
                         key={order.id}
                         href={route("orders.show", order.id)}
                     >
-                        <TableCell className="flex justify-center">
-                            <Checkbox checked={allChecked} />
-                        </TableCell>
-                        <TableCell>{order.id}</TableCell>
+                        <TableCell>{order.order_number}</TableCell>
                         <TableCell className="max-w-xs truncate font-medium">
                             {order.title}
                         </TableCell>

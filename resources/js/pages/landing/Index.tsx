@@ -27,7 +27,7 @@ export default function Welcome({
     return (
         <AppLayout>
             <Head title="diyOS | Project management for solo builders and DIY'ers." />
-            <main className="dark:bg-neutral-950">
+            <main className="dark:bg-zinc-950">
                 <LandingHeader />
                 <LandingHero />
                 <LandingFeatures />

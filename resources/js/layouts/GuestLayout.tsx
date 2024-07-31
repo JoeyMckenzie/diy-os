@@ -11,7 +11,7 @@ export default function Guest({
 }: PropsWithChildren<{ title?: string | null }>) {
     return (
         <AppLayout>
-            <div className="flex min-h-screen w-full flex-col items-center pt-6 sm:justify-center dark:bg-neutral-950 sm:pt-0">
+            <div className="flex min-h-screen w-full flex-col items-center pt-6 sm:justify-center dark:bg-zinc-950 sm:pt-0">
                 <div>
                     <Link href="/">
                         <Logo className="h-12" />

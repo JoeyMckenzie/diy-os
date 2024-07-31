@@ -26,6 +26,8 @@ final class ProjectFactory extends Factory
             'title' => $this->faker->text(20),
             'description' => $this->faker->text(),
             'status' => $this->faker->randomElement(ProjectStatus::toArray()),
+            'budget' => $this->faker->randomFloat(2, 100, 10000),
+            'target_completion_date' => $this->faker->dateTimeBetween('now', '+2 years'),
         ];
     }
 }

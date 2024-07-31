@@ -114,7 +114,7 @@ export default function UpdateProfileInformation({
                                 leave="transition ease-in-out"
                                 leaveTo="opacity-0"
                             >
-                                <p className="text-gray-600 text-sm dark:text-neutral-400">
+                                <p className="text-gray-600 text-sm dark:text-zinc-400">
                                     Saved.
                                 </p>
                             </Transition>

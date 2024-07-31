@@ -118,7 +118,7 @@ export function LandingFooter() {
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="text-neutral-400 hover:text-neutral-500"
+                                    className="text-zinc-400 hover:text-zinc-500"
                                 >
                                     <Text className="sr-only">{item.name}</Text>
                                     <item.icon
@@ -138,7 +138,7 @@ export function LandingFooter() {
                                         <li key={item.name}>
                                             <Link
                                                 href={item.href}
-                                                className="text-neutral-600 text-sm leading-6 hover:text-neutral-900"
+                                                className="text-sm text-zinc-600 leading-6 hover:text-zinc-900"
                                             >
                                                 {item.name}
                                             </Link>
@@ -153,7 +153,7 @@ export function LandingFooter() {
                                         <li key={item.name}>
                                             <Link
                                                 href={item.href}
-                                                className="text-neutral-600 text-sm leading-6 hover:text-neutral-900"
+                                                className="text-sm text-zinc-600 leading-6 hover:text-zinc-900"
                                             >
                                                 {item.name}
                                             </Link>
@@ -170,7 +170,7 @@ export function LandingFooter() {
                                         <li key={item.name}>
                                             <Link
                                                 href={item.href}
-                                                className="text-neutral-600 text-sm leading-6 hover:text-neutral-900"
+                                                className="text-sm text-zinc-600 leading-6 hover:text-zinc-900"
                                             >
                                                 {item.name}
                                             </Link>
@@ -185,7 +185,7 @@ export function LandingFooter() {
                                         <li key={item.name}>
                                             <a
                                                 href={item.href}
-                                                className="text-neutral-600 text-sm leading-6 hover:text-neutral-900"
+                                                className="text-sm text-zinc-600 leading-6 hover:text-zinc-900"
                                             >
                                                 {item.name}
                                             </a>
@@ -196,7 +196,7 @@ export function LandingFooter() {
                         </div>
                     </div>
                 </div>
-                <div className="mt-16 border-neutral-900/10 border-t pt-8 lg:mt-24 sm:mt-20">
+                <div className="mt-16 border-zinc-900/10 border-t pt-8 lg:mt-24 sm:mt-20">
                     <Text className="text-xs leading-5">
                         &copy; 2024 diyOS, Inc. All rights reserved.
                     </Text>

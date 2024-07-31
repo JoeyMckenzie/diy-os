@@ -122,7 +122,7 @@ export function LandingHeader() {
                                     <TextLink
                                         key={item.name}
                                         href={item.href}
-                                        className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base leading-7 no-underline dark:hover:bg-neutral-800 hover:bg-gray-50"
+                                        className="-mx-3 block rounded-lg px-3 py-2 font-semibold text-base leading-7 no-underline dark:hover:bg-zinc-800 hover:bg-gray-50"
                                     >
                                         {item.name}
                                     </TextLink>

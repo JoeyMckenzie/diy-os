@@ -34,7 +34,7 @@ const secondaryNavigation = [
 
 export function EditUserForm() {
     return (
-        <main className="xl:pl-72">
+        <main>
             {/* Settings forms */}
             <div className="divide-y divide-white/5">
                 <UpdateUserProfileInformationForm />
