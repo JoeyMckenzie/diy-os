@@ -28,7 +28,8 @@ final class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -96,7 +97,7 @@ final class User extends Authenticatable
     protected function initials(): Attribute
     {
         return new Attribute(
-            get: fn (): string => collect(explode(' ', $this->name))
+            get: fn (): string => collect([$this->first_name, $this->last_name])
                 ->map(fn (string $part): string => strtoupper(substr($part, 0, 1)))
                 ->join('')
         );

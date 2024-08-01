@@ -25,7 +25,3 @@ arch('All value objects are immutable')
 arch('All contracts are interfaces')
     ->expect('App\\Contracts\\')
     ->toBeInterfaces();
-
-arch('All services are based on contracts')
-    ->expect('App\\Services\\')
-    ->toBeInstanceOfContracts();

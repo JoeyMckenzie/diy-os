@@ -28,7 +28,7 @@ Route::get('/dashboard', fn () => Inertia::render('dashboard/Index'))->middlewar
 
 Route::middleware('auth')->group(function (): void {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/avatar', [AvatarController::class, 'store'])->name('avatar.store');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
