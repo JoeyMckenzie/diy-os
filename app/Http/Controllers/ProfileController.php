@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Contracts\AvatarManager;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -16,6 +18,13 @@ use Inertia\Response;
 
 final class ProfileController extends Controller
 {
+    private readonly AvatarManager $avatarManager;
+
+    public function __construct(AvatarManager $avatarManager)
+    {
+        $this->avatarManager = $avatarManager;
+    }
+
     /**
      * Display the user's profile form.
      */
@@ -46,6 +55,12 @@ final class ProfileController extends Controller
         }
 
         $request->user()->save();
+
+        if ($request->hasFile('avatar') && request()->user() !== null) {
+            /** @var UploadedFile $file */
+            $file = $request->file('avatar');
+            $this->avatarManager->uploadAvatarForUser(request()->user(), $file);
+        }
 
         return Redirect::route('profile.edit');
     }

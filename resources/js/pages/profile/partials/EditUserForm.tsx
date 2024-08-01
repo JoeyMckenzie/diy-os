@@ -35,7 +35,6 @@ const secondaryNavigation = [
 export function EditUserForm() {
     return (
         <main>
-            {/* Settings forms */}
             <div className="divide-y divide-white/5">
                 <UpdateUserProfileInformationForm />
                 <UpdateUserPasswordForm />

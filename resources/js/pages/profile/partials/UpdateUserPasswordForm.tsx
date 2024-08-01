@@ -58,7 +58,7 @@ export function UpdateUserPasswordForm() {
                 <Text>Update your password associated with your account.</Text>
             </div>
 
-            <form className="md:col-span-2">
+            <form onSubmit={updatePassword} className="md:col-span-2">
                 <Fieldset className="grid grid-cols-1 gap-x-6 sm:max-w-xl sm:grid-cols-6">
                     <FieldGroup className="col-span-full">
                         <Field>
@@ -73,7 +73,7 @@ export function UpdateUserPasswordForm() {
                                     setData("current_password", e.target.value)
                                 }
                                 type="password"
-                                autoComplete="current-password"
+                                autoComplete="current_password"
                             />
                             {errors.current_password && (
                                 <ErrorMessage>

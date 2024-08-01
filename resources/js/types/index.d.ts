@@ -8,6 +8,7 @@ export interface User {
     email: string;
     email_verified_at: string;
     initials: string;
+    avatar?: string | null;
 }
 
 export type PageProps<
