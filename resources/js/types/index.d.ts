@@ -18,4 +18,5 @@ export type PageProps<
         user: User;
     };
     ziggy: Config & { location: string };
+    errors?: Record<string, string>;
 };

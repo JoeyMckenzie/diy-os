@@ -12,7 +12,7 @@ export function DashboardLayout({
     return (
         <AppLayout>
             <SidebarLayout
-                navbar={<MobileNavbar initials={user.initials} />}
+                navbar={<MobileNavbar user={user} />}
                 sidebar={<SidebarMenu user={user} />}
             >
                 {children}

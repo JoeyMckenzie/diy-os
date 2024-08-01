@@ -6,14 +6,14 @@ namespace App\Services;
 
 use App\Contracts\AvatarManager;
 use App\Models\User;
+use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Override;
 use Psr\Log\LoggerInterface;
 
 final readonly class DiskAvatarManager implements AvatarManager
 {
-    public function __construct(private LoggerInterface $logger) {}
+    public function __construct(private LoggerInterface $logger, private Storage $storage) {}
 
     #[Override]
     public function uploadAvatarForUser(User $user, UploadedFile $image): void
@@ -22,7 +22,7 @@ final readonly class DiskAvatarManager implements AvatarManager
 
         if ($existingAvatar !== null) {
             $this->logger->info("Removing existing avatar for user $user->id");
-            Storage::disk('public')->delete($existingAvatar);
+            $this->storage->disk('public')->delete($existingAvatar);
         }
 
         $this->logger->info("Uploading avatar for user $user->id");
@@ -31,8 +31,7 @@ final readonly class DiskAvatarManager implements AvatarManager
         $filePath = "avatars/$hashName";
         $contents = $image->getContent();
 
-        Storage::disk('public')->put($filePath, $contents);
-
+        $this->storage->disk('public')->put($filePath, $contents);
         $this->logger->info("Avatar successfully uploaded for user $user->id, updating file path in database");
 
         $user->avatar = $filePath;

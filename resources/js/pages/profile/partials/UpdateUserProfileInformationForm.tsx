@@ -18,7 +18,9 @@ import { router, useForm, usePage } from "@inertiajs/react";
 import React, { type ChangeEvent, type FormEventHandler } from "react";
 
 export function UpdateUserProfileInformationForm() {
-    const user = usePage<PageProps>().props.auth.user;
+    const { props } = usePage<PageProps>();
+    const user = props.auth.user;
+    const sessionErrors = props.errors;
     const {
         data,
         setData,
@@ -28,24 +30,17 @@ export function UpdateUserProfileInformationForm() {
         errors,
         processing,
         recentlySuccessful,
-    } = useForm<{
-        first_name: string;
-        last_name: string;
-        email: string;
-        avatar?: File | null;
-    }>({
+    } = useForm({
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
-        avatar: null,
     });
 
-    const setAvatarForUpload: FormEventHandler = (
+    const uploadAvatar: FormEventHandler = (
         e: ChangeEvent<HTMLInputElement>,
     ) => {
         if (e.currentTarget.files?.[0]) {
             const avatar = e.currentTarget.files[0];
-            setData("avatar", e.currentTarget.files[0]);
             router.post("/avatar", {
                 avatar,
             });
@@ -87,7 +82,7 @@ export function UpdateUserProfileInformationForm() {
                             <Label htmlFor="avatar">Profile picture</Label>
                             <Input
                                 type="file"
-                                onChange={setAvatarForUpload}
+                                onChange={uploadAvatar}
                                 autoComplete="avatar"
                             />
                             <Description>JPG, GIF or PNG. 1MB max.</Description>
@@ -96,8 +91,10 @@ export function UpdateUserProfileInformationForm() {
                                     value={progress.percentage}
                                 />
                             )}
-                            {errors.avatar && (
-                                <ErrorMessage>{errors.avatar}</ErrorMessage>
+                            {sessionErrors.avatar && (
+                                <ErrorMessage>
+                                    {sessionErrors.avatar}
+                                </ErrorMessage>
                             )}
                         </Field>
                     </FieldGroup>

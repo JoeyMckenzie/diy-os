@@ -13,6 +13,7 @@ import {
     NavbarSection,
     NavbarSpacer,
 } from "@/components/catalyst/navbar";
+import type { User } from "@/types";
 import {
     ArrowRightStartOnRectangleIcon,
     Cog8ToothIcon,
@@ -22,7 +23,7 @@ import {
 } from "@heroicons/react/16/solid";
 import { InboxIcon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
-export function MobileNavbar({ initials }: { initials: string }) {
+export function MobileNavbar({ user }: { user: User }) {
     return (
         <Navbar>
             <NavbarSpacer />
@@ -35,7 +36,10 @@ export function MobileNavbar({ initials }: { initials: string }) {
                 </NavbarItem>
                 <Dropdown>
                     <DropdownButton as={NavbarItem}>
-                        <Avatar initials={initials} square />
+                        {!!user.avatar && <Avatar src={user.avatar} square />}
+                        {!user.avatar && (
+                            <Avatar initials={user.initials} square />
+                        )}
                     </DropdownButton>
                     <DropdownMenu className="min-w-64" anchor="bottom end">
                         <DropdownItem href={route("profile.edit")}>

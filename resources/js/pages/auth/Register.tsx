@@ -41,7 +41,7 @@ export default function Register() {
             <form onSubmit={submit}>
                 <Fieldset>
                     <FieldGroup>
-                        <div className="grid grid-cols-1 gap-x-6 sm:max-w-xl sm:grid-cols-6">
+                        <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:max-w-xl sm:grid-cols-6">
                             <Field className="sm:col-span-3">
                                 <Label htmlFor="first_name">First Name</Label>
                                 <Input
