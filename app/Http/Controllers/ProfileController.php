@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Contracts\AvatarManager;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -17,13 +16,6 @@ use Inertia\Response;
 
 final class ProfileController extends Controller
 {
-    private readonly AvatarManager $avatarManager;
-
-    public function __construct(AvatarManager $avatarManager)
-    {
-        $this->avatarManager = $avatarManager;
-    }
-
     /**
      * Display the user's profile form.
      */
