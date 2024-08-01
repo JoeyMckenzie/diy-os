@@ -10,7 +10,6 @@ use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -44,7 +43,7 @@ final class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        if (is_null($request->user())) {
+        if ($request->user() === null) {
             abort(401);
         }
 
@@ -55,12 +54,6 @@ final class ProfileController extends Controller
         }
 
         $request->user()->save();
-
-        if ($request->hasFile('avatar') && request()->user() !== null) {
-            /** @var UploadedFile $file */
-            $file = $request->file('avatar');
-            $this->avatarManager->uploadAvatarForUser(request()->user(), $file);
-        }
 
         return Redirect::route('profile.edit');
     }

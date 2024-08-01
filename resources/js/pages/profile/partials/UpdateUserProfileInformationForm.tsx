@@ -14,7 +14,7 @@ import { Text } from "@/components/catalyst/text";
 import { UploadProgressBar } from "@/pages/profile/partials/UploadProgressBar";
 import type { PageProps } from "@/types";
 import { Transition } from "@headlessui/react";
-import { useForm, usePage } from "@inertiajs/react";
+import { router, useForm, usePage } from "@inertiajs/react";
 import React, { type ChangeEvent, type FormEventHandler } from "react";
 
 export function UpdateUserProfileInformationForm() {
@@ -44,15 +44,16 @@ export function UpdateUserProfileInformationForm() {
         e: ChangeEvent<HTMLInputElement>,
     ) => {
         if (e.currentTarget.files?.[0]) {
+            const avatar = e.currentTarget.files[0];
             setData("avatar", e.currentTarget.files[0]);
+            router.post("/avatar", {
+                avatar,
+            });
         }
     };
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-
-        console.log({ form: data });
-
         post(route("profile.update"));
     };
 
