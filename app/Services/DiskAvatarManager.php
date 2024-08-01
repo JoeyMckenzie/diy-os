@@ -8,15 +8,14 @@ use App\Contracts\AvatarManager;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Override;
 use Psr\Log\LoggerInterface;
 
 final readonly class DiskAvatarManager implements AvatarManager
 {
-    public function __construct(private LoggerInterface $logger)
-    {
-    }
+    public function __construct(private LoggerInterface $logger) {}
 
-    #[\Override]
+    #[Override]
     public function uploadAvatarForUser(User $user, UploadedFile $image): void
     {
         $existingAvatar = $user->avatar;
