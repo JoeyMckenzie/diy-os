@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Tests;
 
 use App\Models\User;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 test('profile page is displayed', function (): void {
     $user = User::factory()->create();
@@ -37,6 +39,36 @@ test('profile information can be updated', function (): void {
     $this->assertSame('Doe', $user->last_name);
     $this->assertSame('test@example.com', $user->email);
     $this->assertNull($user->email_verified_at);
+});
+
+test('users can upload profile images', function (): void {
+    // Arrange
+    Storage::fake('public');
+
+    $user = User::factory()->create();
+    $this->actingAs($user);
+
+    $file = UploadedFile::fake()->image('profile.jpg');
+    $expectedFilename = 'avatars/'.$file->hashName();
+
+    // Act
+    $response = $this->post(route('avatar.store'), [
+        'avatar' => $file,
+    ]);
+
+    // Assert
+    $response
+        ->assertSessionHasNoErrors()
+        ->assertRedirect();
+
+    // Refresh the user model from the database
+    $user->refresh();
+
+    // Assert the file was stored
+    Storage::disk('public')->assertExists($expectedFilename);
+
+    // Assert the user model was updated with the correct file path
+    expect($user->avatar)->toBe($expectedFilename);
 });
 
 test('email verification status is unchanged when the email address is unchanged', function (): void {
