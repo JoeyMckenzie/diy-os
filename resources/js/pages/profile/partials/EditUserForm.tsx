@@ -1,4 +1,4 @@
-import { DeleteUserFormV2 } from "@/pages/profile/partials/DeleteUserFormV2";
+import { DeleteUserForm } from "@/pages/profile/partials/DeleteUserForm";
 import { UpdateUserPasswordForm } from "@/pages/profile/partials/UpdateUserPasswordForm";
 import { UpdateUserProfileInformationForm } from "@/pages/profile/partials/UpdateUserProfileInformationForm";
 import {
@@ -38,7 +38,7 @@ export function EditUserForm() {
             <div className="divide-y divide-white/5">
                 <UpdateUserProfileInformationForm />
                 <UpdateUserPasswordForm />
-                <DeleteUserFormV2 />
+                <DeleteUserForm />
             </div>
         </main>
     );

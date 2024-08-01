@@ -6,7 +6,9 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Override;
 
@@ -28,13 +30,19 @@ final class UserFactory extends Factory
     #[Override]
     public function definition(): array
     {
+        $file = UploadedFile::fake()->image('profile.jpg');
+        $fileName = 'avatars/'.$file->hashName();
+        $contents = $file->getContent();
+
+        Storage::disk('public')->put($fileName, $contents);
+
         return [
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => self::$password ??= Hash::make('password'),
-            'avatar' => 'https://picsum.photos/200/300',
+            'avatar' => $fileName,
             'remember_token' => Str::random(10),
         ];
     }
