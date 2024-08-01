@@ -17,10 +17,10 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table): void {
             $table->id();
-            // $table->ulid('id')->primary();
             $table->timestamps();
             $table->string('title');
             $table->string('description');
+            $table->string('cover_image')->nullable();
             $table->decimal('budget')->nullable();
             $table->date('target_completion_date')->nullable();
             $table->enum('status', ProjectStatus::toArray());

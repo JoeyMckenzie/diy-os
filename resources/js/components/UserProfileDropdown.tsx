@@ -23,15 +23,15 @@ export function UserProfileDropdown({ user }: { user: User }) {
         <Dropdown>
             <DropdownButton as={SidebarItem}>
                 <span className="flex min-w-0 items-center gap-3">
-                    {!!user.avatar && (
+                    {!!user.avatar_url && (
                         <Avatar
-                            src={user.avatar}
+                            src={user.avatar_url}
                             className="size-10"
                             square
                             alt="user avatar"
                         />
                     )}
-                    {!user.avatar && (
+                    {!user.avatar_url && (
                         <Avatar
                             initials={user.initials}
                             className="size-10"

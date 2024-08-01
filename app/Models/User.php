@@ -39,7 +39,7 @@ final class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $appends = ['initials'];
+    protected $appends = ['initials', 'avatar_url'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -100,6 +100,18 @@ final class User extends Authenticatable
             get: fn (): string => collect([$this->first_name, $this->last_name])
                 ->map(fn (string $part): string => strtoupper(substr($part, 0, 1)))
                 ->join('')
+        );
+    }
+
+    /**
+     * Determine if the user is an administrator.
+     *
+     * @return Attribute<string, string>
+     */
+    protected function avatarUrl(): Attribute
+    {
+        return new Attribute(
+            get: fn (): string => config('app.url')."/$this->avatar"
         );
     }
 }

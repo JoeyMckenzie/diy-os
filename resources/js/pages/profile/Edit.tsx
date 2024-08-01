@@ -23,7 +23,7 @@ export default function Edit({
                     <div className="p-4 shadow sm:rounded-lg sm:p-8">
                         <UpdateAvatarForm
                             initials={auth.user.initials}
-                            avatar={auth.user.avatar}
+                            avatar={auth.user.avatar_url}
                             className="max-w-xl"
                         />
                     </div>

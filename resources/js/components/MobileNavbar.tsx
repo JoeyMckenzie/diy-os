@@ -36,8 +36,10 @@ export function MobileNavbar({ user }: { user: User }) {
                 </NavbarItem>
                 <Dropdown>
                     <DropdownButton as={NavbarItem}>
-                        {!!user.avatar && <Avatar src={user.avatar} square />}
-                        {!user.avatar && (
+                        {!!user.avatar_url && (
+                            <Avatar src={user.avatar_url} square />
+                        )}
+                        {!user.avatar_url && (
                             <Avatar initials={user.initials} square />
                         )}
                     </DropdownButton>
