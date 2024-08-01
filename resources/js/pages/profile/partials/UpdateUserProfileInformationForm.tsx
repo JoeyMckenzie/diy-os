@@ -62,15 +62,15 @@ export function UpdateUserProfileInformationForm() {
             <form onSubmit={submit} className="md:col-span-2">
                 <Fieldset className="grid grid-cols-1 gap-x-6 sm:max-w-xl sm:grid-cols-6">
                     <FieldGroup className="col-span-full flex items-center gap-x-8">
-                        {user.avatar_url_url && (
+                        {user.avatar_url && (
                             <Avatar
                                 square
                                 className="size-24 bg-zinc-900 text-white dark:bg-white dark:text-black"
                                 alt="user avatar"
-                                src={user.avatar_url_url}
+                                src={user.avatar_url}
                             />
                         )}
-                        {!user.avatar_url_url && (
+                        {!user.avatar_url && (
                             <Avatar
                                 square
                                 className="size-24 bg-zinc-900 text-white dark:bg-white dark:text-black"
