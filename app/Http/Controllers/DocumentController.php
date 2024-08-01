@@ -1,10 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-class DocumentController extends Controller
+final class DocumentController extends Controller
 {
     //
 }

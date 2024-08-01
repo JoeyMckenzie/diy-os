@@ -64,7 +64,7 @@ export function Pricing() {
                                     </span>
                                 </p>
                                 <a
-                                    href="#"
+                                    href={route("welcome")}
                                     className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center font-semibold text-sm text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-600 focus-visible:outline-offset-2"
                                 >
                                     Sign up
