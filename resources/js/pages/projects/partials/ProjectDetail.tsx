@@ -194,14 +194,6 @@ export function ProjectDetail() {
                                         >
                                             {item.date}
                                         </time>
-                                        <div
-                                            className={clsx(
-                                                statuses[item.status],
-                                                "flex-none rounded-full p-1",
-                                            )}
-                                        >
-                                            <div className="h-1.5 w-1.5 rounded-full bg-current" />
-                                        </div>
                                         <div className="hidden text-white sm:block">
                                             {item.status}
                                         </div>
