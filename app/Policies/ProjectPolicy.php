@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
-use App\Models\Order;
+use App\Models\Project;
 use App\Models\User;
 
-final class OrderPolicy
+final class ProjectPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -20,9 +20,9 @@ final class OrderPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Order $order): bool
+    public function view(User $user, Project $project): bool
     {
-        return self::userOwnsOrder($user, $order);
+        return self::userOwnsProject($user, $project);
     }
 
     /**
@@ -36,17 +36,17 @@ final class OrderPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Order $order): bool
+    public function update(User $user, Project $project): bool
     {
-        return self::userOwnsOrder($user, $order);
+        return self::userOwnsProject($user, $project);
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Order $order): bool
+    public function delete(User $user, Project $project): bool
     {
-        return self::userOwnsOrder($user, $order);
+        return self::userOwnsProject($user, $project);
     }
 
     /**
@@ -60,13 +60,13 @@ final class OrderPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Order $order): bool
+    public function forceDelete(User $user, Project $project): bool
     {
-        return self::userOwnsOrder($user, $order);
+        return self::userOwnsProject($user, $project);
     }
 
-    private function userOwnsOrder(User $user, Order $order): bool
+    private function userOwnsProject(User $user, Project $project): bool
     {
-        return $user->id === $order->user_id;
+        return $user->id === $project->user_id;
     }
 }
