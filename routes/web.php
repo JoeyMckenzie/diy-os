@@ -7,16 +7,17 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', fn () => Inertia::render('landing/Index', [
-    'canLogin' => Route::has('login'),
-    'canRegister' => Route::has('register'),
-    'laravelVersion' => Application::VERSION,
-    'phpVersion' => PHP_VERSION,
-]))->name('welcome');
+// Route::get('/', fn () => Inertia::render('landing/Index', [
+//     'canLogin' => Route::has('login'),
+//     'canRegister' => Route::has('register'),
+//     'laravelVersion' => Application::VERSION,
+//     'phpVersion' => PHP_VERSION,
+// ]))->name('welcome');
+
+Route::get('/', fn () => redirect('/dashboard'))->name('welcome');
 
 Route::middleware(['auth', 'verified'])->group(fn () => Route::resources([
     'projects' => ProjectController::class,

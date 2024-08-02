@@ -4,15 +4,15 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build && vite build --ssr",
-        "fmt": "pnpm biome format --write ./resources/js",
-        "lint": "pnpm biome lint --apply ./resources/js",
-        "fix": "pnpm biome lint --apply-unsafe ./resources/js",
-        "check": "pnpm biome check --apply ./resources/js",
-        "ci": "pnpm run lint && pnpm run build",
+        "fmt": "npx @biomejs/biome format --write ./resources/js",
+        "lint": "npx @biomejs/biome lint --apply ./resources/js",
+        "fix": "npx @biomejs/biome lint --apply-unsafe ./resources/js",
+        "check": "npx @biomejs/biome check --apply ./resources/js",
+        "ci": "npm run lint && npm run build",
         "test": "vitest"
     },
     "lint-staged": {
-        "**/*.{js,ts,tsx}": ["pnpm run fmt", "pnpm run lint"],
+        "**/*.{js,ts,tsx}": ["npm run fmt", "npm run lint"],
         "**/*.php": ["composer run fmt", "composer run rector"]
     },
     "devDependencies": {

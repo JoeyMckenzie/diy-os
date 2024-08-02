@@ -21,6 +21,7 @@ import {
     FolderIcon,
     HomeIcon,
     HomeModernIcon,
+    InboxIcon,
     NewspaperIcon,
     QuestionMarkCircleIcon,
     SparklesIcon,
@@ -50,6 +51,10 @@ export function SidebarMenu({ user }: { user: User }) {
                     <SidebarItem href={route("dashboard")}>
                         <HomeIcon />
                         <SidebarLabel>Dashboard</SidebarLabel>
+                    </SidebarItem>
+                    <SidebarItem href={route("dashboard")}>
+                        <InboxIcon />
+                        <SidebarLabel>Notifications</SidebarLabel>
                     </SidebarItem>
                 </SidebarSection>
                 <SidebarSection>
