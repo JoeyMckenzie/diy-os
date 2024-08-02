@@ -53,7 +53,7 @@ export function UpdateUserProfileInformationForm() {
     };
 
     return (
-        <section className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 md:grid-cols-3 lg:px-8 sm:px-6">
+        <section className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-4 md:grid-cols-3 lg:px-8 sm:px-6">
             <div>
                 <Heading>Personal Information</Heading>
                 <Text>Use a permanent address where you can receive mail.</Text>
@@ -78,12 +78,12 @@ export function UpdateUserProfileInformationForm() {
                                 initials={user.initials}
                             />
                         )}
-                        <Field className="w-full">
+                        <Field className="h-full">
                             <Label htmlFor="avatar">Profile picture</Label>
-                            <Input
+                            <input
                                 type="file"
                                 onChange={uploadAvatar}
-                                autoComplete="avatar"
+                                className="my-2 block w-full rounded-lg border border-gray-200 text-sm shadow-sm disabled:pointer-events-none focus:z-10 file:me-4 dark:border-neutral-700 file:border-0 focus:border-blue-500 dark:bg-neutral-900 dark:file:bg-neutral-700 file:bg-gray-50 file:px-4 file:py-2 dark:file:text-neutral-400 dark:text-neutral-400 disabled:opacity-50 focus:ring-blue-500"
                             />
                             <Description>JPG, GIF or PNG. 1MB max.</Description>
                             {progress?.percentage && (

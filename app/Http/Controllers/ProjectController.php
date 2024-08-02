@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use App\Models\Project;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -25,12 +25,17 @@ final class ProjectController extends Controller
         return Inertia::render('projects/Create');
     }
 
-    public function findProject(Request $request): JsonResponse
+    public function show(Project $project): Response
     {
-        $request->query('search');
-
-        return response()->json([
-            'foo' => 'bar',
+        return Inertia::render('projects/Show', [
+            'project' => $project,
         ]);
+    }
+
+    public function destroy(Project $project): RedirectResponse
+    {
+        $project->delete();
+
+        return redirect()->route('projects.index');
     }
 }

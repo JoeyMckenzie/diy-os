@@ -40,6 +40,7 @@ export interface Project {
     id: string;
     title: string;
     description: string;
+    cover_image: string;
 }
 
 export type TodoStatus = "Done" | "In Progress" | "Overdue" | "Not Started";

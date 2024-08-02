@@ -1,14 +1,7 @@
 import { Avatar } from "@/components/catalyst/avatar";
-import { Badge } from "@/components/catalyst/badge";
-import {
-    Dropdown,
-    DropdownButton,
-    DropdownItem,
-    DropdownMenu,
-} from "@/components/catalyst/dropdown";
 import { Heading, Subheading } from "@/components/catalyst/heading";
-import { Text } from "@/components/catalyst/text";
-import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
+import type { Project } from "@/lib/models";
+import { Link } from "@inertiajs/react";
 
 const statuses = {
     Paid: "text-green-700 bg-green-50 ring-green-600/20",
@@ -51,58 +44,66 @@ const clients = [
     },
 ];
 
-export function ProjectsDisplayList() {
+export function ProjectsDisplayList({ projects }: { projects: Project[] }) {
     return (
         <ul className="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 sm:grid-cols-2 xl:gap-x-8">
-            {clients.map((client) => (
-                <li
-                    key={client.id}
-                    className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
+            {projects.map((project) => (
+                <Link
+                    key={project.id}
+                    href={route("projects.show", project.id)}
+                    className="hover:-translate-y-1 transition duration-150 ease-in-out hover:scale-105"
                 >
-                    <div className="flex items-center justify-between gap-x-4 border-zinc-900/5 border-b bg-zinc-50 p-6 dark:bg-zinc-800">
-                        <Avatar
-                            alt={client.name}
-                            src={client.imageUrl}
-                            square
-                        />
-                        <Heading>{client.name}</Heading>
-                        <Dropdown>
-                            <DropdownButton plain>
-                                <EllipsisHorizontalIcon />
-                            </DropdownButton>
-                            <DropdownMenu>
-                                <DropdownItem href="/users/1">
-                                    View
-                                </DropdownItem>
-                                <DropdownItem href="/users/1/edit">
-                                    Edit
-                                </DropdownItem>
-                                <DropdownItem>Delete</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                    </div>
-                    <dl className="-my-3 divide-y divide-zinc-100 px-6 py-4 text-sm leading-6 dark:divide-zinc-700">
-                        <div className="flex justify-between gap-x-4 py-3">
-                            <dt>
-                                <Subheading>Last invoice</Subheading>
-                            </dt>
-                            <dd className="text-zinc-700">
-                                <time dateTime={client.lastInvoice.dateTime}>
-                                    <Text>{client.lastInvoice.date}</Text>
-                                </time>
-                            </dd>
+                    <li className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
+                        <div className="flex items-center gap-x-4 border-zinc-900/5 border-b bg-zinc-50 p-6 dark:bg-zinc-800">
+                            {!!project.cover_image && (
+                                <Avatar
+                                    alt={project.title}
+                                    src={project.cover_image}
+                                    square
+                                />
+                            )}
+                            {!project.cover_image && (
+                                <Avatar
+                                    className="size-12 bg-zinc-900 text-white dark:bg-white dark:text-black"
+                                    alt={project.title}
+                                    initials={project.title
+                                        .substring(0, 1)
+                                        .toUpperCase()}
+                                    square
+                                />
+                            )}
+                            <Heading className="truncate">
+                                {project.title}
+                            </Heading>
+                            {/*
+                                <Dropdown>
+                                    <DropdownButton plain>
+                                        <EllipsisHorizontalIcon />
+                                    </DropdownButton>
+                                    <DropdownMenu>
+                                        <DropdownItem href="/users/1">
+                                            View
+                                        </DropdownItem>
+                                        <DropdownItem href="/users/1/edit">
+                                            Edit
+                                        </DropdownItem>
+                                        <DropdownItem>Delete</DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            */}
                         </div>
-                        <div className="flex justify-between gap-x-4 py-3">
-                            <Subheading>Amount</Subheading>
-                            <dd className="flex items-start gap-x-2">
-                                <Text>{client.lastInvoice.amount}</Text>
-                                <Badge color="cyan">
-                                    {client.lastInvoice.status}
-                                </Badge>
-                            </dd>
-                        </div>
-                    </dl>
-                </li>
+                        <dl className="-my-3 divide-y divide-zinc-100 px-6 py-4 text-sm leading-6 dark:divide-zinc-700">
+                            <div className="flex justify-between gap-x-4 py-3">
+                                <dt>
+                                    <Subheading>Last invoice</Subheading>
+                                </dt>
+                            </div>
+                            <div className="flex justify-between gap-x-4 py-3">
+                                <Subheading>Amount</Subheading>
+                            </div>
+                        </dl>
+                    </li>
+                </Link>
             ))}
         </ul>
     );

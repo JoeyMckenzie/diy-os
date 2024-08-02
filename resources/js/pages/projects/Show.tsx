@@ -8,8 +8,8 @@ import {
 import { Heading } from "@/components/catalyst/heading";
 import { TextLink } from "@/components/catalyst/text";
 import { DashboardLayout } from "@/layouts/DashboardLayout";
-import type { Order } from "@/lib/models";
-import { OrderDetail } from "@/pages/orders/partials/OrderDetail";
+import type { Project } from "@/lib/models";
+import { ProjectDetail } from "@/pages/projects/partials/ProjectDetail";
 import type { PageProps } from "@/types";
 import { ChevronLeftIcon } from "@heroicons/react/20/solid";
 import { Head, useForm } from "@inertiajs/react";
@@ -17,35 +17,34 @@ import { type FormEventHandler, useState } from "react";
 
 export default function Show({
     auth,
-    order,
-    orderId,
-}: PageProps<{ orderId: number; order: Order }>) {
+    project,
+}: PageProps<{ project: Project }>) {
     const [isOpen, setIsOpen] = useState(false);
     const { delete: destroy, reset } = useForm({
-        orderNumber: "",
+        projectNumber: "",
     });
 
-    const deleteOrder: FormEventHandler = (e) => {
+    const deleteProject: FormEventHandler = (e) => {
         e.preventDefault();
 
-        destroy(route("orders.destroy", order.id), {
+        destroy(route("projects.destroy", project.id), {
             onFinish: () => reset(),
         });
     };
 
     return (
         <DashboardLayout user={auth.user}>
-            <Head title={`Order ${order.order_number}`} />
+            <Head title="Projects" />
             <TextLink
                 className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 no-underline dark:text-zinc-400"
-                href={route("orders.index")}
+                href={route("projects.index")}
             >
                 <ChevronLeftIcon className="size-4 fill-zinc-400 dark:fill-zinc-500" />{" "}
-                Orders
+                Projects
             </TextLink>
 
             <div className="mt-8 flex items-center justify-between align-middle">
-                <Heading>Order {order.order_number}</Heading>
+                <Heading className="truncate">{project.title}</Heading>
                 <div className="space-x-2">
                     <Button>Edit</Button>
                     <Button color="red" onClick={() => setIsOpen(true)}>
@@ -54,13 +53,13 @@ export default function Show({
                 </div>
             </div>
 
-            <OrderDetail order={order} />
+            <ProjectDetail />
 
             <Dialog open={isOpen} onClose={setIsOpen}>
-                <form onSubmit={deleteOrder}>
-                    <DialogTitle>Delete order #{order.id}?</DialogTitle>
+                <form onSubmit={deleteProject}>
+                    <DialogTitle>Delete project {project.title}?</DialogTitle>
                     <DialogDescription>
-                        This action cannot be undone and all associated order
+                        This action cannot be undone and all associated project
                         items will also be deleted. Are you sure you want to
                         delete this project?
                     </DialogDescription>
@@ -68,7 +67,11 @@ export default function Show({
                         <Button plain onClick={() => setIsOpen(false)}>
                             Cancel
                         </Button>
-                        <Button type="submit" color="red" onClick={deleteOrder}>
+                        <Button
+                            type="submit"
+                            color="red"
+                            onClick={deleteProject}
+                        >
                             Yes, delete order
                         </Button>
                     </DialogActions>
