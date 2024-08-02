@@ -12,8 +12,14 @@
         "test": "vitest"
     },
     "lint-staged": {
-        "**/*.{js,ts,tsx}": ["npm run fmt", "npm run lint"],
-        "**/*.php": ["composer run fmt", "composer run rector"]
+        "**/*.{js,ts,tsx}": [
+            "npm run fmt",
+            "npm run lint"
+        ],
+        "**/*.php": [
+            "composer run fmt",
+            "composer run rector"
+        ]
     },
     "devDependencies": {
         "@biomejs/biome": "1.7.3",
@@ -40,6 +46,8 @@
         "@heroicons/react": "^2.1.5",
         "clsx": "^2.1.1",
         "date-fns": "^3.6.0",
-        "framer-motion": "^11.3.19"
+        "framer-motion": "^11.3.19",
+        "react-number-format": "^5.4.0",
+        "react-tailwindcss-datepicker": "^1.6.6"
     }
 }

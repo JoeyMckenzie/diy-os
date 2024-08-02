@@ -1,6 +1,6 @@
-import { Heading } from "@/components/catalyst/heading";
 import { TextLink } from "@/components/catalyst/text";
 import { DashboardLayout } from "@/layouts/DashboardLayout";
+import { CreateProjectForm } from "@/pages/projects/partials/CreateProjectForm";
 import type { PageProps } from "@/types";
 import { ChevronLeftIcon } from "@heroicons/react/20/solid";
 import { Head } from "@inertiajs/react";
@@ -16,7 +16,7 @@ export default function Create({ auth }: PageProps) {
                 <ChevronLeftIcon className="size-4 fill-zinc-400 dark:fill-zinc-500" />{" "}
                 Projects
             </TextLink>
-            <Heading>Create a project</Heading>
+            <CreateProjectForm />
         </DashboardLayout>
     );
 }

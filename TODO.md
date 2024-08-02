@@ -10,8 +10,8 @@
 
 - [x] Add projects view
 - [x] Add project view list
-- [ ] Add project detail page
 - [ ] Add project creation form
+- [ ] Add project detail page
 - [ ] Add project edit form
 - [ ] Add project cover image upload
 - [ ] Add project todos

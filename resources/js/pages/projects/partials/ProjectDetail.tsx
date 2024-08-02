@@ -1,25 +1,5 @@
-import { FolderIcon, ServerIcon } from "@heroicons/react/20/solid";
-import {
-    ChartBarSquareIcon,
-    Cog6ToothIcon,
-    GlobeAltIcon,
-    SignalIcon,
-} from "@heroicons/react/24/outline";
 import { clsx } from "clsx";
 
-const navigation = [
-    { name: "Projects", href: "#", icon: FolderIcon, current: false },
-    { name: "Deployments", href: "#", icon: ServerIcon, current: true },
-    { name: "Activity", href: "#", icon: SignalIcon, current: false },
-    { name: "Domains", href: "#", icon: GlobeAltIcon, current: false },
-    { name: "Usage", href: "#", icon: ChartBarSquareIcon, current: false },
-    { name: "Settings", href: "#", icon: Cog6ToothIcon, current: false },
-];
-const teams = [
-    { id: 1, name: "Planetaria", href: "#", initial: "P", current: false },
-    { id: 2, name: "Protocol", href: "#", initial: "P", current: false },
-    { id: 3, name: "Tailwind Labs", href: "#", initial: "T", current: false },
-];
 const secondaryNavigation = [
     { name: "Overview", href: "#", current: true },
     { name: "Activity", href: "#", current: false },
