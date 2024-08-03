@@ -1,78 +1,37 @@
 <script lang="ts" setup>
-import { Button } from '@/components/ui/button';
+import { route } from 'ziggy-js';
+import { Link } from '@inertiajs/vue3';
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuPortal,
     DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 </script>
 
 <template>
     <DropdownMenu>
         <DropdownMenuTrigger as-child>
-            <Button variant="outline">
-                Open
-            </Button>
+            <Avatar>
+                <AvatarImage alt="@radix-vue" src="https://github.com/radix-vue.png" />
+                <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
         </DropdownMenuTrigger>
-        <DropdownMenuContent class="w-56">
+        <DropdownMenuContent align="end" class="w-56">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-                <DropdownMenuItem>
-                    <span>Profile</span>
-                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <span>Billing</span>
-                    <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <span>Settings</span>
-                    <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <span>Keyboard shortcuts</span>
-                    <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-                </DropdownMenuItem>
+                <Link :href="route('profile.edit')">
+                    <DropdownMenuItem>
+                        Profile
+                    </DropdownMenuItem>
+                </Link>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-                <DropdownMenuItem>
-                    <span>Team</span>
-                </DropdownMenuItem>
-                <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                        <span>Invite users</span>
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
-                            <DropdownMenuItem>
-                                <span>Email</span>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                <span>Message</span>
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>
-                                <span>More...</span>
-                            </DropdownMenuItem>
-                        </DropdownMenuSubContent>
-                    </DropdownMenuPortal>
-                </DropdownMenuSub>
-                <DropdownMenuItem>
-                    <span>New Team</span>
-                    <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-                </DropdownMenuItem>
-            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
                 <span>GitHub</span>
@@ -80,14 +39,17 @@ import {
             <DropdownMenuItem>
                 <span>Support</span>
             </DropdownMenuItem>
-            <DropdownMenuItem disabled>
-                <span>API</span>
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-                <span>Log out</span>
-                <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-            </DropdownMenuItem>
+            <Link
+                :href="route('logout')"
+                as="button"
+                class="w-full"
+                method="post"
+            >
+                <DropdownMenuItem>
+                    Log out
+                </DropdownMenuItem>
+            </Link>
         </DropdownMenuContent>
     </DropdownMenu>
 </template>

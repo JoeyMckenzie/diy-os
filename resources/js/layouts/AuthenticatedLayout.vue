@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import {
     Bars3Icon,
     BellIcon,
@@ -11,13 +10,13 @@ import {
     HomeIcon,
     UsersIcon,
 } from '@heroicons/vue/24/outline';
-import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import { route } from 'ziggy-js';
 import type { User } from '../types';
 import Logo from '../components/Logo.vue';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../components/ui/sheet';
+import NavbarProfileDropdown from '../components/NavbarProfileDropdown.vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
 
 defineProps<{
@@ -41,10 +40,6 @@ const teams = [
     { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
     { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
 ];
-const userNavigation = [
-    { name: 'Your profile', href: '#' },
-    { name: 'Sign out', href: '#' },
-];
 </script>
 
 <template>
@@ -55,7 +50,10 @@ const userNavigation = [
                     <Logo class="h-10" />
                 </SheetTitle>
             </SheetHeader>
+
             <Separator />
+
+            <!-- Content -->
             <nav class="flex flex-1 flex-col">
                 <Button :href="route('dashboard')" class="group -mx-2 flex w-full justify-start gap-x-3 rounded-md p-2 text-sm font-semibold leading-6" variant="ghost">
                     <HomeIcon class="size-6 shrink-0" />
@@ -77,6 +75,7 @@ const userNavigation = [
                     </li>
                 </ul>
             </nav>
+
             <SheetFooter class="flex w-full grow items-end">
                 <Button class="w-full justify-center" variant="outline">
                     <Cog6ToothIcon aria-hidden="true" class="size-6 shrink-0" />
@@ -153,23 +152,7 @@ const userNavigation = [
                         <div aria-hidden="true" class="hidden lg:block lg:h-6 lg:w-px lg:bg-zinc-200" />
 
                         <!-- Profile dropdown -->
-                        <Menu as="div" class="relative">
-                            <MenuButton class="-m-1.5 flex items-center p-1.5">
-                                <span class="sr-only">Open user menu</span>
-                                <img alt="" class="size-8 rounded-full bg-zinc-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-                                <span class="hidden lg:flex lg:items-center">
-                                    <span aria-hidden="true" class="ml-4 text-sm font-semibold leading-6 text-zinc-900">Tom Cook</span>
-                                    <ChevronDownIcon aria-hidden="true" class="ml-2 size-5 text-zinc-400" />
-                                </span>
-                            </MenuButton>
-                            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                                <MenuItems class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-zinc-900/5 focus:outline-none">
-                                    <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                                        <a :class="[active ? 'bg-zinc-50' : '']" :href="item.href" class="block px-3 py-1 text-sm leading-6 text-zinc-900">{{ item.name }}</a>
-                                    </MenuItem>
-                                </MenuItems>
-                            </transition>
-                        </Menu>
+                        <NavbarProfileDropdown />
                     </div>
                 </div>
                 <Separator />
