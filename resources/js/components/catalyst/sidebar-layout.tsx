@@ -1,7 +1,7 @@
-import * as Headless from "@headlessui/react";
-import type React from "react";
-import { useState } from "react";
-import { NavbarItem } from "./navbar";
+import * as Headless from '@headlessui/react';
+import type React from 'react';
+import { useState } from 'react';
+import { NavbarItem } from './navbar';
 
 function OpenMenuIcon() {
     return (
@@ -32,7 +32,7 @@ function MobileSidebar({
             />
             <Headless.DialogPanel
                 transition
-                className="data-[closed]:-translate-x-full fixed inset-y-0 w-full max-w-80 p-2 transition duration-300 ease-in-out"
+                className="fixed inset-y-0 w-full max-w-80 p-2 transition duration-300 ease-in-out data-[closed]:-translate-x-full"
             >
                 <div className="flex h-full flex-col rounded-lg bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10">
                     <div className="-mb-3 px-4 pt-3">
@@ -61,7 +61,7 @@ export function SidebarLayout({
     const [showSidebar, setShowSidebar] = useState(false);
 
     return (
-        <div className="relative isolate flex min-h-svh w-full bg-white max-lg:flex-col dark:bg-zinc-900 dark:lg:bg-zinc-950 lg:bg-zinc-100">
+        <div className="relative isolate flex min-h-svh w-full bg-white dark:bg-zinc-900 max-lg:flex-col lg:bg-zinc-100 dark:lg:bg-zinc-950">
             {/* Sidebar on desktop */}
             <div className="fixed inset-y-0 left-0 w-64 max-lg:hidden">
                 {sidebar}
@@ -89,8 +89,8 @@ export function SidebarLayout({
             </header>
 
             {/* Content */}
-            <main className="flex flex-1 flex-col pb-2 lg:min-w-0 lg:pt-2 lg:pr-2 lg:pl-64">
-                <div className="grow p-6 lg:rounded-lg dark:lg:bg-zinc-900 lg:bg-white lg:p-10 lg:shadow-sm dark:lg:ring-white/10 lg:ring-1 lg:ring-zinc-950/5">
+            <main className="flex flex-1 flex-col pb-2 lg:min-w-0 lg:pl-64 lg:pr-2 lg:pt-2">
+                <div className="grow p-6 lg:rounded-lg lg:bg-white lg:p-10 lg:shadow-sm lg:ring-1 lg:ring-zinc-950/5 dark:lg:bg-zinc-900 dark:lg:ring-white/10">
                     <div className="mx-auto max-w-6xl">{children}</div>
                 </div>
             </main>

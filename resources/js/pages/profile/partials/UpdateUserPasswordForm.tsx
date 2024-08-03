@@ -1,17 +1,17 @@
-import { Button } from "@/components/catalyst/button";
+import { Transition } from '@headlessui/react';
+import { useForm } from '@inertiajs/react';
+import React, { type FormEventHandler, useRef } from 'react';
+import { Button } from '@/components/catalyst/button';
 import {
     ErrorMessage,
     Field,
     FieldGroup,
     Fieldset,
     Label,
-} from "@/components/catalyst/fieldset";
-import { Heading } from "@/components/catalyst/heading";
-import { Input } from "@/components/catalyst/input";
-import { Text } from "@/components/catalyst/text";
-import { Transition } from "@headlessui/react";
-import { useForm } from "@inertiajs/react";
-import React, { type FormEventHandler, useRef } from "react";
+} from '@/components/catalyst/fieldset';
+import { Heading } from '@/components/catalyst/heading';
+import { Input } from '@/components/catalyst/input';
+import { Text } from '@/components/catalyst/text';
 
 export function UpdateUserPasswordForm() {
     const passwordInput = useRef<HTMLInputElement>(null);
@@ -26,25 +26,25 @@ export function UpdateUserPasswordForm() {
         processing,
         recentlySuccessful,
     } = useForm({
-        current_password: "",
-        new_password: "",
-        new_password_confirmation: "",
+        current_password: '',
+        new_password: '',
+        new_password_confirmation: '',
     });
 
     const updatePassword: FormEventHandler = (e) => {
         e.preventDefault();
 
-        put(route("password.update"), {
+        put(route('password.update'), {
             preserveScroll: true,
             onSuccess: () => reset(),
             onError: (errors) => {
                 if (errors.password) {
-                    reset("new_password", "new_password_confirmation");
+                    reset('new_password', 'new_password_confirmation');
                     passwordInput.current?.focus();
                 }
 
                 if (errors.current_password) {
-                    reset("current_password");
+                    reset('current_password');
                     currentPasswordInput.current?.focus();
                 }
             },
@@ -52,7 +52,7 @@ export function UpdateUserPasswordForm() {
     };
 
     return (
-        <section className="grid max-w-7xl grid-cols-1 gap-x-8 px-4 py-16 md:grid-cols-3 lg:px-8 sm:px-6">
+        <section className="grid max-w-7xl grid-cols-1 gap-x-8 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
             <div>
                 <Heading>Change password</Heading>
                 <Text>Update your password associated with your account.</Text>
@@ -69,9 +69,8 @@ export function UpdateUserPasswordForm() {
                                 id="current_password"
                                 ref={currentPasswordInput}
                                 value={data.current_password}
-                                onChange={(e) =>
-                                    setData("current_password", e.target.value)
-                                }
+                                onChange={e =>
+                                    setData('current_password', e.target.value)}
                                 type="password"
                                 autoComplete="current_password"
                             />
@@ -89,9 +88,8 @@ export function UpdateUserPasswordForm() {
                                 id="new_password"
                                 ref={passwordInput}
                                 value={data.new_password}
-                                onChange={(e) =>
-                                    setData("new_password", e.target.value)
-                                }
+                                onChange={e =>
+                                    setData('new_password', e.target.value)}
                                 type="password"
                                 autoComplete="new_password"
                             />
@@ -110,12 +108,11 @@ export function UpdateUserPasswordForm() {
                             <Input
                                 id="new_password_confirmation"
                                 value={data.new_password_confirmation}
-                                onChange={(e) =>
+                                onChange={e =>
                                     setData(
-                                        "new_password_confirmation",
+                                        'new_password_confirmation',
                                         e.target.value,
-                                    )
-                                }
+                                    )}
                                 type="password"
                                 autoComplete="new_password_confirmation"
                             />
@@ -139,7 +136,7 @@ export function UpdateUserPasswordForm() {
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p className="text-gray-600 text-sm">Saved.</p>
+                        <p className="text-sm text-gray-600">Saved.</p>
                     </Transition>
                 </div>
             </form>

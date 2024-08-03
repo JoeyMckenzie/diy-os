@@ -1,4 +1,12 @@
-import { Avatar } from "@/components/catalyst/avatar";
+import {
+    ArrowRightStartOnRectangleIcon,
+    Cog8ToothIcon,
+    LightBulbIcon,
+    ShieldCheckIcon,
+    UserIcon,
+} from '@heroicons/react/16/solid';
+import { InboxIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { Avatar } from '@/components/catalyst/avatar';
 import {
     Dropdown,
     DropdownButton,
@@ -6,22 +14,14 @@ import {
     DropdownItem,
     DropdownLabel,
     DropdownMenu,
-} from "@/components/catalyst/dropdown";
+} from '@/components/catalyst/dropdown';
 import {
     Navbar,
     NavbarItem,
     NavbarSection,
     NavbarSpacer,
-} from "@/components/catalyst/navbar";
-import type { User } from "@/types";
-import {
-    ArrowRightStartOnRectangleIcon,
-    Cog8ToothIcon,
-    LightBulbIcon,
-    ShieldCheckIcon,
-    UserIcon,
-} from "@heroicons/react/16/solid";
-import { InboxIcon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+} from '@/components/catalyst/navbar';
+import type { User } from '@/types';
 
 export function MobileNavbar({ user }: { user: User }) {
     return (
@@ -44,7 +44,7 @@ export function MobileNavbar({ user }: { user: User }) {
                         )}
                     </DropdownButton>
                     <DropdownMenu className="min-w-64" anchor="bottom end">
-                        <DropdownItem href={route("profile.edit")}>
+                        <DropdownItem href={route('profile.edit')}>
                             <UserIcon />
                             <DropdownLabel>My profile</DropdownLabel>
                         </DropdownItem>
@@ -63,7 +63,7 @@ export function MobileNavbar({ user }: { user: User }) {
                         </DropdownItem>
                         <DropdownDivider />
                         <DropdownItem
-                            href={route("logout")}
+                            href={route('logout')}
                             as="button"
                             method="post"
                         >

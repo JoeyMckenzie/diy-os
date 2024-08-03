@@ -1,12 +1,12 @@
-import { AppLayout } from "@/layouts/AppLayout";
-import { LandingFeatures } from "@/pages/landing/partials/LandingFeatures";
-import { LandingFooter } from "@/pages/landing/partials/LandingFooter";
-import { LandingHeader } from "@/pages/landing/partials/LandingHeader";
-import { LandingHero } from "@/pages/landing/partials/LandingHero";
-import { LaunchSignUp } from "@/pages/landing/partials/LaunchSignUp";
-import { Pricing } from "@/pages/landing/partials/Pricing";
-import type { PageProps } from "@/types";
-import { Head } from "@inertiajs/react";
+import { Head } from '@inertiajs/react';
+import { AppLayout } from '@/layouts/AppLayout';
+import { LandingFeatures } from '@/pages/landing/partials/LandingFeatures';
+import { LandingFooter } from '@/pages/landing/partials/LandingFooter';
+import { LandingHeader } from '@/pages/landing/partials/LandingHeader';
+import { LandingHero } from '@/pages/landing/partials/LandingHero';
+import { LaunchSignUp } from '@/pages/landing/partials/LaunchSignUp';
+import { Pricing } from '@/pages/landing/partials/Pricing';
+import type { PageProps } from '@/types';
 
 export default function Welcome({
     auth,
@@ -15,13 +15,13 @@ export default function Welcome({
 }: PageProps<{ laravelVersion: string; phpVersion: string }>) {
     const handleImageError = () => {
         document
-            .getElementById("screenshot-container")
-            ?.classList.add("!hidden");
-        document.getElementById("docs-card")?.classList.add("!row-span-1");
+            .getElementById('screenshot-container')
+            ?.classList.add('!hidden');
+        document.getElementById('docs-card')?.classList.add('!row-span-1');
         document
-            .getElementById("docs-card-content")
-            ?.classList.add("!flex-row");
-        document.getElementById("background")?.classList.add("!hidden");
+            .getElementById('docs-card-content')
+            ?.classList.add('!flex-row');
+        document.getElementById('background')?.classList.add('!hidden');
     };
 
     return (

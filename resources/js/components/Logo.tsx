@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { clsx } from 'clsx';
 
 function LightLogo({ className }: { className: string }) {
     return (
@@ -9,7 +9,7 @@ function LightLogo({ className }: { className: string }) {
             viewBox="0 0 124 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={clsx(className, "dark:hidden")}
+            className={clsx(className, 'dark:hidden')}
         >
             <title>App logo</title>
             <path
@@ -35,7 +35,7 @@ function DarkLogo({ className }: { className: string }) {
             viewBox="0 0 124 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={clsx(className, "hidden dark:block")}
+            className={clsx(className, 'hidden dark:block')}
         >
             <title>App logo</title>
             <path
@@ -79,7 +79,7 @@ function DarkLogoOverride({ className }: { className: string }) {
 }
 
 export function Logo({
-    className = "",
+    className = '',
     forceDark = false,
 }: { className: string; forceDark?: boolean }) {
     if (forceDark) {

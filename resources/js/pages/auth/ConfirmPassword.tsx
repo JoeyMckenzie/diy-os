@@ -1,15 +1,9 @@
-import { Button } from "@/components/catalyst/button";
-import {
-    ErrorMessage,
-    Field,
-    FieldGroup,
-    Fieldset,
-    Label,
-} from "@/components/catalyst/fieldset";
-import { Input } from "@/components/catalyst/input";
-import GuestLayout from "@/layouts/GuestLayout";
-import { Head, useForm } from "@inertiajs/react";
-import { type FormEventHandler, useEffect } from "react";
+import { Head, useForm } from '@inertiajs/react';
+import { type FormEventHandler, useEffect } from 'react';
+import { Button } from '@/components/catalyst/button';
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label, } from '@/components/catalyst/fieldset';
+import { Input } from '@/components/catalyst/input';
+import GuestLayout from '@/layouts/GuestLayout.vue';
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -31,7 +25,7 @@ export default function ConfirmPassword() {
     return (
         <GuestLayout>
             <Head title="Confirm Password" />
-            <div className="mb-4 text-gray-600 text-sm">
+            <div className="mb-4 text-sm text-gray-600">
                 This is a secure area of the application. Please confirm your
                 password before continuing.
             </div>

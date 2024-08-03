@@ -1,16 +1,16 @@
-import { useTheme } from "@/components/ThemeProvider";
+import {
+    ComputerDesktopIcon,
+    MoonIcon,
+    SunIcon,
+} from '@heroicons/react/16/solid';
+import { useTheme } from '@/components/ThemeProvider';
 import {
     Dropdown,
     DropdownButton,
     DropdownItem,
     DropdownLabel,
     DropdownMenu,
-} from "@/components/catalyst/dropdown";
-import {
-    ComputerDesktopIcon,
-    MoonIcon,
-    SunIcon,
-} from "@heroicons/react/16/solid";
+} from '@/components/catalyst/dropdown';
 
 export function ThemeToggle() {
     const { setTheme, theme } = useTheme();
@@ -18,20 +18,20 @@ export function ThemeToggle() {
     return (
         <Dropdown>
             <DropdownButton plain>
-                {theme === "light" && <SunIcon />}
-                {theme === "dark" && <MoonIcon />}
-                {theme === "system" && <ComputerDesktopIcon />}
+                {theme === 'light' && <SunIcon />}
+                {theme === 'dark' && <MoonIcon />}
+                {theme === 'system' && <ComputerDesktopIcon />}
             </DropdownButton>
             <DropdownMenu anchor="bottom">
-                <DropdownItem onClick={() => setTheme("light")}>
+                <DropdownItem onClick={() => setTheme('light')}>
                     <SunIcon />
                     <DropdownLabel>Light</DropdownLabel>
                 </DropdownItem>
-                <DropdownItem onClick={() => setTheme("dark")}>
+                <DropdownItem onClick={() => setTheme('dark')}>
                     <MoonIcon />
                     <DropdownLabel>Dark</DropdownLabel>
                 </DropdownItem>
-                <DropdownItem onClick={() => setTheme("system")}>
+                <DropdownItem onClick={() => setTheme('system')}>
                     <ComputerDesktopIcon />
                     <DropdownLabel>System</DropdownLabel>
                 </DropdownItem>

@@ -1,15 +1,15 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 
 export function DescriptionList({
     className,
     ...props
-}: React.ComponentPropsWithoutRef<"dl">) {
+}: React.ComponentPropsWithoutRef<'dl'>) {
     return (
         <dl
             {...props}
             className={clsx(
                 className,
-                "grid grid-cols-1 text-base/6 sm:grid-cols-[min(50%,theme(spacing.80))_auto] sm:text-sm/6",
+                'grid grid-cols-1 text-base/6 sm:grid-cols-[min(50%,theme(spacing.80))_auto] sm:text-sm/6',
             )}
         />
     );
@@ -18,13 +18,13 @@ export function DescriptionList({
 export function DescriptionTerm({
     className,
     ...props
-}: React.ComponentPropsWithoutRef<"dt">) {
+}: React.ComponentPropsWithoutRef<'dt'>) {
     return (
         <dt
             {...props}
             className={clsx(
                 className,
-                "col-start-1 border-zinc-950/5 border-t pt-3 text-zinc-500 dark:border-white/5 sm:border-zinc-950/5 sm:dark:border-white/5 sm:border-t first:border-none sm:py-3 dark:text-zinc-400",
+                'col-start-1 border-t border-zinc-950/5 pt-3 text-zinc-500 first:border-none dark:border-white/5 dark:text-zinc-400 sm:border-t sm:border-zinc-950/5 sm:py-3 sm:dark:border-white/5',
             )}
         />
     );
@@ -33,13 +33,13 @@ export function DescriptionTerm({
 export function DescriptionDetails({
     className,
     ...props
-}: React.ComponentPropsWithoutRef<"dd">) {
+}: React.ComponentPropsWithoutRef<'dd'>) {
     return (
         <dd
             {...props}
             className={clsx(
                 className,
-                "pt-1 pb-3 text-zinc-950 dark:sm:border-white/5 sm:border-zinc-950/5 sm:border-t sm:[&:nth-child(2)]:border-none sm:py-3 dark:text-white",
+                'pb-3 pt-1 text-zinc-950 dark:text-white sm:border-t sm:border-zinc-950/5 sm:py-3 dark:sm:border-white/5 sm:[&:nth-child(2)]:border-none',
             )}
         />
     );

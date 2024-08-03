@@ -1,17 +1,11 @@
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { Button } from "@/components/catalyst/button";
-import { Checkbox } from "@/components/catalyst/checkbox";
-import {
-    ErrorMessage,
-    Field,
-    FieldGroup,
-    Fieldset,
-    Label,
-} from "@/components/catalyst/fieldset";
-import { Input } from "@/components/catalyst/input";
-import GuestLayout from "@/layouts/GuestLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
-import { type FormEventHandler, useEffect } from "react";
+import { Head, Link, useForm } from '@inertiajs/react';
+import { type FormEventHandler, useEffect } from 'react';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { Button } from '@/components/catalyst/button';
+import { Checkbox } from '@/components/catalyst/checkbox';
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label, } from '@/components/catalyst/fieldset';
+import { Input } from '@/components/catalyst/input';
+import GuestLayout from '@/layouts/GuestLayout.vue';
 
 export default function Login({
     status,
@@ -41,7 +35,7 @@ export default function Login({
             <Head title="Log in" />
 
             {status && (
-                <div className="mb-4 font-medium text-green-600 text-sm">
+                <div className="mb-4 text-sm font-medium text-green-600">
                     {status}
                 </div>
             )}
@@ -101,7 +95,7 @@ export default function Login({
                             {canResetPassword && (
                                 <Link
                                     href={route("password.request")}
-                                    className="rounded-md text-sm underline dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
+                                    className="rounded-md text-sm underline focus:outline-none focus:ring-2 focus:ring-offset-2 dark:text-white"
                                 >
                                     Forgot your password?
                                 </Link>

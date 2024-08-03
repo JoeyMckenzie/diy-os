@@ -1,5 +1,5 @@
-import { ThemeProvider } from "@/components/ThemeProvider";
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export function AppLayout({ children }: PropsWithChildren) {
     return (

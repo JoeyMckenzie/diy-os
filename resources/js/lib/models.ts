@@ -43,8 +43,8 @@ export interface Project {
     cover_image: string;
 }
 
-export type TodoStatus = "Done" | "In Progress" | "Overdue" | "Not Started";
+export type TodoStatus = 'Done' | 'In Progress' | 'Overdue' | 'Not Started';
 
-export type OrderStatus = "Draft" | "Ordered" | "Completed" | "Cancelled";
+export type OrderStatus = 'Draft' | 'Ordered' | 'Completed' | 'Cancelled';
 
 export type PaginatedTodos = PaginatedModel<Todo>;

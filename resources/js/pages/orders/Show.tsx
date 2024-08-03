@@ -1,19 +1,19 @@
-import { Button } from "@/components/catalyst/button";
+import { ChevronLeftIcon } from '@heroicons/react/20/solid';
+import { Head, useForm } from '@inertiajs/react';
+import { type FormEventHandler, useState } from 'react';
+import { Button } from '@/components/catalyst/button';
 import {
     Dialog,
     DialogActions,
     DialogDescription,
     DialogTitle,
-} from "@/components/catalyst/dialog";
-import { Heading } from "@/components/catalyst/heading";
-import { TextLink } from "@/components/catalyst/text";
-import { DashboardLayout } from "@/layouts/DashboardLayout";
-import type { Order } from "@/lib/models";
-import { OrderDetail } from "@/pages/orders/partials/OrderDetail";
-import type { PageProps } from "@/types";
-import { ChevronLeftIcon } from "@heroicons/react/20/solid";
-import { Head, useForm } from "@inertiajs/react";
-import { type FormEventHandler, useState } from "react";
+} from '@/components/catalyst/dialog';
+import { Heading } from '@/components/catalyst/heading';
+import { TextLink } from '@/components/catalyst/text';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import type { Order } from '@/lib/models';
+import { OrderDetail } from '@/pages/orders/partials/OrderDetail';
+import type { PageProps } from '@/types';
 
 export default function Show({
     auth,
@@ -22,13 +22,13 @@ export default function Show({
 }: PageProps<{ orderId: number; order: Order }>) {
     const [isOpen, setIsOpen] = useState(false);
     const { delete: destroy, reset } = useForm({
-        orderNumber: "",
+        orderNumber: '',
     });
 
     const deleteOrder: FormEventHandler = (e) => {
         e.preventDefault();
 
-        destroy(route("orders.destroy", order.id), {
+        destroy(route('orders.destroy', order.id), {
             onFinish: () => reset(),
         });
     };
@@ -38,14 +38,18 @@ export default function Show({
             <Head title={`Order ${order.order_number}`} />
             <TextLink
                 className="inline-flex items-center gap-2 text-sm/6 text-zinc-500 no-underline dark:text-zinc-400"
-                href={route("orders.index")}
+                href={route('orders.index')}
             >
-                <ChevronLeftIcon className="size-4 fill-zinc-400 dark:fill-zinc-500" />{" "}
+                <ChevronLeftIcon className="size-4 fill-zinc-400 dark:fill-zinc-500" />
+                {' '}
                 Orders
             </TextLink>
 
             <div className="mt-8 flex items-center justify-between align-middle">
-                <Heading>Order {order.order_number}</Heading>
+                <Heading>
+                    Order
+                    {order.order_number}
+                </Heading>
                 <div className="space-x-2">
                     <Button>Edit</Button>
                     <Button color="red" onClick={() => setIsOpen(true)}>
@@ -58,7 +62,11 @@ export default function Show({
 
             <Dialog open={isOpen} onClose={setIsOpen}>
                 <form onSubmit={deleteOrder}>
-                    <DialogTitle>Delete order #{order.id}?</DialogTitle>
+                    <DialogTitle>
+                        Delete order #
+                        {order.id}
+                        ?
+                    </DialogTitle>
                     <DialogDescription>
                         This action cannot be undone and all associated order
                         items will also be deleted. Are you sure you want to

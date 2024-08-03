@@ -1,18 +1,18 @@
-import { omit } from "@/lib/utils";
-import { expect, test } from "vitest";
+import { expect } from 'vitest';
+import { omit } from '@/lib/utils';
 
-test("omits object property from new object", () => {
+it('omits object property from new object', () => {
     // Arrange
     const testObject = {
-        foo: "bar",
-        buzz: "fizz",
+        foo: 'bar',
+        buzz: 'fizz',
     };
 
     // Act
-    const result = omit(testObject, ["buzz"]);
+    const result = omit(testObject, ['buzz']);
 
     // Assert
     expect(result).toStrictEqual({
-        foo: "bar",
+        foo: 'bar',
     });
 });

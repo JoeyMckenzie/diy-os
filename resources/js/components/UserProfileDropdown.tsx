@@ -1,14 +1,3 @@
-import { Avatar } from "@/components/catalyst/avatar";
-import {
-    Dropdown,
-    DropdownButton,
-    DropdownDivider,
-    DropdownItem,
-    DropdownLabel,
-    DropdownMenu,
-} from "@/components/catalyst/dropdown";
-import { SidebarItem } from "@/components/catalyst/sidebar";
-import type { User } from "@/types";
 import {
     ArrowRightStartOnRectangleIcon,
     ChevronUpIcon,
@@ -16,7 +5,18 @@ import {
     LightBulbIcon,
     ShieldCheckIcon,
     UserIcon,
-} from "@heroicons/react/16/solid";
+} from '@heroicons/react/16/solid';
+import { Avatar } from '@/components/catalyst/avatar';
+import {
+    Dropdown,
+    DropdownButton,
+    DropdownDivider,
+    DropdownItem,
+    DropdownLabel,
+    DropdownMenu,
+} from '@/components/catalyst/dropdown';
+import { SidebarItem } from '@/components/catalyst/sidebar';
+import type { User } from '@/types';
 
 export function UserProfileDropdown({ user }: { user: User }) {
     return (
@@ -40,10 +40,10 @@ export function UserProfileDropdown({ user }: { user: User }) {
                         />
                     )}
                     <span className="min-w-0">
-                        <span className="block truncate font-medium text-sm/5 text-zinc-950 dark:text-white">
+                        <span className="block truncate text-sm/5 font-medium text-zinc-950 dark:text-white">
                             {user.name}
                         </span>
-                        <span className="block truncate font-normal text-xs/5 text-zinc-500 dark:text-zinc-400">
+                        <span className="block truncate text-xs/5 font-normal text-zinc-500 dark:text-zinc-400">
                             {user.email}
                         </span>
                     </span>
@@ -51,7 +51,7 @@ export function UserProfileDropdown({ user }: { user: User }) {
                 <ChevronUpIcon />
             </DropdownButton>
             <DropdownMenu className="min-w-64" anchor="top start">
-                <DropdownItem href={route("profile.edit")}>
+                <DropdownItem href={route('profile.edit')}>
                     <UserIcon />
                     <DropdownLabel>My profile</DropdownLabel>
                 </DropdownItem>
@@ -69,7 +69,7 @@ export function UserProfileDropdown({ user }: { user: User }) {
                     <DropdownLabel>Share feedback</DropdownLabel>
                 </DropdownItem>
                 <DropdownDivider />
-                <DropdownItem href={route("logout")} as="button" method="post">
+                <DropdownItem href={route('logout')} as="button" method="post">
                     <ArrowRightStartOnRectangleIcon />
                     <DropdownLabel>Sign out</DropdownLabel>
                 </DropdownItem>

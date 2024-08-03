@@ -1,38 +1,38 @@
-import { Logo } from "@/components/Logo";
-import { Heading, Subheading } from "@/components/catalyst/heading";
-import { Link } from "@/components/catalyst/link";
-import { Text } from "@/components/catalyst/text";
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
+import { Logo } from '@/components/Logo';
+import { Heading, Subheading } from '@/components/catalyst/heading';
+import { Link } from '@/components/catalyst/link';
+import { Text } from '@/components/catalyst/text';
 
 const navigation = {
     solutions: [
-        { name: "Marketing", href: "#" },
-        { name: "Analytics", href: "#" },
-        { name: "Commerce", href: "#" },
-        { name: "Insights", href: "#" },
+        { name: 'Marketing', href: '#' },
+        { name: 'Analytics', href: '#' },
+        { name: 'Commerce', href: '#' },
+        { name: 'Insights', href: '#' },
     ],
     support: [
-        { name: "Pricing", href: "#" },
-        { name: "Documentation", href: "#" },
-        { name: "Guides", href: "#" },
-        { name: "API Status", href: "#" },
+        { name: 'Pricing', href: '#' },
+        { name: 'Documentation', href: '#' },
+        { name: 'Guides', href: '#' },
+        { name: 'API Status', href: '#' },
     ],
     company: [
-        { name: "About", href: "#" },
-        { name: "Blog", href: "#" },
-        { name: "Jobs", href: "#" },
-        { name: "Press", href: "#" },
-        { name: "Partners", href: "#" },
+        { name: 'About', href: '#' },
+        { name: 'Blog', href: '#' },
+        { name: 'Jobs', href: '#' },
+        { name: 'Press', href: '#' },
+        { name: 'Partners', href: '#' },
     ],
     legal: [
-        { name: "Claim", href: "#" },
-        { name: "Privacy", href: "#" },
-        { name: "Terms", href: "#" },
+        { name: 'Claim', href: '#' },
+        { name: 'Privacy', href: '#' },
+        { name: 'Terms', href: '#' },
     ],
     social: [
         {
-            name: "Facebook",
-            href: "#",
+            name: 'Facebook',
+            href: '#',
             icon: (props: SVGProps<SVGSVGElement>) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <title>title</title>
@@ -45,8 +45,8 @@ const navigation = {
             ),
         },
         {
-            name: "Instagram",
-            href: "#",
+            name: 'Instagram',
+            href: '#',
             icon: (props: SVGProps<SVGSVGElement>) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <title>title</title>
@@ -59,8 +59,8 @@ const navigation = {
             ),
         },
         {
-            name: "X",
-            href: "#",
+            name: 'X',
+            href: '#',
             icon: (props: SVGProps<SVGSVGElement>) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <title>title</title>
@@ -69,8 +69,8 @@ const navigation = {
             ),
         },
         {
-            name: "GitHub",
-            href: "#",
+            name: 'GitHub',
+            href: '#',
             icon: (props: SVGProps<SVGSVGElement>) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <title>title</title>
@@ -83,8 +83,8 @@ const navigation = {
             ),
         },
         {
-            name: "YouTube",
-            href: "#",
+            name: 'YouTube',
+            href: '#',
             icon: (props: SVGProps<SVGSVGElement>) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <title>title</title>
@@ -105,7 +105,7 @@ export function LandingFooter() {
             <Heading id="footer-heading" className="sr-only">
                 Footer
             </Heading>
-            <div className="mx-auto max-w-7xl px-6 pt-16 pb-8 lg:px-8 lg:pt-32 sm:pt-24">
+            <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
                 <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                     <div className="space-y-8">
                         <Logo className="w-48" />
@@ -114,7 +114,7 @@ export function LandingFooter() {
                             DIY'ers.
                         </Text>
                         <div className="flex space-x-6">
-                            {navigation.social.map((item) => (
+                            {navigation.social.map(item => (
                                 <Link
                                     key={item.name}
                                     href={item.href}
@@ -123,7 +123,7 @@ export function LandingFooter() {
                                     <Text className="sr-only">{item.name}</Text>
                                     <item.icon
                                         aria-hidden="true"
-                                        className="h-6 w-6"
+                                        className="size-6"
                                     />
                                 </Link>
                             ))}
@@ -134,11 +134,11 @@ export function LandingFooter() {
                             <div>
                                 <Subheading>Solutions</Subheading>
                                 <ul className="mt-6 space-y-4">
-                                    {navigation.solutions.map((item) => (
+                                    {navigation.solutions.map(item => (
                                         <li key={item.name}>
                                             <Link
                                                 href={item.href}
-                                                className="text-sm text-zinc-600 leading-6 hover:text-zinc-900"
+                                                className="text-sm leading-6 text-zinc-600 hover:text-zinc-900"
                                             >
                                                 {item.name}
                                             </Link>
@@ -149,11 +149,11 @@ export function LandingFooter() {
                             <div className="mt-10 md:mt-0">
                                 <Subheading>Support</Subheading>
                                 <ul className="mt-6 space-y-4">
-                                    {navigation.support.map((item) => (
+                                    {navigation.support.map(item => (
                                         <li key={item.name}>
                                             <Link
                                                 href={item.href}
-                                                className="text-sm text-zinc-600 leading-6 hover:text-zinc-900"
+                                                className="text-sm leading-6 text-zinc-600 hover:text-zinc-900"
                                             >
                                                 {item.name}
                                             </Link>
@@ -166,11 +166,11 @@ export function LandingFooter() {
                             <div>
                                 <Subheading>Company</Subheading>
                                 <ul className="mt-6 space-y-4">
-                                    {navigation.company.map((item) => (
+                                    {navigation.company.map(item => (
                                         <li key={item.name}>
                                             <Link
                                                 href={item.href}
-                                                className="text-sm text-zinc-600 leading-6 hover:text-zinc-900"
+                                                className="text-sm leading-6 text-zinc-600 hover:text-zinc-900"
                                             >
                                                 {item.name}
                                             </Link>
@@ -181,11 +181,11 @@ export function LandingFooter() {
                             <div className="mt-10 md:mt-0">
                                 <Subheading>Legal</Subheading>
                                 <ul className="mt-6 space-y-4">
-                                    {navigation.legal.map((item) => (
+                                    {navigation.legal.map(item => (
                                         <li key={item.name}>
                                             <a
                                                 href={item.href}
-                                                className="text-sm text-zinc-600 leading-6 hover:text-zinc-900"
+                                                className="text-sm leading-6 text-zinc-600 hover:text-zinc-900"
                                             >
                                                 {item.name}
                                             </a>
@@ -196,7 +196,7 @@ export function LandingFooter() {
                         </div>
                     </div>
                 </div>
-                <div className="mt-16 border-zinc-900/10 border-t pt-8 lg:mt-24 sm:mt-20">
+                <div className="mt-16 border-t border-zinc-900/10 pt-8 sm:mt-20 lg:mt-24">
                     <Text className="text-xs leading-5">
                         &copy; 2024 diyOS, Inc. All rights reserved.
                     </Text>

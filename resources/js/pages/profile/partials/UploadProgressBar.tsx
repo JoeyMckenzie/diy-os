@@ -1,4 +1,4 @@
-import { Text } from "@/components/catalyst/text";
+import { Text } from '@/components/catalyst/text';
 
 export function UploadProgressBar({ value }: { value: number }) {
     const width = `${value}%`;

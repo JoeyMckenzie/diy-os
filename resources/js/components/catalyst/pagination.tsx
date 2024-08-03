@@ -1,17 +1,17 @@
-import clsx from "clsx";
-import type React from "react";
-import { Button } from "./button";
+import clsx from 'clsx';
+import type React from 'react';
+import { Button } from './button';
 
 export function Pagination({
-    "aria-label": ariaLabel = "Page navigation",
+    'aria-label': ariaLabel = 'Page navigation',
     className,
     ...props
-}: React.ComponentPropsWithoutRef<"nav">) {
+}: React.ComponentPropsWithoutRef<'nav'>) {
     return (
         <nav
             aria-label={ariaLabel}
             {...props}
-            className={clsx(className, "flex gap-x-2")}
+            className={clsx(className, 'flex gap-x-2')}
         />
     );
 }
@@ -19,7 +19,7 @@ export function Pagination({
 export function PaginationPrevious({
     href = null,
     className,
-    children = "Previous",
+    children = 'Previous',
     ...props
 }: React.PropsWithChildren<{
     href?: string | null;
@@ -27,7 +27,7 @@ export function PaginationPrevious({
     preserveScroll?: boolean;
 }>) {
     return (
-        <span className={clsx(className, "grow basis-0")}>
+        <span className={clsx(className, 'grow basis-0')}>
             <Button
                 {...(href === null ? { disabled: true } : { href })}
                 {...props}
@@ -57,7 +57,7 @@ export function PaginationPrevious({
 export function PaginationNext({
     href = null,
     className,
-    children = "Next",
+    children = 'Next',
     ...props
 }: React.PropsWithChildren<{
     href?: string | null;
@@ -65,7 +65,7 @@ export function PaginationNext({
     preserveScroll?: boolean;
 }>) {
     return (
-        <span className={clsx(className, "flex grow basis-0 justify-end")}>
+        <span className={clsx(className, 'flex grow basis-0 justify-end')}>
             <Button
                 {...(href === null ? { disabled: true } : { href })}
                 {...props}
@@ -95,11 +95,11 @@ export function PaginationNext({
 export function PaginationList({
     className,
     ...props
-}: React.ComponentPropsWithoutRef<"span">) {
+}: React.ComponentPropsWithoutRef<'span'>) {
     return (
         <span
             {...props}
-            className={clsx(className, "hidden items-baseline gap-x-2 sm:flex")}
+            className={clsx(className, 'hidden items-baseline gap-x-2 sm:flex')}
         />
     );
 }
@@ -119,11 +119,11 @@ export function PaginationPage({
             href={href}
             plain
             aria-label={`Page ${children}`}
-            aria-current={current ? "page" : undefined}
+            aria-current={current ? 'page' : undefined}
             className={clsx(
                 className,
-                "before:-inset-px min-w-[2.25rem] before:absolute before:rounded-lg",
-                current && "before:bg-zinc-950/5 dark:before:bg-white/10",
+                'min-w-9 before:absolute before:-inset-px before:rounded-lg',
+                current && 'before:bg-zinc-950/5 dark:before:bg-white/10',
             )}
         >
             <span className="-mx-0.5">{children}</span>
@@ -135,14 +135,14 @@ export function PaginationGap({
     className,
     children = <>&hellip;</>,
     ...props
-}: React.ComponentPropsWithoutRef<"span">) {
+}: React.ComponentPropsWithoutRef<'span'>) {
     return (
         <span
             aria-hidden="true"
             {...props}
             className={clsx(
                 className,
-                "w-[2.25rem] select-none text-center font-semibold text-sm/6 text-zinc-950 dark:text-white",
+                'w-9 select-none text-center text-sm/6 font-semibold text-zinc-950 dark:text-white',
             )}
         >
             {children}

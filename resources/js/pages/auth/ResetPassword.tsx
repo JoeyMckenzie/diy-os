@@ -1,23 +1,17 @@
-import { Button } from "@/components/catalyst/button";
-import {
-    ErrorMessage,
-    Field,
-    FieldGroup,
-    Fieldset,
-    Label,
-} from "@/components/catalyst/fieldset";
-import { Input } from "@/components/catalyst/input";
-import GuestLayout from "@/layouts/GuestLayout";
-import { Head, useForm } from "@inertiajs/react";
-import { type FormEventHandler, useEffect } from "react";
+import { Head, useForm } from '@inertiajs/react';
+import { type FormEventHandler, useEffect } from 'react';
+import { Button } from '@/components/catalyst/button';
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label, } from '@/components/catalyst/fieldset';
+import { Input } from '@/components/catalyst/input';
+import GuestLayout from '@/layouts/GuestLayout.vue';
 
 export default function ResetPassword({
     token,
     email,
 }: { token: string; email: string }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        token: token,
-        email: email,
+        token,
+        email,
         password: "",
         password_confirmation: "",
     });

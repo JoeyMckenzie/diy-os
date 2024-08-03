@@ -1,5 +1,6 @@
-import { Badge, type BadgeColor } from "@/components/catalyst/badge";
-import { Checkbox } from "@/components/catalyst/checkbox";
+import { useState } from 'react';
+import { Badge, type BadgeColor } from '@/components/catalyst/badge';
+import { Checkbox } from '@/components/catalyst/checkbox';
 import {
     Table,
     TableBody,
@@ -7,26 +8,25 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/catalyst/table";
-import type { Order, OrderStatus } from "@/lib/models";
-import { useState } from "react";
+} from '@/components/catalyst/table';
+import type { Order, OrderStatus } from '@/lib/models';
 
 export function OrderTable({ orders }: { orders: Order[] }) {
     const [allChecked, setAllChecked] = useState(false);
     const [ordersChecked, setOrdersChecked] = useState([] as Order[]);
 
     const getStatusBadge = (status: OrderStatus) => {
-        let color: BadgeColor = "green";
+        let color: BadgeColor = 'green';
 
         switch (status) {
-            case "Draft":
-                color = "cyan";
+            case 'Draft':
+                color = 'cyan';
                 break;
-            case "Ordered":
-                color = "fuchsia";
+            case 'Ordered':
+                color = 'fuchsia';
                 break;
-            case "Cancelled":
-                color = "orange";
+            case 'Cancelled':
+                color = 'orange';
                 break;
         }
 
@@ -53,10 +53,10 @@ export function OrderTable({ orders }: { orders: Order[] }) {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {orders.map((order) => (
+                {orders.map(order => (
                     <TableRow
                         key={order.id}
-                        href={route("orders.show", order.id)}
+                        href={route('orders.show', order.id)}
                     >
                         <TableCell>{order.order_number}</TableCell>
                         <TableCell className="max-w-xs truncate font-medium">

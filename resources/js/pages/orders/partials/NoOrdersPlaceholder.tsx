@@ -1,7 +1,7 @@
-import { Button } from "@/components/catalyst/button";
-import { Heading } from "@/components/catalyst/heading";
-import { Text } from "@/components/catalyst/text";
-import { PlusIcon } from "@heroicons/react/20/solid";
+import { PlusIcon } from '@heroicons/react/20/solid';
+import { Button } from '@/components/catalyst/button';
+import { Heading } from '@/components/catalyst/heading';
+import { Text } from '@/components/catalyst/text';
 
 export function NoProjectsPlaceholder() {
     return (
@@ -22,10 +22,10 @@ export function NoProjectsPlaceholder() {
             <Heading>No orders</Heading>
             <Text>Get started by adding an order to a project.</Text>
             <div className="mt-6">
-                <Button href={route("projects.create")}>
+                <Button href={route('projects.create')}>
                     <PlusIcon
                         aria-hidden="true"
-                        className="-ml-0.5 mr-1.5 h-5 w-5"
+                        className="-ml-0.5 mr-1.5 size-5"
                     />
                     New Order
                 </Button>

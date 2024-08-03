@@ -1,8 +1,8 @@
-import { Heading } from "@/components/catalyst/heading";
-import { DashboardLayout } from "@/layouts/DashboardLayout";
-import { EditUserForm } from "@/pages/profile/partials/EditUserForm";
-import type { PageProps } from "@/types";
-import { Head } from "@inertiajs/react";
+import { Head } from '@inertiajs/react';
+import { Heading } from '@/components/catalyst/heading';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { EditUserForm } from '@/pages/profile/partials/EditUserForm';
+import type { PageProps } from '@/types';
 
 export default function Edit({
     auth,

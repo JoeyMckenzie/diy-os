@@ -1,17 +1,10 @@
-import { Button } from "@/components/catalyst/button";
-import {
-    ErrorMessage,
-    Field,
-    FieldGroup,
-    Fieldset,
-    Label,
-    Legend,
-} from "@/components/catalyst/fieldset";
-import { Input } from "@/components/catalyst/input";
-import { Text } from "@/components/catalyst/text";
-import GuestLayout from "@/layouts/GuestLayout";
-import { Head, useForm } from "@inertiajs/react";
-import type { FormEventHandler } from "react";
+import { Head, useForm } from '@inertiajs/react';
+import type { FormEventHandler } from 'react';
+import { Button } from '@/components/catalyst/button';
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label, Legend, } from '@/components/catalyst/fieldset';
+import { Input } from '@/components/catalyst/input';
+import { Text } from '@/components/catalyst/text';
+import GuestLayout from '@/layouts/GuestLayout.vue';
 
 export default function ForgotPassword({ status }: { status?: string }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -29,7 +22,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
             <Head title="Forgot Password" />
 
             {status && (
-                <div className="mb-4 font-medium text-green-600 text-sm">
+                <div className="mb-4 text-sm font-medium text-green-600">
                     {status}
                 </div>
             )}
@@ -44,7 +37,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     </Text>
                     <FieldGroup>
                         {status && (
-                            <div className="mb-4 font-medium text-sm">
+                            <div className="mb-4 text-sm font-medium">
                                 {status}
                             </div>
                         )}

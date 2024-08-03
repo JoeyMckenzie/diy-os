@@ -1,5 +1,8 @@
-import { Avatar } from "@/components/catalyst/avatar";
-import { Button } from "@/components/catalyst/button";
+import { Transition } from '@headlessui/react';
+import { router, useForm, usePage } from '@inertiajs/react';
+import React, { type ChangeEvent, type FormEventHandler } from 'react';
+import { Avatar } from '@/components/catalyst/avatar';
+import { Button } from '@/components/catalyst/button';
 import {
     Description,
     ErrorMessage,
@@ -7,15 +10,12 @@ import {
     FieldGroup,
     Fieldset,
     Label,
-} from "@/components/catalyst/fieldset";
-import { Heading } from "@/components/catalyst/heading";
-import { Input } from "@/components/catalyst/input";
-import { Text } from "@/components/catalyst/text";
-import { UploadProgressBar } from "@/pages/profile/partials/UploadProgressBar";
-import type { PageProps } from "@/types";
-import { Transition } from "@headlessui/react";
-import { router, useForm, usePage } from "@inertiajs/react";
-import React, { type ChangeEvent, type FormEventHandler } from "react";
+} from '@/components/catalyst/fieldset';
+import { Heading } from '@/components/catalyst/heading';
+import { Input } from '@/components/catalyst/input';
+import { Text } from '@/components/catalyst/text';
+import { UploadProgressBar } from '@/pages/profile/partials/UploadProgressBar';
+import type { PageProps } from '@/types';
 
 export function UpdateUserProfileInformationForm() {
     const { props } = usePage<PageProps>();
@@ -41,7 +41,7 @@ export function UpdateUserProfileInformationForm() {
     ) => {
         if (e.currentTarget.files?.[0]) {
             const avatar = e.currentTarget.files[0];
-            router.post("/avatar", {
+            router.post('/avatar', {
                 avatar,
             });
         }
@@ -49,11 +49,11 @@ export function UpdateUserProfileInformationForm() {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route("profile.update"));
+        post(route('profile.update'));
     };
 
     return (
-        <section className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-4 md:grid-cols-3 lg:px-8 sm:px-6">
+        <section className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 p-4 sm:px-6 md:grid-cols-3 lg:px-8">
             <div>
                 <Heading>Personal Information</Heading>
                 <Text>Use a permanent address where you can receive mail.</Text>
@@ -83,7 +83,7 @@ export function UpdateUserProfileInformationForm() {
                             <input
                                 type="file"
                                 onChange={uploadAvatar}
-                                className="my-2 block w-full rounded-lg border border-gray-200 text-sm shadow-sm disabled:pointer-events-none focus:z-10 file:me-4 dark:border-neutral-700 file:border-0 focus:border-blue-500 dark:bg-neutral-900 dark:file:bg-neutral-700 file:bg-gray-50 file:px-4 file:py-2 dark:file:text-neutral-400 dark:text-neutral-400 disabled:opacity-50 focus:ring-blue-500"
+                                className="my-2 block w-full rounded-lg border border-gray-200 text-sm shadow-sm file:me-4 file:border-0 file:bg-gray-50 file:px-4 file:py-2 focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:file:bg-neutral-700 dark:file:text-neutral-400"
                             />
                             <Description>JPG, GIF or PNG. 1MB max.</Description>
                             {progress?.percentage && (
@@ -107,9 +107,8 @@ export function UpdateUserProfileInformationForm() {
                                 type="text"
                                 autoComplete="first_name"
                                 value={data.first_name}
-                                onChange={(e) =>
-                                    setData("first_name", e.target.value)
-                                }
+                                onChange={e =>
+                                    setData('first_name', e.target.value)}
                                 required
                             />
                             {errors.first_name && (
@@ -126,9 +125,8 @@ export function UpdateUserProfileInformationForm() {
                                 type="text"
                                 autoComplete="last_name"
                                 value={data.last_name}
-                                onChange={(e) =>
-                                    setData("last_name", e.target.value)
-                                }
+                                onChange={e =>
+                                    setData('last_name', e.target.value)}
                                 required
                             />
                         </Field>
@@ -142,9 +140,8 @@ export function UpdateUserProfileInformationForm() {
                                 type="email"
                                 autoComplete="email"
                                 value={data.email}
-                                onChange={(e) =>
-                                    setData("email", e.target.value)
-                                }
+                                onChange={e =>
+                                    setData('email', e.target.value)}
                                 required
                             />
                         </Field>

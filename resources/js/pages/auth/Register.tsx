@@ -1,16 +1,10 @@
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { Button } from "@/components/catalyst/button";
-import {
-    ErrorMessage,
-    Field,
-    FieldGroup,
-    Fieldset,
-    Label,
-} from "@/components/catalyst/fieldset";
-import { Input } from "@/components/catalyst/input";
-import GuestLayout from "@/layouts/GuestLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
-import { type FormEventHandler, useEffect } from "react";
+import { Head, Link, useForm } from '@inertiajs/react';
+import { type FormEventHandler, useEffect } from 'react';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { Button } from '@/components/catalyst/button';
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label, } from '@/components/catalyst/fieldset';
+import { Input } from '@/components/catalyst/input';
+import GuestLayout from '@/layouts/GuestLayout.vue';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -41,7 +35,7 @@ export default function Register() {
             <form onSubmit={submit}>
                 <Fieldset>
                     <FieldGroup>
-                        <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:max-w-xl sm:grid-cols-6">
+                        <div className="grid grid-cols-1 gap-6 sm:max-w-xl sm:grid-cols-6">
                             <Field className="sm:col-span-3">
                                 <Label htmlFor="first_name">First Name</Label>
                                 <Input

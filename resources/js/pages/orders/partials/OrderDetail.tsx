@@ -2,9 +2,9 @@ import {
     DescriptionDetails,
     DescriptionList,
     DescriptionTerm,
-} from "@/components/catalyst/description-list";
-import { Subheading } from "@/components/catalyst/heading";
-import type { Order } from "@/lib/models";
+} from '@/components/catalyst/description-list';
+import { Subheading } from '@/components/catalyst/heading';
+import type { Order } from '@/lib/models';
 
 export function OrderDetail({ order }: { order: Order }) {
     return (
