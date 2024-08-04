@@ -11,17 +11,12 @@ import {
     UsersIcon,
 } from '@heroicons/vue/24/outline';
 import { route } from 'ziggy-js';
-import type { User } from '../types';
 import Logo from '../components/Logo.vue';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../components/ui/sheet';
 import NavbarProfileDropdown from '../components/NavbarProfileDropdown.vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
-
-defineProps<{
-    user: User;
-}>();
 
 const navigation = [
     { name: 'Team', href: '#', icon: UsersIcon, current: false },
@@ -88,10 +83,12 @@ const teams = [
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex grow flex-col gap-y-4 overflow-y-auto border-r px-6 pb-4">
-                <div class="flex h-16 shrink-0 items-center">
+                <div class="flex h-12 shrink-0 items-center">
                     <Logo class="mt-4 h-10 w-auto" />
                 </div>
+
                 <Separator />
+
                 <nav class="flex flex-1 flex-col">
                     <ul class="flex flex-1 flex-col gap-y-7" role="list">
                         <li>
@@ -140,16 +137,13 @@ const teams = [
                         </SheetTrigger>
                     </div>
 
-                    <div class="flex items-center gap-x-4 lg:gap-x-6">
+                    <div class="flex items-center gap-x-4">
                         <Button class="-m-2.5 p-2.5" variant="ghost">
                             <span class="sr-only">View notifications</span>
                             <BellIcon aria-hidden="true" class="size-6" />
                         </Button>
 
                         <ThemeToggle />
-
-                        <!-- Separator -->
-                        <div aria-hidden="true" class="hidden lg:block lg:h-6 lg:w-px lg:bg-zinc-200" />
 
                         <!-- Profile dropdown -->
                         <NavbarProfileDropdown />

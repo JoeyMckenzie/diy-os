@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <div>
+    <Link :href="route('dashboard')">
         <!-- Dark logo -->
         <svg
             id="logo-7"
@@ -48,5 +49,5 @@
                 fill="#394149"
             />
         </svg>
-    </div>
+    </Link>
 </template>

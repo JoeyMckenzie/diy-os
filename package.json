@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build && vite build --ssr",
+        "build": "vue-tsc && vite build && vite build --ssr",
         "fmt": "npx @biomejs/biome format --write ./resources/js",
         "lint": "npx @biomejs/biome lint --apply ./resources/js",
         "lint:eslint": "eslint ./resources/js",
@@ -64,6 +64,7 @@
         "clsx": "^2.1.1",
         "date-fns": "^3.6.0",
         "framer-motion": "^11.3.19",
+        "lucide-vue-next": "^0.424.0",
         "radix-vue": "^1.9.2",
         "react-number-format": "^5.4.0",
         "react-tailwindcss-datepicker": "^1.6.6",

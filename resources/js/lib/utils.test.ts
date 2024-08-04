@@ -1,4 +1,4 @@
-import { expect } from 'vitest';
+import { expect, it } from 'vitest';
 import { omit } from '@/lib/utils';
 
 it('omits object property from new object', () => {

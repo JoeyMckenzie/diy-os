@@ -4,17 +4,25 @@ import Logo from '@/components/Logo.vue';
 </script>
 
 <template>
-    <div
-        class="flex min-h-screen flex-col items-center bg-gray-100 pt-6 dark:bg-neutral-900 sm:justify-center sm:pt-0"
-    >
-        <div>
-            <Link href="/">
-                <Logo class="h-20" />
-            </Link>
+    <div class="min-h-screen w-full lg:grid lg:grid-cols-2">
+        <div class="flex items-center justify-center py-12">
+            <div class="mx-auto grid w-[350px] gap-6">
+                <div>
+                    <Link href="/">
+                        <Logo class="h-20" />
+                    </Link>
+                </div>
+                <slot />
+            </div>
         </div>
-
-        <div class="mt-6 w-full overflow-hidden px-6 py-4 sm:max-w-md">
-            <slot />
+        <div class="hidden bg-muted lg:block">
+            <img
+                alt="Image"
+                class="size-full object-cover dark:brightness-[0.2] dark:grayscale"
+                height="1080"
+                src="https://www.shadcn-vue.com/placeholder.svg"
+                width="1920"
+            >
         </div>
     </div>
 </template>

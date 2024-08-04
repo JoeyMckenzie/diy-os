@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-import { Link, useForm } from '@inertiajs/vue3';
-import { route } from 'ziggy-js';
-import Logo from '@/components/Logo.vue';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 import Button from '@/components/ui/button/Button.vue';
 import Input from '@/components/ui/input/Input.vue';
 import Label from '@/components/ui/label/Label.vue';
+import GuestLayout from '@/layouts/GuestLayout.vue';
+import { Separator } from '@/components/ui/separator';
+import { Checkbox } from '@/components/ui/checkbox';
+import InputError from '@/components/InputError.vue';
 
 defineProps<{
     canResetPassword?: boolean;
@@ -27,65 +29,64 @@ function submit() {
 </script>
 
 <template>
-    <div class="min-h-screen w-full lg:grid lg:grid-cols-2">
-        <div class="flex items-center justify-center py-12">
-            <div class="mx-auto grid w-[350px] gap-6">
-                <div>
-                    <Link href="/">
-                        <Logo class="h-20" />
+    <GuestLayout>
+        <Head title="Login" />
+
+        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+            {{ status }}
+        </div>
+
+        <div class="grid gap-2 text-center">
+            <p class="text-balance text-muted-foreground">
+                Enter your email below to login to your account
+            </p>
+        </div>
+
+        <form class="grid gap-4" @submit.prevent="submit">
+            <div class="grid gap-2">
+                <Label for="email">Email</Label>
+                <Input
+                    id="email"
+                    v-model="form.email"
+                    placeholder="m@example.com"
+                    required
+                    type="email"
+                />
+                <InputError :message="form.errors.email" class="mt-2" />
+            </div>
+            <div class="grid gap-2">
+                <div class="flex items-center">
+                    <Label for="password">Password</Label>
+                    <Link
+                        v-if="canResetPassword"
+                        :href="route('password.request')"
+                        class="ml-auto inline-block text-sm underline"
+                    >
+                        Forgot your password?
                     </Link>
                 </div>
-                <div class="grid gap-2 text-center">
-                    <p class="text-balance text-muted-foreground">
-                        Enter your email below to login to your account
-                    </p>
-                </div>
-                <form class="grid gap-4" @submit.prevent="submit">
-                    <div class="grid gap-2">
-                        <Label for="email">Email</Label>
-                        <Input
-                            id="email"
-                            v-model="form.email"
-                            placeholder="m@example.com"
-                            required
-                            type="email"
-                        />
-                    </div>
-                    <div class="grid gap-2">
-                        <div class="flex items-center">
-                            <Label for="password">Password</Label>
-                            <a
-                                class="ml-auto inline-block text-sm underline"
-                                href="/forgot-password"
-                            >
-                                Forgot your password?
-                            </a>
-                        </div>
-                        <Input id="password" v-model="form.password" required type="password" />
-                    </div>
-                    <Button class="w-full" type="submit">
-                        Login
-                    </Button>
-                    <Button class="w-full" variant="outline">
-                        Login with Google
-                    </Button>
-                </form>
-                <div class="mt-4 text-center text-sm">
+                <Input id="password" v-model="form.password" required type="password" />
+                <InputError :message="form.errors.password" class="mt-2" />
+            </div>
+            <div class="flex flex-row justify-between text-sm">
+                <Label class="flex items-center">
+                    <Checkbox
+                        v-model:checked="form.remember"
+                        name="remember"
+                    />
+                    <span class="ms-2 text-sm">Remember me</span>
+                </Label>
+                <div>
                     Don't have an account?
                     <Link :href="route('register')" class="underline">
                         Sign up
                     </Link>
                 </div>
             </div>
-        </div>
-        <div class="hidden bg-muted lg:block">
-            <img
-                alt="Image"
-                class="size-full object-cover dark:brightness-[0.2] dark:grayscale"
-                height="1080"
-                src="/placeholder.svg"
-                width="1920"
-            >
-        </div>
-    </div>
+            <Separator />
+            <Button class="w-full" type="submit">
+                Login
+            </Button>
+        </form>
+    </GuestLayout>
 </template>

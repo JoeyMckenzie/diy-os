@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { route } from 'ziggy-js';
+import { AvatarIcon, GithubLogoIcon, QuestionMarkCircledIcon } from '@radix-icons/vue';
 import { Link } from '@inertiajs/vue3';
 import {
     DropdownMenu,
@@ -27,16 +28,18 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
             <DropdownMenuGroup>
                 <Link :href="route('profile.edit')">
                     <DropdownMenuItem>
-                        Profile
+                        <AvatarIcon class="mr-2" />
+                        <span>Profile</span>
                     </DropdownMenuItem>
                 </Link>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuSeparator />
             <DropdownMenuItem>
+                <GithubLogoIcon class="mr-2" />
                 <span>GitHub</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
+                <QuestionMarkCircledIcon class="mr-2" />
                 <span>Support</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />

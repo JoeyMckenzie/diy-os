@@ -1,17 +1,12 @@
 <script lang="ts" setup>
-import type { PageProps } from '../../types';
-import AuthenticatedLayout from '../../layouts/AuthenticatedLayout.vue';
-
-defineProps<
-    PageProps<{
-        total: number;
-        metadata: { completed: number; inProgress: number; notStarted: number };
-    }>
->();
+import { Head } from '@inertiajs/vue3';
+import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue';
 </script>
 
 <template>
-    <AuthenticatedLayout />
+    <AuthenticatedLayout>
+        <Head title="Dashboard" />
+    </AuthenticatedLayout>
 </template>
 
 <style scoped>
