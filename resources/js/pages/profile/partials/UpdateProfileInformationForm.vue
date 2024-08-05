@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useForm, usePage } from '@inertiajs/vue3';
+import { router, useForm, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -18,6 +18,16 @@ const form = useForm({
     last_name: user.last_name,
     email: user.email,
 });
+
+function uploadAvatar(event: Event) {
+    const fileEvent = event as Event & { target: HTMLInputElement };
+    if (fileEvent?.target?.files?.[0]) {
+        const avatar = fileEvent.target.files[0];
+        router.post('/avatar', {
+            avatar,
+        });
+    }
+}
 
 function clickAvatarInput() {
     if (photoInputRef?.value) {
@@ -57,15 +67,21 @@ function clickAvatarInput() {
                 <Label for="photo">Photo</Label>
                 <div class="mt-2 flex items-center gap-x-3">
                     <Avatar class="size-12" shape="square">
-                        <AvatarImage alt="@radix-vue" src="https://github.com/radix-vue.png" />
-                        <AvatarFallback>CN</AvatarFallback>
+                        <AvatarImage v-if="$page.props.auth.user.avatar_url" :src="$page.props.auth.user.avatar_url" alt="user profile picture" />
+                        <AvatarFallback>{{ $page.props.auth.user.initials }}</AvatarFallback>
                         <span class="sr-only">Toggle user menu</span>
                     </Avatar>
-                    <input ref="photoInputRef" class="hidden" name="profile photo" type="file">
+                    <input ref="photoInputRef" accept="image/*" class="hidden" name="profile photo" type="file" @change="uploadAvatar($event)">
                     <Button type="button" variant="outline" @click="clickAvatarInput">
                         Change
                     </Button>
                 </div>
+                <p v-if="$page.props.errors?.avatar" class="mt-2 text-sm leading-6 text-destructive">
+                    {{ $page.props.errors.avatar }}
+                </p>
+                <p class="mt-2 text-sm text-muted-foreground">
+                    JPG, GIF or PNG. 1MB max.
+                </p>
             </div>
 
             <div class="flex flex-row items-center gap-4">

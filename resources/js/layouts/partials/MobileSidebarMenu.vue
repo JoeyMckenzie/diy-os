@@ -7,9 +7,9 @@ import { Separator } from '@/components/ui/separator';
 </script>
 
 <template>
-    <nav class="grid gap-2 font-medium">
+    <nav class="grid gap-2 text-sm font-medium">
         <div
-            class="flex items-center gap-2 text-lg font-semibold"
+            class="flex items-center gap-2 font-semibold"
         >
             <Logo class="h-8 w-auto" />
             <span class="sr-only">diyOS</span>

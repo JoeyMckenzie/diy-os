@@ -18,8 +18,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
     <DropdownMenu>
         <DropdownMenuTrigger as-child>
             <Avatar class="size-8">
-                <AvatarImage alt="@radix-vue" src="https://github.com/radix-vue.png" />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarImage v-if="$page.props.auth.user.avatar_url" :src="$page.props.auth.user.avatar_url" alt="user profile picture" />
+                <AvatarFallback>{{ $page.props.auth.user.initials }}</AvatarFallback>
                 <span class="sr-only">Toggle user menu</span>
             </Avatar>
         </DropdownMenuTrigger>

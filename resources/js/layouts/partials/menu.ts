@@ -1,4 +1,4 @@
-import { Drill, Home, Logs } from 'lucide-vue-next';
+import { CalendarDays, Drill, Home, Logs } from 'lucide-vue-next';
 
 export const menu = [
     {
@@ -17,6 +17,12 @@ export const menu = [
         component: 'materials/Index',
         label: 'Materials',
         icon: Drill,
+        route: 'materials.index',
+    },
+    {
+        component: 'materials/Index',
+        label: 'Scheduling',
+        icon: CalendarDays,
         route: 'materials.index',
     },
 ];
