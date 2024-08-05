@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Menu, Search } from 'lucide-vue-next';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { router } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -15,7 +16,13 @@ defineProps<{
     headerText?: string;
 }>();
 
-const menuOpen = ref(false);
+const sheetOpen = ref(false);
+
+onMounted(() => {
+    router.on('before', () => {
+        sheetOpen.value = false;
+    });
+});
 </script>
 
 <template>
@@ -48,7 +55,7 @@ const menuOpen = ref(false);
         </div>
         <div class="flex flex-col">
             <header class="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
-                <Sheet :open="menuOpen" @update:open="(open) => menuOpen = open">
+                <Sheet :open="sheetOpen" @update:open="(open) => sheetOpen = open">
                     <SheetTrigger as-child>
                         <Button
                             class="shrink-0 md:hidden"
