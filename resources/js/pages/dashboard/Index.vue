@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Head } from '@inertiajs/vue3';
 import { Activity, ArrowUpRight, CreditCard, DollarSign, Users } from 'lucide-vue-next';
-import AuthenticatedLayoutV2 from '@/layouts/AuthenticatedLayoutV2.vue';
+import AuthenticatedLayoutV2 from '@/layouts/AuthenticatedLayout.vue';
 import {
     Breadcrumb,
     BreadcrumbItem,

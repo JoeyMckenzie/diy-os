@@ -5,7 +5,7 @@ import Logo from '@/components/Logo.vue';
 
 <template>
     <div class="min-h-screen w-full lg:grid lg:grid-cols-2">
-        <div class="flex items-center justify-center py-12">
+        <div class="flex items-center justify-center px-4 py-12">
             <div class="mx-auto grid w-[350px] gap-6">
                 <div>
                     <Link href="/">

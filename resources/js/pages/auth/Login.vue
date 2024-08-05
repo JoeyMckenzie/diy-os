@@ -77,7 +77,7 @@ function submit() {
                     <span class="ms-2 text-sm">Remember me</span>
                 </Label>
                 <div>
-                    Don't have an account?
+                    Need an account?
                     <Link :href="route('register')" class="underline">
                         Sign up
                     </Link>
