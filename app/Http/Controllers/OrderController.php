@@ -24,7 +24,6 @@ final class OrderController extends Controller
     public function show(Order $order): Response
     {
         return Inertia::render('orders/Show', [
-            'orderId' => $this->optimus->encode($order->id),
             'order' => $order,
         ]);
     }
