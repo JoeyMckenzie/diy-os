@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useForm } from '@inertiajs/vue3';
 import { useFocus } from '@vueuse/core';
 import { ref } from 'vue';
@@ -46,70 +46,68 @@ function closeModal() {
 </script>
 
 <template>
-    <section class="space-y-6">
-        <header>
-            <h2 class="text-lg font-medium">
-                Delete Account
+    <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
+        <div>
+            <h2 class="text-base font-semibold leading-7">
+                Delete account
             </h2>
-
-            <p class="mt-1 text-sm text-gray-600 dark:text-neutral-400">
-                Once your account is deleted, all of its resources and data will
-                be permanently deleted. Before deleting your account, please
-                download any data or information that you wish to retain.
+            <p class="mt-1 text-sm leading-6 text-muted-foreground">
+                Once your account is deleted, all of its resources and data
+                will be permanently deleted. This action cannot be reversed!
             </p>
-        </header>
+        </div>
 
-        <Dialog>
-            <DialogTrigger as-child>
-                <Button variant="destructive">
-                    Delete Account
-                </Button>
-            </DialogTrigger>
-            <DialogContent class="w-full">
-                <DialogHeader>
-                    <DialogTitle>
-                        Are you sure you want to delete your account?
-                    </DialogTitle>
-                    <DialogDescription>
-                        Once your account is deleted, all of its resources and
-                        data will be permanently deleted. Please enter your
-                        password to confirm you would like to permanently delete
-                        your account.
-                    </DialogDescription>
-                </DialogHeader>
-                <div class="gap-4 py-4">
-                    <Label for="password" class="sr-only">Password</Label>
-
-                    <Input
-                        id="password"
-                        ref="passwordInput"
-                        v-model="form.password"
-                        type="password"
-                        class="mt-1 block w-full"
-                        placeholder="Password"
-                        @keyup.enter="deleteUser"
-                    />
-
-                    <InputError :message="form.errors.password" class="mt-2" />
-                </div>
-                <DialogFooter class="mt-6 flex justify-end">
-                    <DialogClose as-child>
-                        <Button variant="secondary" @click="closeModal">
-                            Cancel
-                        </Button>
-                    </DialogClose>
-
-                    <Button
-                        variant="destructive"
-                        class="ms-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                        @click="deleteUser"
-                    >
-                        Delete Account
+        <div class="max-w-2xl space-y-10 md:col-span-2">
+            <Dialog>
+                <DialogTrigger as-child>
+                    <Button variant="destructive">
+                        Yes, delete my account
                     </Button>
-                </DialogFooter>
-            </DialogContent>
-        </Dialog>
-    </section>
+                </DialogTrigger>
+                <DialogContent class="w-full">
+                    <DialogHeader>
+                        <DialogTitle>
+                            Are you sure you want to delete your account?
+                        </DialogTitle>
+                        <DialogDescription>
+                            Once your account is deleted, all of its resources and
+                            data will be permanently deleted. Please enter your
+                            password to confirm you would like to permanently delete
+                            your account.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div class="gap-4 py-4">
+                        <Label class="sr-only" for="password">Password</Label>
+
+                        <Input
+                            id="password"
+                            ref="passwordInput"
+                            v-model="form.password"
+                            class="mt-1 block w-full"
+                            placeholder="Password"
+                            type="password"
+                            @keyup.enter="deleteUser"
+                        />
+
+                        <InputError :message="form.errors.password" class="mt-2" />
+                    </div>
+                    <DialogFooter class="mt-6 flex justify-end gap-y-2">
+                        <DialogClose as-child>
+                            <Button variant="secondary" @click="closeModal">
+                                Cancel
+                            </Button>
+                        </DialogClose>
+                        <Button
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                            variant="destructive"
+                            @click="deleteUser"
+                        >
+                            Delete Account
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+        </div>
+    </div>
 </template>

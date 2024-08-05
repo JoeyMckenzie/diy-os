@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { route } from 'ziggy-js';
@@ -40,74 +40,65 @@ function updatePassword() {
 </script>
 
 <template>
-    <section>
-        <header>
-            <h2 class="text-lg font-medium">
+    <form class="grid grid-cols-1 gap-8 border-b pb-12 md:grid-cols-3" @submit.prevent="updatePassword">
+        <div>
+            <h2 class="text-base font-semibold leading-7">
                 Update Password
             </h2>
-
-            <p class="mt-1 text-sm text-gray-600 dark:text-neutral-400">
+            <p class="mt-1 text-sm leading-6 text-muted-foreground">
                 Ensure your account is using a long, random password to stay
                 secure.
             </p>
-        </header>
+        </div>
 
-        <form class="mt-6 space-y-6" @submit.prevent="updatePassword">
-            <div>
+        <div class="grid max-w-2xl grid-cols-1 gap-6">
+            <div class="grid gap-2 sm:col-span-4">
                 <Label for="current_password">Current Password</Label>
-
                 <Input
                     id="current_password"
                     ref="currentPasswordInput"
                     v-model="form.current_password"
-                    type="password"
-                    class="mt-1 block w-full"
                     autocomplete="current-password"
+                    type="password"
                 />
-
                 <InputError
                     :message="form.errors.current_password"
                     class="mt-2"
                 />
             </div>
 
-            <div>
+            <div class="grid gap-2 sm:col-span-4">
                 <Label for="password">New Password</Label>
-
                 <Input
                     id="password"
                     ref="passwordInput"
                     v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
                     autocomplete="new-password"
+                    class="mt-1 block w-full"
+                    type="password"
                 />
-
                 <InputError :message="form.errors.password" class="mt-2" />
             </div>
 
-            <div>
+            <div class="grid gap-2 sm:col-span-4">
                 <Label for="password_confirmation">Confirm Password</Label>
-
                 <Input
                     id="password_confirmation"
                     v-model="form.password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
                     autocomplete="new-password"
+                    class="mt-1 block w-full"
+                    type="password"
                 />
-
                 <InputError
                     :message="form.errors.password_confirmation"
                     class="mt-2"
                 />
             </div>
 
-            <div class="flex items-center gap-4">
-                <Button :disabled="form.processing">
+            <div class="flex flex-row items-center gap-4">
+                <Button :disabled="form.processing" type="submit">
                     Save
                 </Button>
-
                 <Transition
                     enter-active-class="transition ease-in-out"
                     enter-from-class="opacity-0"
@@ -122,6 +113,6 @@ function updatePassword() {
                     </p>
                 </Transition>
             </div>
-        </form>
-    </section>
+        </div>
+    </form>
 </template>

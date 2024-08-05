@@ -243,7 +243,7 @@ defineProps<{
                         {{ headerText }}
                     </h1>
                 </div>
-                <div class="flex flex-1 items-center justify-center">
+                <div class="flex flex-1 justify-center">
                     <slot />
                 </div>
             </main>
