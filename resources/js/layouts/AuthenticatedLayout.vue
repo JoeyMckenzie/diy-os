@@ -1,30 +1,21 @@
 <script lang="ts" setup>
-import { Home, LineChart, LogOut, Menu, Package, Search, ShoppingCart, Users } from 'lucide-vue-next';
-import { route } from 'ziggy-js';
-import { AvatarIcon, GithubLogoIcon, QuestionMarkCircledIcon } from '@radix-icons/vue';
-import { Link } from '@inertiajs/vue3';
-import { Badge } from '@/components/ui/badge';
+import { Menu, Search } from 'lucide-vue-next';
+import { ref } from 'vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Logo from '@/components/Logo.vue';
-import { Separator } from '@/components/ui/separator';
 import ThemeToggle from '@/components/ThemeToggle.vue';
+import SidebarMenu from '@/layouts/partials/SidebarMenu.vue';
+import MobileSidebarMenu from '@/layouts/partials/MobileSidebarMenu.vue';
+import UserProfileDropdown from '@/layouts/partials/UserProfileDropdown.vue';
 
 defineProps<{
     headerText?: string;
 }>();
+
+const mobileMenuOpen = ref(false);
 </script>
 
 <template>
@@ -35,50 +26,7 @@ defineProps<{
                     <Logo class="h-10 w-auto" />
                 </div>
                 <div class="flex-1">
-                    <nav class="grid items-start px-2 text-sm font-medium lg:px-4">
-                        <Link
-                            :class="{ 'text-prima`ry bg-muted': $page.component === 'dashboard/Index' }"
-                            :href="route('dashboard')"
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-                        >
-                            <Home class="size-4" />
-                            Dashboard
-                        </Link>
-                        <h1 class="mt-4 text-sm text-muted-foreground">
-                            Tools
-                        </h1>
-                        <Link
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-                            href="#"
-                        >
-                            <ShoppingCart class="size-4" />
-                            Orders
-                            <Badge class="ml-auto flex size-6 shrink-0 items-center justify-center rounded-full">
-                                6
-                            </Badge>
-                        </Link>
-                        <a
-                            class="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
-                            href="#"
-                        >
-                            <Package class="size-4" />
-                            Products
-                        </a>
-                        <a
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-                            href="#"
-                        >
-                            <Users class="size-4" />
-                            Customers
-                        </a>
-                        <a
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-                            href="#"
-                        >
-                            <LineChart class="size-4" />
-                            Analytics
-                        </a>
-                    </nav>
+                    <SidebarMenu />
                 </div>
                 <div class="mt-auto p-4">
                     <Card>
@@ -112,56 +60,7 @@ defineProps<{
                         </Button>
                     </SheetTrigger>
                     <SheetContent class="flex flex-col" side="left">
-                        <nav class="grid gap-2 font-medium">
-                            <div
-                                class="flex items-center gap-2 text-lg font-semibold"
-                            >
-                                <Logo class="h-8 w-auto" />
-                                <span class="sr-only">diyOS</span>
-                            </div>
-                            <Separator class="mt-2" />
-                            <Link
-                                :href="route('dashboard')"
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                            >
-                                <Home class="size-5" />
-                                Dashboard
-                            </Link>
-                            <h1 class="mt-4 text-sm text-muted-foreground">
-                                Tools
-                            </h1>
-                            <Link
-                                :href="route('orders.index')"
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-                            >
-                                <ShoppingCart class="size-5" />
-                                Orders
-                                <Badge class="ml-auto flex size-6 shrink-0 items-center justify-center rounded-full">
-                                    6
-                                </Badge>
-                            </Link>
-                            <a
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                                href="#"
-                            >
-                                <Package class="size-5" />
-                                Products
-                            </a>
-                            <a
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                                href="#"
-                            >
-                                <Users class="size-5" />
-                                Customers
-                            </a>
-                            <a
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                                href="#"
-                            >
-                                <LineChart class="size-5" />
-                                Analytics
-                            </a>
-                        </nav>
+                        <MobileSidebarMenu />
                         <div class="mt-auto">
                             <Card>
                                 <CardHeader>
@@ -193,48 +92,7 @@ defineProps<{
                     </form>
                 </div>
                 <ThemeToggle />
-                <DropdownMenu>
-                    <DropdownMenuTrigger as-child>
-                        <Avatar class="size-8">
-                            <AvatarImage alt="@radix-vue" src="https://github.com/radix-vue.png" />
-                            <AvatarFallback>CN</AvatarFallback>
-                            <span class="sr-only">Toggle user menu</span>
-                        </Avatar>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuGroup>
-                            <Link :href="route('profile.edit')">
-                                <DropdownMenuItem>
-                                    <AvatarIcon class="mr-2" />
-                                    <span>Profile</span>
-                                </DropdownMenuItem>
-                            </Link>
-                        </DropdownMenuGroup>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                            <GithubLogoIcon class="mr-2" />
-                            <span>GitHub</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                            <QuestionMarkCircledIcon class="mr-2" />
-                            <span>Support</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <Link
-                            :href="route('logout')"
-                            as="button"
-                            class="w-full"
-                            method="post"
-                        >
-                            <DropdownMenuItem>
-                                <LogOut class="mr-2 size-4" />
-                                <span>Log out</span>
-                            </DropdownMenuItem>
-                        </Link>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <UserProfileDropdown />
             </header>
             <main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
                 <slot name="breadcrumb" />

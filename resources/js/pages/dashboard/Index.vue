@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Head } from '@inertiajs/vue3';
 import { Activity, ArrowUpRight, CreditCard, DollarSign, Users } from 'lucide-vue-next';
-import AuthenticatedLayoutV2 from '@/layouts/AuthenticatedLayout.vue';
+import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -17,7 +17,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 </script>
 
 <template>
-    <AuthenticatedLayoutV2 :header-text="`Welcome ${$page.props.auth.user.first_name}!`">
+    <AuthenticatedLayout :header-text="`Welcome ${$page.props.auth.user.first_name}!`">
         <Head title="Dashboard" />
         <template #breadcrumb>
             <Breadcrumb class="hidden md:flex">
@@ -267,5 +267,5 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
                 </CardContent>
             </Card>
         </main>
-    </AuthenticatedLayoutV2>
+    </AuthenticatedLayout>
 </template>

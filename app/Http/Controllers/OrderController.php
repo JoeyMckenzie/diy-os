@@ -9,12 +9,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
-use Jenssegers\Optimus\Optimus;
 
 final class OrderController extends Controller
 {
-    public function __construct(private readonly Optimus $optimus) {}
-
     public function index(): Response
     {
         $orders = request()->user()?->orders()->paginate(10);
