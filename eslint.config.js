@@ -21,4 +21,7 @@ export default antfu(
             },
         },
     },
+    {
+        ignores: ['resources/js/components/ui/**/*.{ts,vue}'],
+    },
 );

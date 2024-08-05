@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { Menu, Search } from 'lucide-vue-next';
-import { ref } from 'vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,8 +13,6 @@ import UserProfileDropdown from '@/layouts/partials/UserProfileDropdown.vue';
 defineProps<{
     headerText?: string;
 }>();
-
-const mobileMenuOpen = ref(false);
 </script>
 
 <template>
