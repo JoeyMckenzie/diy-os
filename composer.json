@@ -62,7 +62,7 @@
         "test:integration": "./vendor/bin/pest --colors=always",
         "test:watch": "./vendor/bin/pest --watch --parallel",
         "test:types": "./vendor/bin/pest --type-coverage --min=100",
-        "test": ["@test:types", "@test:integration"],
+        "test": ["npm run build", "@test:types", "@test:integration"],
         "lint": "./vendor/bin/phpstan analyze",
         "fmt": "./vendor/bin/pint -vv",
         "rector": "vendor/bin/rector process",
