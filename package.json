@@ -4,24 +4,14 @@
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc && vite build && vite build --ssr",
-        "fmt": "npx @biomejs/biome format --write ./resources/js",
-        "lint": "npx @biomejs/biome lint --apply ./resources/js",
-        "lint:eslint": "eslint ./resources/js",
-        "fix:eslint": "npm run lint:eslint -- --fix",
-        "fix": "npx @biomejs/biome lint --apply-unsafe ./resources/js",
-        "check": "npx @biomejs/biome check --apply ./resources/js",
+        "lint": "eslint ./resources/js",
+        "fix": "npm run lint -- --fix",
         "ci": "npm run lint && npm run build",
         "test": "vitest"
     },
     "lint-staged": {
-        "**/*.{js,ts,tsx}": [
-            "npm run fmt",
-            "npm run lint"
-        ],
-        "**/*.php": [
-            "composer run fmt",
-            "composer run rector"
-        ]
+        "**/*.{js,ts,vue}": ["npm run fix"],
+        "**/*.php": ["composer run fmt", "composer run rector"]
     },
     "devDependencies": {
         "@antfu/eslint-config": "^2.24.1",

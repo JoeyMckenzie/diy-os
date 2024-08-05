@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Home, LineChart, Menu, Package, Search, ShoppingCart, Users } from 'lucide-vue-next';
-
+import { Home, LineChart, LogOut, Menu, Package, Search, ShoppingCart, Users } from 'lucide-vue-next';
 import { route } from 'ziggy-js';
 import { AvatarIcon, GithubLogoIcon, QuestionMarkCircledIcon } from '@radix-icons/vue';
 import { Link } from '@inertiajs/vue3';
@@ -31,7 +30,7 @@ defineProps<{
 <template>
     <div class="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
         <div class="hidden border-r bg-muted/40 md:block">
-            <div class="flex h-full max-h-screen flex-col gap-2">
+            <div class="flex h-full min-h-screen flex-col gap-2">
                 <div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
                     <Logo class="h-10 w-auto" />
                 </div>
@@ -230,7 +229,8 @@ defineProps<{
                             method="post"
                         >
                             <DropdownMenuItem>
-                                Log out
+                                <LogOut class="mr-2 size-4" />
+                                <span>Log out</span>
                             </DropdownMenuItem>
                         </Link>
                     </DropdownMenuContent>
