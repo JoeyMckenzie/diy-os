@@ -25,7 +25,7 @@ Route::middleware(['auth', 'verified'])->group(fn () => Route::resources([
     'materials' => MaterialController::class,
 ]));
 
-Route::get('/dashboard', fn () => Inertia::render('dashboard/IndexV2'))->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', fn () => Inertia::render('dashboard/Index'))->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function (): void {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
