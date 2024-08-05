@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { Menu, Search } from 'lucide-vue-next';
+import { ref } from 'vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -13,6 +14,8 @@ import UserProfileDropdown from '@/layouts/partials/UserProfileDropdown.vue';
 defineProps<{
     headerText?: string;
 }>();
+
+const menuOpen = ref(false);
 </script>
 
 <template>
@@ -45,7 +48,7 @@ defineProps<{
         </div>
         <div class="flex flex-col">
             <header class="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
-                <Sheet>
+                <Sheet :open="menuOpen" @update:open="(open) => menuOpen = open">
                     <SheetTrigger as-child>
                         <Button
                             class="shrink-0 md:hidden"

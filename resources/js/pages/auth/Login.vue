@@ -76,17 +76,17 @@ function submit() {
                     />
                     <span class="ms-2 text-sm">Remember me</span>
                 </Label>
-                <div>
-                    Need an account?
-                    <Link :href="route('register')" class="underline">
-                        Sign up
-                    </Link>
-                </div>
             </div>
             <Separator />
             <Button class="w-full" type="submit">
                 Login
             </Button>
         </form>
+        <div class="mt-4 text-center text-sm">
+            Need an account?
+            <Link :href="route('register')" class="underline">
+                Sign up
+            </Link>
+        </div>
     </GuestLayout>
 </template>

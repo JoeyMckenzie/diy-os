@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { Home } from 'lucide-vue-next';
 import { Link } from '@inertiajs/vue3';
-import { route } from 'ziggy-js';
 import { menu } from './menu';
 import Logo from '@/components/Logo.vue';
 import { Separator } from '@/components/ui/separator';
@@ -22,7 +21,7 @@ import { Separator } from '@/components/ui/separator';
                 'text-muted-foreground': $page.component !== 'dashboard/Index',
             }"
             :href="route('dashboard')"
-            class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+            class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground"
         >
             <Home class="size-5" />
             Dashboard
