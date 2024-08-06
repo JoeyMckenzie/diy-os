@@ -1,6 +1,6 @@
 import type { LucideProps } from 'lucide-vue-next';
 import { CalendarDays, Drill, FolderKanban, Home, Inbox, Logs } from 'lucide-vue-next';
-import type { FunctionalComponent } from 'vue';
+import type { EmitsOptions, FunctionalComponent } from 'vue';
 
 interface Navigation {
     primary: NavigationMenuItem[];
@@ -11,7 +11,7 @@ interface NavigationMenuItem {
     component: string;
     label: string;
     route: string;
-    icon: FunctionalComponent<LucideProps, object, any, object>;
+    icon: FunctionalComponent<LucideProps, Record<string, any[]> | EmitsOptions, any, EmitsOptions>;
     badgeContents?: number;
 }
 
