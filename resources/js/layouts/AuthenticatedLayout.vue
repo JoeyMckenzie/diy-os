@@ -103,10 +103,13 @@ onMounted(() => {
             </header>
             <main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
                 <slot name="breadcrumb" />
-                <div v-if="!!headerText" class="flex items-center">
-                    <h1 class="text-lg font-semibold md:text-2xl">
-                        {{ headerText }}
-                    </h1>
+                <div class="flex flex-row items-center justify-between">
+                    <div v-if="!!headerText" class="flex items-center">
+                        <h1 class="text-lg font-semibold md:text-2xl">
+                            {{ headerText }}
+                        </h1>
+                    </div>
+                    <slot name="action" />
                 </div>
                 <div class="flex flex-1 justify-center">
                     <slot />
