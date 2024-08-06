@@ -15,7 +15,7 @@ defineProps<{
     <Head title="Profile" />
 
     <AuthenticatedLayout header-text="My account">
-        <form>
+        <form class="mt-8">
             <div class="space-y-12">
                 <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status" />
                 <UpdatePasswordForm />
