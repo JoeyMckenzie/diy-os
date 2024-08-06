@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { Home } from 'lucide-vue-next';
 import { Link } from '@inertiajs/vue3';
-import { menu } from './menu';
+import { navigationMenu } from './menu';
 import Logo from '@/components/Logo.vue';
 import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
 </script>
 
 <template>
@@ -15,29 +15,38 @@ import { Separator } from '@/components/ui/separator';
             <span class="sr-only">diyOS</span>
         </div>
         <Separator class="mt-2" />
+
         <Link
-            :class="{
-                'bg-muted text-foreground': $page.component === 'dashboard/Index',
-                'text-muted-foreground': $page.component !== 'dashboard/Index',
-            }"
-            :href="route('dashboard')"
-            class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground"
-        >
-            <Home class="size-5" />
-            Dashboard
-        </Link>
-        <h1 class="mt-4 text-sm text-muted-foreground">
-            Tools
-        </h1>
-        <Link
-            v-for="item in menu"
+            v-for="item in navigationMenu.primary"
             :key="item.component"
             :class="{
                 'bg-muted text-foreground': $page.component === item.component,
                 'text-muted-foreground': $page.component !== item.component,
             }"
             :href="route(item.route)"
-            class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground"
+            class="mx-[-0.65rem] flex items-center gap-4 rounded-lg px-3 py-2 hover:text-foreground"
+        >
+            <component :is="item.icon" class="size-5" />
+            {{ item.label }}
+            <Badge
+                v-if="item.badgeContents"
+                class="ml-auto flex size-6 shrink-0 items-center justify-center rounded-full"
+            >
+                {{ item.badgeContents }}
+            </Badge>
+        </Link>
+        <h1 class="mt-4 text-sm text-muted-foreground">
+            Tools
+        </h1>
+        <Link
+            v-for="item in navigationMenu.tools"
+            :key="item.component"
+            :class="{
+                'bg-muted text-foreground': $page.component === item.component,
+                'text-muted-foreground': $page.component !== item.component,
+            }"
+            :href="route(item.route)"
+            class="mx-[-0.65rem] flex items-center gap-4 rounded-lg px-3 py-2 hover:text-foreground"
         >
             <component :is="item.icon" aria-hidden="true" class="size-5" />
             {{ item.label }}
