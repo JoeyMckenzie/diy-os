@@ -17,7 +17,7 @@ final class AppServiceProvider extends ServiceProvider
     #[Override]
     public function register(): void
     {
-        $this->app->singleton(AvatarManager::class, DiskAvatarManager::class);
+        $this->app->bind(AvatarManager::class, DiskAvatarManager::class);
     }
 
     /**
