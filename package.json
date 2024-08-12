@@ -55,7 +55,7 @@
         "date-fns": "^3.6.0",
         "framer-motion": "^11.3.19",
         "lucide-vue-next": "^0.424.0",
-        "radix-vue": "^1.9.2",
+        "radix-vue": "^1.9.3",
         "react-number-format": "^5.4.0",
         "react-tailwindcss-datepicker": "^1.6.6",
         "tailwind-merge": "^2.4.0",
